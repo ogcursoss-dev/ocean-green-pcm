@@ -2,6 +2,7 @@
 
 import { AppShell, type NavItem } from '@/components/app-shell'
 import { LayoutDashboard, Users, GraduationCap, BookOpenText, ClipboardList, FileBarChart2 } from 'lucide-react'
+import { Toaster } from '@/components/ui/sonner'
 
 const navItems: NavItem[] = [
   { href: '/app/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -14,13 +15,16 @@ const navItems: NavItem[] = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AppShell
-      navItems={navItems}
-      dashboardHref="/app/admin"
-      title="Painel Administrativo"
-      homeHref="/"
-    >
-      {children}
-    </AppShell>
+    <>
+      <AppShell
+        navItems={navItems}
+        dashboardHref="/app/admin"
+        title="Painel Administrativo"
+        homeHref="/"
+      >
+        {children}
+      </AppShell>
+      <Toaster richColors position="top-right" />
+    </>
   )
 }

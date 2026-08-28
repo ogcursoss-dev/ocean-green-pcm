@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loader2, UserCircle, LogIn } from 'lucide-react'
+import { Toaster } from '@/components/ui/sonner'
 import { toast } from 'sonner'
 import { maskCpf, cleanCpf } from '@/lib/auth'
 
@@ -141,6 +142,7 @@ export default function LoginPage() {
           © {new Date().getFullYear()} Ocean Green Treinamentos — Todos os direitos reservados
         </p>
       </div>
+      <Toaster richColors position="top-right" />
     </div>
   )
 }

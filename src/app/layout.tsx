@@ -1,12 +1,5 @@
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
 import "./globals.css"
-import { Toaster } from "@/components/ui/sonner"
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
 
 export const metadata: Metadata = {
   title: "Ocean Green Treinamentos | Sistema PCM",
@@ -15,6 +8,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Ocean Green Treinamentos" }],
 }
 
+// Força renderização dinâmica (evita SSG/prerender que causa erro no _global-error)
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,9 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${geistSans.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className="font-sans antialiased bg-background text-foreground">
         {children}
-        <Toaster richColors position="top-right" />
       </body>
     </html>
   )

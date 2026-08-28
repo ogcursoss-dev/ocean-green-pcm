@@ -2,6 +2,7 @@
 
 import { AppShell, type NavItem } from '@/components/app-shell'
 import { LayoutDashboard, BookOpenText, ClipboardList, Clock } from 'lucide-react'
+import { Toaster } from '@/components/ui/sonner'
 
 const navItems: NavItem[] = [
   { href: '/app/aluno', label: 'Início', icon: LayoutDashboard },
@@ -11,13 +12,16 @@ const navItems: NavItem[] = [
 
 export default function AlunoLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AppShell
-      navItems={navItems}
-      dashboardHref="/app/aluno"
-      title="Área do Aluno"
-      homeHref="/"
-    >
-      {children}
-    </AppShell>
+    <>
+      <AppShell
+        navItems={navItems}
+        dashboardHref="/app/aluno"
+        title="Área do Aluno"
+        homeHref="/"
+      >
+        {children}
+      </AppShell>
+      <Toaster richColors position="top-right" />
+    </>
   )
 }
