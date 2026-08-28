@@ -65,6 +65,9 @@ export async function PATCH(
       showResults,
       shuffleQuestions,
       active,
+      questionCount,
+      poolSubjectIds,
+      poolDifficulty,
     } = body || {};
     if (title !== undefined) data.title = String(title).trim();
     if (description !== undefined) data.description = description || null;
@@ -77,6 +80,9 @@ export async function PATCH(
     if (showResults !== undefined) data.showResults = showResults;
     if (shuffleQuestions !== undefined) data.shuffleQuestions = !!shuffleQuestions;
     if (typeof active === "boolean") data.active = active;
+    if (questionCount !== undefined) data.questionCount = Number(questionCount) || 20;
+    if (poolSubjectIds !== undefined) data.poolSubjectIds = poolSubjectIds ? JSON.stringify(poolSubjectIds) : null;
+    if (poolDifficulty !== undefined) data.poolDifficulty = poolDifficulty || null;
 
     const exam = await db.exam.update({ where: { id }, data });
     return NextResponse.json({ ok: true, exam });

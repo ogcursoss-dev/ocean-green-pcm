@@ -78,6 +78,7 @@ export async function GET() {
       title: e.title,
       className: e.class?.name || '',
       type: e.type,
+      isRecovery: e.isRecovery,
       startDateTime: start.toISOString(),
       endDateTime: end.toISOString(),
       durationMinutes: ov?.duration || e.durationMinutes,

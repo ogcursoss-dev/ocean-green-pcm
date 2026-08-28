@@ -37,7 +37,6 @@ export async function GET(req: Request) {
       createdAt: true,
     },
   });
-  // Inclui matrículas
   const ids = users.map((u) => u.id);
   const memberships = await db.classMember.findMany({
     where: { userId: { in: ids } },
@@ -60,9 +59,10 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { cpf, name, email, password, role, classIds } = body || {};
-    if (!cpf || !name || !password) {
+    // Admin cadastra apenas CPF + Nome. Senha é opcional (padrão: CPF)
+    if (!cpf || !name) {
       return NextResponse.json(
-        { error: "CPF, nome e senha são obrigatórios." },
+        { error: "CPF e nome são obrigatórios." },
         { status: 400 }
       );
     }
@@ -81,7 +81,9 @@ export async function POST(req: Request) {
       );
     }
     const finalRole = role === "ADMIN" ? "ADMIN" : "STUDENT";
-    const passwordHash = await hashPassword(String(password));
+    // Senha padrão = CPF (sem formatação) se não informada
+    const finalPassword = password ? String(password) : cleaned;
+    const passwordHash = await hashPassword(finalPassword);
     const user = await db.user.create({
       data: {
         cpf: cleaned,
@@ -92,8 +94,6 @@ export async function POST(req: Request) {
         active: true,
       },
     });
-    // Matricula em turmas (se houver) — SQLite não suporta skipDuplicates,
-    // então usamos upserts individuais.
     const ids: string[] = Array.isArray(classIds) ? classIds.filter(Boolean) : [];
     if (ids.length > 0) {
       for (const classId of ids) {
@@ -104,7 +104,11 @@ export async function POST(req: Request) {
         });
       }
     }
-    return NextResponse.json({ ok: true, userId: user.id });
+    return NextResponse.json({
+      ok: true,
+      userId: user.id,
+      generatedPassword: !password ? cleaned : undefined,
+    });
   } catch (err: any) {
     console.error("[users/create]", err);
     return NextResponse.json(

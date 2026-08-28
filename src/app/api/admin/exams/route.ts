@@ -42,6 +42,9 @@ export async function POST(req: Request) {
       showResults,
       shuffleQuestions,
       active,
+      questionCount,
+      poolSubjectIds,
+      poolDifficulty,
     } = body || {};
     if (!title || !classId || !startDateTime || !endDateTime) {
       return NextResponse.json(
@@ -79,10 +82,16 @@ export async function POST(req: Request) {
         startDateTime: start,
         endDateTime: end,
         durationMinutes: Number(durationMinutes) || 60,
-        passingScore: Number(passingScore) || 70,
+        passingScore: Number(passingScore) || 60,
         showResults: showResults || "AFTER_END",
         shuffleQuestions: !!shuffleQuestions,
         active: typeof active === "boolean" ? active : true,
+        // Randomização por aluno
+        questionCount: Number(questionCount) || 20,
+        poolSubjectIds: poolSubjectIds
+          ? JSON.stringify(poolSubjectIds)
+          : null,
+        poolDifficulty: poolDifficulty || null,
       },
     });
     return NextResponse.json({ ok: true, examId: exam.id });

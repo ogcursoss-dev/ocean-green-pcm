@@ -150,8 +150,18 @@ export default function AdminReportsPage() {
   }
 
   function downloadExamPDF(examId: string, withAnswers: boolean) {
-    const url = `/api/admin/reports/exam/${examId}/pdf?withAnswers=${withAnswers}`;
+    const url = `/api/admin/reports/exam/${examId}?withAnswers=${withAnswers}`;
     window.open(url, "_blank");
+  }
+
+  function downloadBoletimPDF() {
+    if (!classId) return;
+    window.open(`/api/admin/reports/class/${classId}/pdf`, "_blank");
+  }
+
+  function downloadCompletePDF() {
+    if (!classId) return;
+    window.open(`/api/admin/reports/complete?classId=${classId}`, "_blank");
   }
 
   return (
@@ -185,9 +195,17 @@ export default function AdminReportsPage() {
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={exportCSV} disabled={!report || report.rows.length === 0}>
+          <Button onClick={downloadBoletimPDF} disabled={!classId} variant="outline" className="border-accent text-accent hover:bg-accent/10">
+            <FileText className="size-4 mr-1" />
+            Boletim PDF
+          </Button>
+          <Button onClick={downloadCompletePDF} disabled={!classId} className="bg-primary hover:bg-primary/90">
+            <FileText className="size-4 mr-1" />
+            Relatório Completo PDF
+          </Button>
+          <Button onClick={exportCSV} disabled={!report || report.rows.length === 0} variant="outline">
             <Download className="size-4 mr-1" />
-            Exportar CSV
+            CSV
           </Button>
         </CardContent>
       </Card>
@@ -355,12 +373,12 @@ export default function AdminReportsPage() {
                             {r.score !== null ? (
                               <Badge
                                 className={
-                                  r.score >= 70
+                                  r.score >= 60
                                     ? "bg-accent/15 text-accent border-accent/30"
                                     : "bg-destructive/10 text-destructive border-destructive/30"
                                 }
                               >
-                                {r.score >= 70 ? "Aprovado" : "Reprovado"}
+                                {r.score >= 60 ? "Aprovado" : "Reprovado"}
                               </Badge>
                             ) : (
                               <Badge variant="secondary">Pendente</Badge>

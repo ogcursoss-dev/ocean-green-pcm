@@ -281,7 +281,8 @@ function ExamDialog({
   const [startDateTime, setStartDateTime] = useState("");
   const [endDateTime, setEndDateTime] = useState("");
   const [durationMinutes, setDurationMinutes] = useState("60");
-  const [passingScore, setPassingScore] = useState("70");
+  const [passingScore, setPassingScore] = useState("60");
+  const [questionCount, setQuestionCount] = useState("20");
   const [showResults, setShowResults] = useState("AFTER_END");
   const [shuffleQuestions, setShuffleQuestions] = useState(false);
   const [active, setActive] = useState(true);
@@ -303,7 +304,8 @@ function ExamDialog({
           : toLocalInput(new Date(Date.now() + 25 * 60 * 60 * 1000))
       );
       setDurationMinutes(String(editing?.durationMinutes || 60));
-      setPassingScore(String(editing?.passingScore || 70));
+      setPassingScore(String(editing?.passingScore || 60));
+      setQuestionCount(String(editing?.questionCount || 20));
       setShowResults("AFTER_END");
       setShuffleQuestions(false);
       setActive(editing?.active ?? true);
@@ -326,6 +328,7 @@ function ExamDialog({
       endDateTime: new Date(endDateTime).toISOString(),
       durationMinutes: Number(durationMinutes),
       passingScore: Number(passingScore),
+      questionCount: Number(questionCount) || 20,
       showResults,
       shuffleQuestions,
       active,
@@ -454,6 +457,20 @@ function ExamDialog({
                   onChange={(e) => setPassingScore(e.target.value)}
                   required
                 />
+                <p className="text-xs text-muted-foreground">Padrão: 60% (média 6.0)</p>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="qcount">Nº de questões (sorteadas por aluno) *</Label>
+                <Input
+                  id="qcount"
+                  type="number"
+                  min="5"
+                  max="50"
+                  value={questionCount}
+                  onChange={(e) => setQuestionCount(e.target.value)}
+                  required
+                />
+                <p className="text-xs text-muted-foreground">Cada aluno recebe questões aleatórias do banco (anti-cola)</p>
               </div>
             </div>
             <div className="grid gap-2">

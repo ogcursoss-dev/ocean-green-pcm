@@ -97,10 +97,17 @@ model Exam {
   startDateTime   DateTime // início da janela
   endDateTime     DateTime // fim da janela
   durationMinutes Int      @default(60) // tempo para realização
-  passingScore    Float    @default(70) // nota mínima aprovação
+  passingScore    Float    @default(60) // nota mínima aprovação (6.0)
   shuffleQuestions Boolean @default(false)
   showResults     String   @default("AFTER_END") // IMMEDIATE | AFTER_END | MANUAL
   active          Boolean  @default(true)
+  // ===== Randomização por aluno (anti-cola) =====
+  questionCount   Int      @default(20) // número de questões sorteadas por aluno
+  poolSubjectIds  String?  // JSON array de subjectIds (null = todas as 300)
+  poolDifficulty  String?  // EASY | MEDIUM | null (todas)
+  // ===== Recuperação automática =====
+  isRecovery      Boolean  @default(false) // marca provas de recuperação
+  parentExamId    String?  // link para a prova original (se for recuperação)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -145,9 +152,11 @@ model ExamAttempt {
   userId     String
   status     String   @default("IN_PROGRESS") // IN_PROGRESS | SUBMITTED | AUTO_SUBMITTED
   answers    String   // JSON: [{questionId, selected}]
+  // ===== Questões sorteadas para este aluno (randomização anti-cola) =====
+  questionIds String? // JSON array de questionIds sorteados (null se usar exam.questions fixas)
   startedAt  DateTime @default(now())
   submittedAt DateTime?
-  score       Float?   // percentual de acertos
+  score       Float?   // percentual de acertos (0-100)
   correctCount Int?
   totalCount  Int?
   timeSpentSeconds Int?

@@ -56,12 +56,43 @@ export async function POST(
     if (existing) {
       return NextResponse.json({ ok: true, attemptId: existing.id, resumed: true });
     }
+
+    // ===== RANDOMIZAÇÃO POR ALUNO (anti-cola) =====
+    // Sorteia `questionCount` questões do banco (respeitando filtros de disciplina/dificuldade)
+    const poolSubjectIds: string[] | null = exam.poolSubjectIds
+      ? JSON.parse(exam.poolSubjectIds)
+      : null;
+    const whereQ: any = { active: true };
+    if (poolSubjectIds && poolSubjectIds.length > 0) {
+      whereQ.subjectId = { in: poolSubjectIds };
+    }
+    if (exam.poolDifficulty) {
+      whereQ.difficulty = exam.poolDifficulty;
+    }
+    const allPoolQuestions = await db.question.findMany({
+      where: whereQ,
+      select: { id: true },
+    });
+
+    if (allPoolQuestions.length === 0) {
+      return NextResponse.json(
+        { error: "Não há questões disponíveis no banco para esta prova." },
+        { status: 400 }
+      );
+    }
+
+    // Sorteia aleatoriamente
+    const shuffled = allPoolQuestions.sort(() => Math.random() - 0.5);
+    const count = Math.min(exam.questionCount || 20, shuffled.length);
+    const selectedIds = shuffled.slice(0, count).map((q) => q.id);
+
     const attempt = await db.examAttempt.create({
       data: {
         examId: id,
         userId: user.userId,
         status: "IN_PROGRESS",
         answers: JSON.stringify([]),
+        questionIds: JSON.stringify(selectedIds),
       },
     });
     const window = resolveWindow(exam, assignment);
@@ -70,9 +101,9 @@ export async function POST(
       attemptId: attempt.id,
       deadline: window.end.toISOString(),
       durationMinutes: window.durationMinutes,
+      questionCount: count,
     });
   }
-  // Admin não inicia tentativa de prova — para fins de teste
   return NextResponse.json(
     { error: "Admins não iniciam tentativas." },
     { status: 400 }

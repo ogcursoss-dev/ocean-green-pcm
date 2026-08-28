@@ -12,13 +12,7 @@ export async function GET(
   const { id } = await params
   const exam = await db.exam.findUnique({
     where: { id },
-    include: {
-      questions: {
-        orderBy: { order: 'asc' },
-        include: { question: { include: { subject: true } } },
-      },
-      class: true,
-    },
+    include: { class: true, assignments: true },
   })
   if (!exam) return NextResponse.json({ error: 'Prova não encontrada' }, { status: 404 })
 
@@ -26,9 +20,7 @@ export async function GET(
   const membership = await db.classMember.findFirst({
     where: { userId: user.userId, classId: exam.classId },
   })
-  const individualAssignment = await db.examAssignment.findFirst({
-    where: { examId: exam.id, userId: user.userId },
-  })
+  const individualAssignment = exam.assignments.find((a) => a.userId === user.userId)
 
   if (!membership && !individualAssignment) {
     return NextResponse.json({ error: 'Você não tem acesso a esta prova' }, { status: 403 })
@@ -67,28 +59,61 @@ export async function GET(
     }, { status: 403 })
   }
 
+  // ===== QUESTÕES: usa as sorteadas para este aluno (randomização) =====
+  let questionIds: string[] = []
+  if (attempt?.questionIds) {
+    questionIds = JSON.parse(attempt.questionIds)
+  } else if (exam.questions && exam.questions.length > 0) {
+    // Fallback: questões fixas vinculadas ao exam
+    const eqs = await db.examQuestion.findMany({
+      where: { examId: exam.id },
+      orderBy: { order: 'asc' },
+      select: { questionId: true },
+    })
+    questionIds = eqs.map(e => e.questionId)
+  }
+
+  if (questionIds.length === 0) {
+    return NextResponse.json({
+      error: 'Nenhuma questão configurada. Inicie a prova para sortear as questões.',
+      needStart: true,
+    }, { status: 400 })
+  }
+
+  const questions = await db.question.findMany({
+    where: { id: { in: questionIds } },
+    include: { subject: true },
+  })
+  // Mantém ordem sorteada
+  const orderedQuestions = questionIds
+    .map(qid => questions.find(q => q.id === qid))
+    .filter(Boolean) as typeof questions
+
   return NextResponse.json({
     exam: {
       id: exam.id,
       title: exam.title,
       description: exam.description,
       className: exam.class?.name || '',
+      isRecovery: exam.isRecovery,
       startDateTime: start.toISOString(),
       endDateTime: end.toISOString(),
       durationMinutes: duration,
-      questionCount: exam.questions.length,
+      passingScore: exam.passingScore,
+      questionCount: orderedQuestions.length,
     },
-    questions: exam.questions.map(eq => ({
-      id: eq.question.id,
-      order: eq.order,
-      statement: eq.question.statement,
-      optionA: eq.question.optionA,
-      optionB: eq.question.optionB,
-      optionC: eq.question.optionC,
-      optionD: eq.question.optionD,
-      subjectName: eq.question.subject.name,
+    questions: orderedQuestions.map((q, idx) => ({
+      id: q.id,
+      order: idx + 1,
+      statement: q.statement,
+      optionA: q.optionA,
+      optionB: q.optionB,
+      optionC: q.optionC,
+      optionD: q.optionD,
+      subjectName: q.subject.name,
     })),
     existingAnswers: attempt ? JSON.parse(attempt.answers) : [],
     startedAt: attempt?.startedAt || null,
+    attemptId: attempt?.id || null,
   })
 }
