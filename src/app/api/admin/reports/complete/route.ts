@@ -4,9 +4,75 @@ import { requireAdmin } from "@/lib/session";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
-// Relatório 2: Completo
-// - Primeira página: resumo com notas e situação de todos os alunos
-// - Em seguida: todas as provas que cada aluno fez, mostrando acertos e erros questão por questão
+// Cores da escola Ocean Green (extraídas da logo)
+const COLORS = {
+  verdeLimao: [140, 195, 74] as [number, number, number],
+  verdeMedio: [124, 179, 66] as [number, number, number],
+  azulMarinho: [13, 71, 161] as [number, number, number],
+  azulCiano: [0, 172, 193] as [number, number, number],
+  verdeEscuro: [10, 92, 54] as [number, number, number],
+  verdeAprov: [16, 122, 87] as [number, number, number],
+  vermelhoReprov: [185, 28, 28] as [number, number, number],
+  cinzaClaro: [244, 247, 246] as [number, number, number],
+  cinzaTexto: [80, 100, 90] as [number, number, number],
+  textoEscuro: [20, 30, 25] as [number, number, number],
+  branco: [255, 255, 255] as [number, number, number],
+};
+
+function drawHeader(doc: jsPDF, title: string, subtitle: string) {
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 14;
+  // Gradiente verde → azul
+  for (let i = 0; i < 50; i++) {
+    const t = i / 50;
+    const r = Math.round(COLORS.verdeLimao[0] + (COLORS.azulMarinho[0] - COLORS.verdeLimao[0]) * t);
+    const g = Math.round(COLORS.verdeLimao[1] + (COLORS.azulMarinho[1] - COLORS.verdeLimao[1]) * t);
+    const b = Math.round(COLORS.verdeLimao[2] + (COLORS.azulMarinho[2] - COLORS.verdeLimao[2]) * t);
+    doc.setFillColor(r, g, b);
+    doc.rect(0, i, pageWidth, 1, "F");
+  }
+  // Linhas decorativas (ondas)
+  doc.setDrawColor(255, 255, 255);
+  doc.setLineWidth(1.2);
+  doc.line(margin, 38, pageWidth - margin, 38);
+  doc.setDrawColor(...COLORS.azulCiano);
+  doc.setLineWidth(0.5);
+  doc.line(margin, 40.5, pageWidth - margin, 40.5);
+  // Nome da escola
+  doc.setTextColor(255, 255, 255);
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(20);
+  doc.text("Ocean Green", margin, 16);
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.text("TREINAMENTOS", margin, 22);
+  // Título à direita
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(13);
+  doc.text(title, pageWidth - margin, 16, { align: "right" });
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8);
+  doc.text(subtitle, pageWidth - margin, 21, { align: "right" });
+  doc.text(`Emitido em ${new Date().toLocaleString("pt-BR")}`, pageWidth - margin, 25, { align: "right" });
+}
+
+function drawFooter(doc: jsPDF, label: string) {
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 14;
+  doc.setDrawColor(...COLORS.verdeLimao);
+  doc.setLineWidth(0.5);
+  doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+  doc.setFontSize(7.5);
+  doc.setTextColor(...COLORS.cinzaTexto);
+  doc.setFont("helvetica", "normal");
+  doc.text(label, margin, pageHeight - 7);
+  const pageCount = doc.getNumberOfPages();
+  const currentPage = doc.getCurrentPageInfo().pageNumber;
+  doc.text(`Página ${currentPage}/${pageCount}`, pageWidth - margin, pageHeight - 7, { align: "right" });
+}
+
+// Relatório 2: Completo — resumo + todas as provas de cada aluno com acertos/erros
 export async function GET(req: Request) {
   const admin = await requireAdmin();
   if (!admin) {
@@ -41,7 +107,6 @@ export async function GET(req: Request) {
   });
   const userIds = members.map((m) => m.userId);
 
-  // Busca todas as tentativas (provas + recuperações) com questões
   const attempts = await db.examAttempt.findMany({
     where: { examId: { in: allExams.map((e) => e.id) }, userId: { in: userIds } },
     include: {
@@ -51,45 +116,33 @@ export async function GET(req: Request) {
     orderBy: { submittedAt: "asc" },
   });
 
-  // ===== PDF =====
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 14;
 
-  // ===== CAPA: Resumo =====
-  doc.setFillColor(10, 92, 54);
-  doc.rect(0, 0, pageWidth, 26, "F");
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.text("Ocean Green Treinamentos", margin, 11);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
-  doc.text("Relatório Completo de Avaliações", margin, 18);
-  doc.setFontSize(8);
-  doc.text(`Emitido em: ${new Date().toLocaleString("pt-BR")}`, pageWidth - margin, 11, { align: "right" });
-  doc.text("PCM — Planejamento e Controle da Manutenção", pageWidth - margin, 18, { align: "right" });
+  // ====== CAPA: Resumo ======
+  drawHeader(doc, "Relatório Completo", "Avaliações Detalhadas");
 
-  let y = 34;
-  doc.setTextColor(20, 30, 25);
+  let y = 50;
+  doc.setTextColor(...COLORS.textoEscuro);
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(13);
+  doc.setFontSize(15);
   doc.text(`Turma: ${cls.name}`, margin, y);
   y += 6;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
-  doc.text(`Total de alunos: ${members.length} | Provas aplicadas: ${exams.length}`, margin, y);
-  y += 4;
+  doc.setTextColor(...COLORS.cinzaTexto);
+  doc.text(`Total de alunos: ${members.length}  |  Provas aplicadas: ${exams.length}`, margin, y);
+  y += 5;
   doc.setFontSize(8);
-  doc.setTextColor(100, 100, 100);
   doc.text("Este relatório apresenta o resumo de notas na primeira página, seguido das provas", margin, y);
-  y += 4;
+  y += 3.5;
   doc.text("completas de cada aluno com acertos e erros questão por questão.", margin, y);
   y += 8;
 
   // Tabela resumo
-  const head = [["#", "Aluno", "CPF", ...exams.map((e) => e.title.substring(0, 18)), "Nota Final", "Situação"]];
+  const head = [["#", "ALUNO", "CPF", ...exams.map((e) => e.title.substring(0, 16)), "NOTA", "SITUAÇÃO"]];
   const body: string[][] = [];
   for (const m of members) {
     const studentAttempts = attempts.filter((a) => a.userId === m.user.id);
@@ -128,21 +181,32 @@ export async function GET(req: Request) {
     body,
     startY: y,
     margin: { left: margin, right: margin },
-    styles: { fontSize: 8, cellPadding: 2 },
-    headStyles: { fillColor: [10, 92, 54], textColor: [255, 255, 255], fontStyle: "bold" },
-    alternateRowStyles: { fillColor: [244, 247, 246] },
-    columnStyles: { 0: { cellWidth: 8, halign: "center" }, 2: { cellWidth: 28 } },
+    styles: { fontSize: 8, cellPadding: 2.5, lineColor: [220, 230, 225], lineWidth: 0.1 },
+    headStyles: { fillColor: COLORS.azulMarinho, textColor: COLORS.branco, fontStyle: "bold", fontSize: 7.5 },
+    alternateRowStyles: { fillColor: [248, 250, 249] },
+    columnStyles: { 0: { cellWidth: 7, halign: "center" }, 1: { cellWidth: 42 }, 2: { cellWidth: 26, font: "courier", fontSize: 7 } },
     didParseCell: (data) => {
       if (data.section === "body" && data.column.index === head[0].length - 1) {
         const txt = String(data.cell.raw);
-        if (txt === "Aprovado") { data.cell.styles.textColor = [16, 122, 87]; data.cell.styles.fontStyle = "bold"; }
-        else if (txt === "Reprovado") { data.cell.styles.textColor = [185, 28, 28]; data.cell.styles.fontStyle = "bold"; }
-        else data.cell.styles.textColor = [150, 150, 150];
+        if (txt === "Aprovado") { data.cell.styles.textColor = COLORS.verdeAprov; data.cell.styles.fontStyle = "bold"; data.cell.styles.fillColor = [232, 245, 233]; }
+        else if (txt === "Reprovado") { data.cell.styles.textColor = COLORS.vermelhoReprov; data.cell.styles.fontStyle = "bold"; data.cell.styles.fillColor = [254, 226, 226]; }
+        else data.cell.styles.textColor = COLORS.cinzaTexto;
+      }
+      if (data.section === "body" && data.column.index === head[0].length - 2) {
+        const txt = String(data.cell.raw);
+        if (txt !== "—") {
+          const val = parseFloat(txt);
+          data.cell.styles.fontStyle = "bold";
+          if (val >= 60) data.cell.styles.textColor = COLORS.verdeAprov;
+          else data.cell.styles.textColor = COLORS.vermelhoReprov;
+        }
       }
     },
   });
 
-  // ===== PÁGINAS DETALHADAS: prova por prova de cada aluno =====
+  drawFooter(doc, "Ocean Green Treinamentos — Relatório Completo");
+
+  // ====== PÁGINAS DETALHADAS: prova por prova de cada aluno ======
   const options = ["A", "B", "C", "D"];
   const optionFields = ["optionA", "optionB", "optionC", "optionD"] as const;
 
@@ -153,36 +217,63 @@ export async function GET(req: Request) {
     for (const att of studentAttempts) {
       doc.addPage();
       // Cabeçalho com nome e CPF do aluno
-      doc.setFillColor(10, 92, 54);
-      doc.rect(0, 0, pageWidth, 28, "F");
-      doc.setTextColor(255, 255, 255);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(14);
-      doc.text(att.exam.title, margin, 12);
+      drawHeader(doc, att.exam.title, att.exam.isRecovery ? "Prova de Recuperação" : "Prova Oficial");
+
+      // Box com dados do aluno + resultado
+      let yy = 50;
+      // Box do aluno (esquerda)
+      const boxW = (pageWidth - margin * 2 - 4) / 2;
+      doc.setFillColor(...COLORS.cinzaClaro);
+      doc.roundedRect(margin, yy, boxW, 24, 2, 2, "F");
+      doc.setDrawColor(...COLORS.verdeLimao);
+      doc.setLineWidth(0.8);
+      doc.line(margin, yy, margin + boxW, yy);
       doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
-      doc.text(`Aluno: ${att.user.name}`, margin, 19);
-      doc.text(`CPF: ${att.user.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")}`, margin, 24);
-      // Resultado à direita
+      doc.setFontSize(7);
+      doc.setTextColor(...COLORS.cinzaTexto);
+      doc.text("ALUNO", margin + 3, yy + 5);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.setTextColor(...COLORS.textoEscuro);
+      doc.text(att.user.name, margin + 3, yy + 10);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(...COLORS.cinzaTexto);
+      doc.text("CPF: " + att.user.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), margin + 3, yy + 15);
+      doc.text("Tipo: " + (att.exam.isRecovery ? "Recuperação" : "Prova Oficial"), margin + 3, yy + 20);
+
+      // Box do resultado (direita)
       const score = att.score ?? 0;
       const passed = score >= (att.exam.passingScore ?? 60);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(16);
-      doc.setTextColor(255, 255, 255);
-      doc.text(score.toFixed(1) + "%", pageWidth - margin, 14, { align: "right" });
-      doc.setFontSize(9);
-      doc.text(`${att.correctCount}/${att.totalCount} acertos`, pageWidth - margin, 20, { align: "right" });
-      doc.text(passed ? "APROVADO" : "REPROVADO", pageWidth - margin, 25, { align: "right" });
-
-      let yy = 34;
-      doc.setTextColor(20, 30, 25);
+      const resultColor = passed ? COLORS.verdeAprov : COLORS.vermelhoReprov;
+      const boxX = margin + boxW + 4;
+      doc.setFillColor(...COLORS.cinzaClaro);
+      doc.roundedRect(boxX, yy, boxW, 24, 2, 2, "F");
+      doc.setDrawColor(...resultColor);
+      doc.setLineWidth(0.8);
+      doc.line(boxX, yy, boxX + boxW, yy);
       doc.setFont("helvetica", "normal");
-      doc.setFontSize(9);
+      doc.setFontSize(7);
+      doc.setTextColor(...COLORS.cinzaTexto);
+      doc.text("RESULTADO", boxX + 3, yy + 5);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.setTextColor(...resultColor);
+      doc.text(score.toFixed(1) + "%", boxX + 3, yy + 13);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(...COLORS.cinzaTexto);
+      doc.text(`Acertos: ${att.correctCount}/${att.totalCount}`, boxX + 3, yy + 18);
+      doc.text(passed ? "APROVADO" : "REPROVADO", boxX + 3, yy + 22);
+      yy += 30;
+
+      // Detalhes da prova
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(...COLORS.cinzaTexto);
       const submitted = att.submittedAt ? att.submittedAt.toLocaleString("pt-BR") : "—";
       const timeStr = att.timeSpentSeconds ? `${Math.floor(att.timeSpentSeconds / 60)}min ${att.timeSpentSeconds % 60}s` : "—";
-      doc.text(`Submetida em: ${submitted} | Tempo: ${timeStr} | Tipo: ${att.exam.isRecovery ? "Recuperação" : "Prova Oficial"}`, margin, yy);
-      yy += 4;
-      doc.text(`Nota mínima para aprovação: ${att.exam.passingScore}%`, margin, yy);
+      doc.text(`Submetida em: ${submitted}  |  Tempo: ${timeStr}  |  Nota mínima: ${att.exam.passingScore}%`, margin, yy);
       yy += 6;
 
       // Questões sorteadas para este aluno
@@ -191,7 +282,7 @@ export async function GET(req: Request) {
       const ansMap: Record<string, string | undefined> = {};
       for (const a of answersList) ansMap[a.questionId] = a.selected;
 
-      let questions: Array<{ id: string; statement: string; optionA: string; optionB: string; optionC: string; optionD: string; correctAnswer: string; explanation: string; subject?: { name: string } }> = [];
+      let questions: Array<{ id: string; statement: string; optionA: string; optionB: string; optionC: string; optionD: string; correctAnswer: string; explanation: string; subject?: { name: string } | null }> = [];
       if (qIds.length > 0) {
         questions = await db.question.findMany({
           where: { id: { in: qIds } },
@@ -200,35 +291,41 @@ export async function GET(req: Request) {
         questions = qIds.map(qid => questions.find(q => q.id === qid)).filter(Boolean) as typeof questions;
       }
 
-      // Renderiza cada questão com correção
+      // Renderiza cada questão com correção visual
+      let correctCount = 0;
       questions.forEach((q, idx) => {
-        if (yy > 240) { doc.addPage(); yy = 20; }
+        if (yy > 250) { doc.addPage(); drawFooter(doc, `Ocean Green — ${att.exam.title}`); yy = 20; }
         const selected = ansMap[q.id];
         const isCorrect = selected === q.correctAnswer;
+        if (isCorrect) correctCount++;
 
-        // Número da questão + status
+        // Número da questão + badge de acerto/erro
         doc.setFont("helvetica", "bold");
         doc.setFontSize(10);
-        doc.setTextColor(10, 92, 54);
+        doc.setTextColor(...COLORS.azulMarinho);
         doc.text(`Questão ${idx + 1}`, margin, yy);
-        // Badge de acerto/erro
+
+        // Badge
+        const badgeX = margin + 24;
         if (isCorrect) {
-          doc.setFillColor(16, 122, 87);
+          doc.setFillColor(...COLORS.verdeAprov);
           doc.setTextColor(255, 255, 255);
-          doc.roundedRect(margin + 22, yy - 4, 16, 5, 1, 1, "F");
+          doc.roundedRect(badgeX, yy - 4, 18, 5, 1, 1, "F");
+          doc.setFont("helvetica", "bold");
           doc.setFontSize(7);
-          doc.text("CERTO", margin + 30, yy, { align: "center" });
+          doc.text("CERTO", badgeX + 9, yy, { align: "center" });
         } else {
-          doc.setFillColor(185, 28, 28);
+          doc.setFillColor(...COLORS.vermelhoReprov);
           doc.setTextColor(255, 255, 255);
-          doc.roundedRect(margin + 22, yy - 4, 16, 5, 1, 1, "F");
+          doc.roundedRect(badgeX, yy - 4, 18, 5, 1, 1, "F");
+          doc.setFont("helvetica", "bold");
           doc.setFontSize(7);
-          doc.text("ERRADO", margin + 30, yy, { align: "center" });
+          doc.text("ERRADO", badgeX + 9, yy, { align: "center" });
         }
         if (q.subject) {
           doc.setFont("helvetica", "italic");
           doc.setFontSize(7);
-          doc.setTextColor(100, 100, 100);
+          doc.setTextColor(...COLORS.cinzaTexto);
           doc.text(`[${q.subject.name}]`, pageWidth - margin, yy, { align: "right" });
         }
         yy += 5;
@@ -236,36 +333,34 @@ export async function GET(req: Request) {
         // Enunciado
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
-        doc.setTextColor(20, 30, 25);
+        doc.setTextColor(...COLORS.textoEscuro);
         const stmt = doc.splitTextToSize(q.statement, pageWidth - margin * 2);
         doc.text(stmt, margin, yy);
         yy += stmt.length * 4.2 + 1;
 
         // Alternativas
         for (let i = 0; i < 4; i++) {
-          if (yy > 275) { doc.addPage(); yy = 20; }
+          if (yy > 275) { doc.addPage(); drawFooter(doc, `Ocean Green — ${att.exam.title}`); yy = 20; }
           const letter = options[i];
           const text = q[optionFields[i]];
           const isThisCorrect = q.correctAnswer === letter;
           const isSelected = selected === letter;
 
           if (isThisCorrect) {
-            // Resposta correta: fundo verde
-            doc.setFillColor(16, 122, 87);
+            doc.setFillColor(...COLORS.verdeAprov);
             doc.setTextColor(255, 255, 255);
             doc.setFont("helvetica", "bold");
             doc.roundedRect(margin, yy - 4, 6, 6, 1, 1, "F");
             doc.text(letter, margin + 1.5, yy);
           } else if (isSelected) {
-            // Resposta errada selecionada pelo aluno: fundo vermelho
-            doc.setFillColor(185, 28, 28);
+            doc.setFillColor(...COLORS.vermelhoReprov);
             doc.setTextColor(255, 255, 255);
             doc.setFont("helvetica", "bold");
             doc.roundedRect(margin, yy - 4, 6, 6, 1, 1, "F");
             doc.text(letter, margin + 1.5, yy);
           } else {
             doc.setDrawColor(180, 200, 190);
-            doc.setTextColor(20, 30, 25);
+            doc.setTextColor(...COLORS.textoEscuro);
             doc.setFont("helvetica", "normal");
             doc.roundedRect(margin, yy - 4, 6, 6, 1, 1, "D");
             doc.text(letter, margin + 1.5, yy);
@@ -275,20 +370,20 @@ export async function GET(req: Request) {
           yy += Math.max(5, optLines.length * 4.2);
         }
 
-        // Resposta do aluno + gabarito
+        // Resposta do aluno + explicação
         yy += 2;
-        if (yy > 275) { doc.addPage(); yy = 20; }
+        if (yy > 275) { doc.addPage(); drawFooter(doc, `Ocean Green — ${att.exam.title}`); yy = 20; }
         doc.setFontSize(8);
-        doc.setTextColor(60, 80, 70);
-        doc.text(`Sua resposta: ${selected || "—"} | Gabarito: ${q.correctAnswer}`, margin, yy);
+        doc.setTextColor(...COLORS.cinzaTexto);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Sua resposta: ${selected || "—"}  |  Gabarito: ${q.correctAnswer}`, margin, yy);
         yy += 4;
-        // Explicação
+        // Explicação com fundo
         doc.setFont("helvetica", "italic");
         doc.setFontSize(8);
-        doc.setTextColor(40, 60, 50);
-        const expl = doc.splitTextToSize(q.explanation || "Sem explicação.", pageWidth - margin * 2);
-        // Fundo claro para a explicação
-        doc.setFillColor(244, 247, 246);
+        doc.setTextColor(...COLORS.verdeEscuro);
+        const expl = doc.splitTextToSize(q.explanation || "Sem explicação.", pageWidth - margin * 2 - 4);
+        doc.setFillColor(...COLORS.cinzaClaro);
         doc.rect(margin, yy - 3.5, pageWidth - margin * 2, expl.length * 4 + 2, "F");
         doc.text(expl, margin + 1.5, yy);
         yy += expl.length * 4 + 6;
@@ -298,21 +393,9 @@ export async function GET(req: Request) {
         doc.line(margin, yy, pageWidth - margin, yy);
         yy += 5;
       });
-    }
-  }
 
-  // Rodapé numerado em todas as páginas
-  const pageCount = doc.getNumberOfPages();
-  for (let i = 1; i <= pageCount; i++) {
-    doc.setPage(i);
-    doc.setFontSize(8);
-    doc.setTextColor(120, 120, 120);
-    doc.text(
-      `Ocean Green Treinamentos — Relatório Completo ${cls.name} — Página ${i}/${pageCount}`,
-      pageWidth / 2,
-      pageHeight - 6,
-      { align: "center" }
-    );
+      drawFooter(doc, `Ocean Green Treinamentos — ${att.exam.title} — ${att.user.name}`);
+    }
   }
 
   const pdfBytes = doc.output("arraybuffer");
@@ -321,7 +404,7 @@ export async function GET(req: Request) {
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="${filename}"`,
+      "Content-Disposition": `inline; filename="${filename}"`,
     },
   });
 }

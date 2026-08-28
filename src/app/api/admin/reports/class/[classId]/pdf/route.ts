@@ -4,7 +4,22 @@ import { requireAdmin } from "@/lib/session";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
-// Relatório 1: Boletim da turma com notas e situação (Aprovado/Reprovado)
+// Cores da escola Ocean Green (extraídas da logo)
+const COLORS = {
+  verdeLimao: [140, 195, 74] as [number, number, number],   // #8BC34A
+  verdeMedio: [124, 179, 66] as [number, number, number],   // #7CB342
+  azulMarinho: [13, 71, 161] as [number, number, number],    // #0D47A1
+  azulCiano: [0, 172, 193] as [number, number, number],      // #00ACC1
+  verdeEscuro: [10, 92, 54] as [number, number, number],    // #0A5C36
+  verdeAprov: [16, 122, 87] as [number, number, number],    // aprovado
+  vermelhoReprov: [185, 28, 28] as [number, number, number], // reprovado
+  cinzaClaro: [244, 247, 246] as [number, number, number],
+  cinzaTexto: [80, 100, 90] as [number, number, number],
+  textoEscuro: [20, 30, 25] as [number, number, number],
+  branco: [255, 255, 255] as [number, number, number],
+};
+
+// Relatório 1: Boletim da Turma — design elegante com cores da escola
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ classId: string }> }
@@ -19,14 +34,12 @@ export async function GET(
     return NextResponse.json({ error: "Turma não encontrada." }, { status: 404 });
   }
 
-  // Provas oficiais (não recuperação) da turma
   const exams = await db.exam.findMany({
     where: { classId, type: "OFFICIAL", isRecovery: false },
     orderBy: { startDateTime: "asc" },
     select: { id: true, title: true, passingScore: true },
   });
 
-  // Todas as provas (incluindo recuperação)
   const allExams = await db.exam.findMany({
     where: { classId, type: "OFFICIAL" },
     orderBy: { startDateTime: "asc" },
@@ -98,64 +111,110 @@ export async function GET(
   // ===== GERA PDF =====
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 14;
 
-  doc.setFillColor(10, 92, 54);
-  doc.rect(0, 0, pageWidth, 26, "F");
-  doc.setTextColor(255, 255, 255);
+  // ====== CABEÇALHO COM GRADIENTE E ONDAS (inspirado na logo) ======
+  // Faixa superior com gradiente verde → azul
+  for (let i = 0; i < 50; i++) {
+    const t = i / 50;
+    const r = Math.round(COLORS.verdeLimao[0] + (COLORS.azulMarinho[0] - COLORS.verdeLimao[0]) * t);
+    const g = Math.round(COLORS.verdeLimao[1] + (COLORS.azulMarinho[1] - COLORS.verdeLimao[1]) * t);
+    const b = Math.round(COLORS.verdeLimao[2] + (COLORS.azulMarinho[2] - COLORS.verdeLimao[2]) * t);
+    doc.setFillColor(r, g, b);
+    doc.rect(0, i, pageWidth, 1, "F");
+  }
+
+  // Ondas decorativas no cabeçalho (como na logo)
+  doc.setFillColor(COLORS.azulCiano[0], COLORS.azulCiano[1], COLORS.azulCiano[2]);
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(255, 255, 255);
+  doc.setLineWidth(1.2);
+  doc.line(margin, 38, pageWidth - margin, 38);
+  doc.setLineWidth(0.5);
+  doc.setDrawColor(COLORS.azulCiano[0], COLORS.azulCiano[1], COLORS.azulCiano[2]);
+  doc.line(margin, 40.5, pageWidth - margin, 40.5);
+
+  // Logo + Nome da escola
+  doc.setTextColor(...COLORS.branco);
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.text("Ocean Green Treinamentos", margin, 11);
+  doc.setFontSize(20);
+  doc.text("Ocean Green", margin, 16);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(11);
-  doc.text("Boletim da Turma — Relatório de Notas", margin, 18);
-  doc.setFontSize(8);
-  doc.text(`Emitido em: ${new Date().toLocaleString("pt-BR")}`, pageWidth - margin, 11, { align: "right" });
-  doc.text("PCM — Planejamento e Controle da Manutenção", pageWidth - margin, 18, { align: "right" });
+  doc.setTextColor(255, 255, 255);
+  doc.text("TREINAMENTOS", margin, 22);
 
-  let y = 34;
-  doc.setTextColor(20, 30, 25);
+  // Subtítulo à direita
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
-  doc.text(`Turma: ${cls.name}`, margin, y);
+  doc.text("Boletim da Turma", pageWidth - margin, 16, { align: "right" });
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8);
+  doc.text("Relatório de Notas e Situação", pageWidth - margin, 21, { align: "right" });
+  doc.text(`Emitido em ${new Date().toLocaleString("pt-BR")}`, pageWidth - margin, 25, { align: "right" });
+
+  // ====== INFO DA TURMA ======
+  let y = 50;
+  doc.setTextColor(...COLORS.textoEscuro);
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text(cls.name, margin, y);
   y += 6;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
+  doc.setTextColor(...COLORS.cinzaTexto);
   if (cls.description) {
     doc.text(cls.description, margin, y);
-    y += 5;
+    y += 4;
   }
-  doc.text(`Total de alunos: ${stats.total} | Realizaram: ${stats.realizaram}`, margin, y);
+  doc.text(`Alunos matriculados: ${stats.total}  |  Provas aplicadas: ${exams.length}`, margin, y);
   y += 8;
 
-  const boxes = [
-    { label: "Média da Turma", value: stats.media.toFixed(1) + "%" },
-    { label: "Maior Nota", value: stats.maior.toFixed(1) + "%" },
-    { label: "Menor Nota", value: stats.menor.toFixed(1) + "%" },
-    { label: "Aprovados", value: String(stats.aprovados) },
-    { label: "Reprovados", value: String(stats.reprovados) },
-    { label: "Pendentes", value: String(stats.pendentes) },
+  // ====== CARDS DE ESTATÍSTICAS (design elegante) ======
+  const boxW = (pageWidth - margin * 2 - 5 * 4) / 6;
+  const boxColors = [
+    COLORS.verdeLimao,
+    COLORS.azulCiano,
+    COLORS.azulMarinho,
+    COLORS.verdeAprov,
+    COLORS.vermelhoReprov,
+    COLORS.cinzaTexto,
   ];
-  const boxW = (pageWidth - margin * 2 - 5 * 3) / 6;
+  const boxes = [
+    { label: "MÉDIA DA TURMA", value: stats.media.toFixed(1) + "%" },
+    { label: "MAIOR NOTA", value: stats.maior.toFixed(1) + "%" },
+    { label: "MENOR NOTA", value: stats.menor.toFixed(1) + "%" },
+    { label: "APROVADOS", value: String(stats.aprovados) },
+    { label: "REPROVADOS", value: String(stats.reprovados) },
+    { label: "PENDENTES", value: String(stats.pendentes) },
+  ];
   boxes.forEach((b, i) => {
-    const x = margin + i * (boxW + 3);
-    doc.setFillColor(244, 247, 246);
-    doc.roundedRect(x, y, boxW, 16, 1.5, 1.5, "F");
-    doc.setDrawColor(46, 139, 87);
-    doc.setLineWidth(0.3);
-    doc.line(x, y, x + boxW, y);
+    const x = margin + i * (boxW + 4);
+    const color = boxColors[i];
+    // Card com borda colorida no topo
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(x, y, boxW, 20, 2, 2, "F");
+    doc.setDrawColor(220, 230, 225);
+    doc.setLineWidth(0.2);
+    doc.roundedRect(x, y, boxW, 20, 2, 2, "D");
+    // Faixa colorida no topo
+    doc.setFillColor(...color);
+    doc.roundedRect(x, y, boxW, 2.5, 1, 1, "F");
+    // Texto
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(7);
-    doc.setTextColor(80, 100, 90);
-    doc.text(b.label, x + boxW / 2, y + 5, { align: "center" });
+    doc.setFontSize(6.5);
+    doc.setTextColor(...COLORS.cinzaTexto);
+    doc.text(b.label, x + boxW / 2, y + 7, { align: "center" });
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(13);
-    doc.setTextColor(10, 92, 54);
-    doc.text(b.value, x + boxW / 2, y + 12, { align: "center" });
+    doc.setFontSize(14);
+    doc.setTextColor(...color);
+    doc.text(b.value, x + boxW / 2, y + 15, { align: "center" });
   });
-  y += 22;
+  y += 28;
 
-  const head = [["#", "Aluno", "CPF", ...exams.map((e) => e.title.substring(0, 18)), "Nota Final", "Situação"]];
+  // ====== TABELA DE NOTAS ======
+  const head = [["#", "ALUNO", "CPF", ...exams.map((e) => e.title.substring(0, 16)), "NOTA FINAL", "SITUAÇÃO"]];
   const body = rows.map((r, idx) => {
     const examCols = exams.map((e) => {
       const s = r.examScores[e.id];
@@ -170,46 +229,76 @@ export async function GET(
     body,
     startY: y,
     margin: { left: margin, right: margin },
-    styles: { fontSize: 8, cellPadding: 2 },
-    headStyles: { fillColor: [10, 92, 54], textColor: [255, 255, 255], fontStyle: "bold" },
-    alternateRowStyles: { fillColor: [244, 247, 246] },
-    columnStyles: { 0: { cellWidth: 8, halign: "center" }, 2: { cellWidth: 28 } },
+    styles: { fontSize: 8, cellPadding: 2.5, lineColor: [220, 230, 225], lineWidth: 0.1 },
+    headStyles: {
+      fillColor: COLORS.azulMarinho,
+      textColor: COLORS.branco,
+      fontStyle: "bold",
+      fontSize: 7.5,
+    },
+    alternateRowStyles: { fillColor: [248, 250, 249] },
+    columnStyles: {
+      0: { cellWidth: 7, halign: "center" },
+      1: { cellWidth: 42 },
+      2: { cellWidth: 26, font: "courier", fontSize: 7 },
+    },
     didParseCell: (data) => {
+      // Coluna Situação
       if (data.section === "body" && data.column.index === head[0].length - 1) {
         const txt = String(data.cell.raw);
         if (txt === "Aprovado") {
-          data.cell.styles.textColor = [16, 122, 87];
+          data.cell.styles.textColor = COLORS.verdeAprov;
           data.cell.styles.fontStyle = "bold";
+          data.cell.styles.fillColor = [232, 245, 233];
         } else if (txt === "Reprovado") {
-          data.cell.styles.textColor = [185, 28, 28];
+          data.cell.styles.textColor = COLORS.vermelhoReprov;
           data.cell.styles.fontStyle = "bold";
+          data.cell.styles.fillColor = [254, 226, 226];
         } else {
-          data.cell.styles.textColor = [150, 150, 150];
+          data.cell.styles.textColor = COLORS.cinzaTexto;
+          data.cell.styles.fillColor = [241, 243, 244];
         }
       }
+      // Coluna Nota Final
       if (data.section === "body" && data.column.index === head[0].length - 2) {
         const txt = String(data.cell.raw);
         if (txt !== "—") {
           const val = parseFloat(txt);
           data.cell.styles.fontStyle = "bold";
-          if (val >= 60) data.cell.styles.textColor = [16, 122, 87];
-          else data.cell.styles.textColor = [185, 28, 28];
+          data.cell.styles.fontSize = 9;
+          if (val >= 60) data.cell.styles.textColor = COLORS.verdeAprov;
+          else data.cell.styles.textColor = COLORS.vermelhoReprov;
         }
       }
     },
   });
 
+  // ====== RODAPÉ ======
+  const finalY = (doc as any).lastAutoTable?.finalY || y + 20;
+  if (finalY < pageHeight - 40) {
+    doc.setDrawColor(...COLORS.verdeLimao);
+    doc.setLineWidth(0.8);
+    doc.line(margin, finalY + 8, margin + 30, finalY + 8);
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8);
+    doc.setTextColor(...COLORS.cinzaTexto);
+    doc.text("Critério de aprovação: nota ≥ 60% (média 6.0)", margin, finalY + 14);
+    doc.text(`Total de alunos: ${stats.total}  |  Aprovados: ${stats.aprovados}  |  Reprovados: ${stats.reprovados}  |  Pendentes: ${stats.pendentes}`, margin, finalY + 18.5);
+  }
+
+  // Rodapé numerado
   const pageCount = doc.getNumberOfPages();
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i);
-    doc.setFontSize(8);
-    doc.setTextColor(120, 120, 120);
-    doc.text(
-      `Ocean Green Treinamentos — Boletim ${cls.name} — Página ${i}/${pageCount}`,
-      pageWidth / 2,
-      doc.internal.pageSize.getHeight() - 6,
-      { align: "center" }
-    );
+    // Linha do rodapé
+    doc.setDrawColor(...COLORS.verdeLimao);
+    doc.setLineWidth(0.5);
+    doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+    doc.setFontSize(7.5);
+    doc.setTextColor(...COLORS.cinzaTexto);
+    doc.setFont("helvetica", "normal");
+    doc.text("Ocean Green Treinamentos — Boletim da Turma", margin, pageHeight - 7);
+    doc.text(`Página ${i}/${pageCount}`, pageWidth - margin, pageHeight - 7, { align: "right" });
   }
 
   const pdfBytes = doc.output("arraybuffer");
@@ -218,7 +307,7 @@ export async function GET(
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="${filename}"`,
+      "Content-Disposition": `inline; filename="${filename}"`,
     },
   });
 }

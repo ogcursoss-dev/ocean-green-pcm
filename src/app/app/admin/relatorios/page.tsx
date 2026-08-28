@@ -12,6 +12,8 @@ import {
   AlertTriangle,
   CheckCircle2,
   XCircle,
+  Eye,
+  Printer,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -149,19 +151,42 @@ export default function AdminReportsPage() {
     toast.success("CSV exportado.");
   }
 
-  function downloadExamPDF(examId: string, withAnswers: boolean) {
-    const url = `/api/admin/reports/exam/${examId}?withAnswers=${withAnswers}`;
-    window.open(url, "_blank");
-  }
-
-  function downloadBoletimPDF() {
+  function previewBoletim() {
     if (!classId) return;
     window.open(`/api/admin/reports/class/${classId}/pdf`, "_blank");
   }
 
-  function downloadCompletePDF() {
+  function downloadBoletim() {
+    if (!classId) return;
+    // Cria link de download forçado
+    const a = document.createElement("a");
+    a.href = `/api/admin/reports/class/${classId}/pdf?download=1`;
+    a.download = `boletim-${report?.class.name || "turma"}.pdf`;
+    a.click();
+  }
+
+  function previewComplete() {
     if (!classId) return;
     window.open(`/api/admin/reports/complete?classId=${classId}`, "_blank");
+  }
+
+  function downloadComplete() {
+    if (!classId) return;
+    const a = document.createElement("a");
+    a.href = `/api/admin/reports/complete?classId=${classId}&download=1`;
+    a.download = `relatorio-completo-${report?.class.name || "turma"}.pdf`;
+    a.click();
+  }
+
+  function previewExamPDF(examId: string, withAnswers: boolean) {
+    window.open(`/api/admin/reports/exam/${examId}?withAnswers=${withAnswers}`, "_blank");
+  }
+
+  function downloadExamPDF(examId: string, withAnswers: boolean) {
+    const a = document.createElement("a");
+    a.href = `/api/admin/reports/exam/${examId}?withAnswers=${withAnswers}&download=1`;
+    a.download = `prova-${examId}.pdf`;
+    a.click();
   }
 
   return (
@@ -195,20 +220,91 @@ export default function AdminReportsPage() {
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={downloadBoletimPDF} disabled={!classId} variant="outline" className="border-accent text-accent hover:bg-accent/10">
-            <FileText className="size-4 mr-1" />
-            Boletim PDF
-          </Button>
-          <Button onClick={downloadCompletePDF} disabled={!classId} className="bg-primary hover:bg-primary/90">
-            <FileText className="size-4 mr-1" />
-            Relatório Completo PDF
-          </Button>
           <Button onClick={exportCSV} disabled={!report || report.rows.length === 0} variant="outline">
             <Download className="size-4 mr-1" />
             CSV
           </Button>
         </CardContent>
       </Card>
+
+      {/* Cards de Relatórios PDF com botão "olho" (preview) */}
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Boletim da Turma */}
+        <Card className="overflow-hidden border-accent/30">
+          <div className="h-1.5 bg-gradient-to-r from-[#8BC34A] to-[#7CB342]" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <FileText className="size-5 text-accent" />
+              Boletim da Turma
+            </CardTitle>
+            <CardDescription>
+              Relatório com notas e situação (Aprovado/Reprovado) de todos os alunos + estatísticas.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                onClick={previewBoletim}
+                disabled={!classId}
+                variant="outline"
+                className="border-accent/40 text-accent hover:bg-accent/10"
+              >
+                <Eye className="size-4 mr-1.5" />
+                Visualizar
+              </Button>
+              <Button
+                onClick={downloadBoletim}
+                disabled={!classId}
+                className="bg-accent hover:bg-accent/90"
+              >
+                <Download className="size-4 mr-1.5" />
+                Baixar PDF
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              Visualize antes de imprimir. Use Ctrl+P no visualizador para imprimir.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Relatório Completo */}
+        <Card className="overflow-hidden border-primary/30">
+          <div className="h-1.5 bg-gradient-to-r from-[#0D47A1] to-[#00ACC1]" />
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <FileText className="size-5 text-primary" />
+              Relatório Completo
+            </CardTitle>
+            <CardDescription>
+              Resumo na primeira página + todas as provas de cada aluno com acertos e erros questão por questão.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                onClick={previewComplete}
+                disabled={!classId}
+                variant="outline"
+                className="border-primary/40 text-primary hover:bg-primary/10"
+              >
+                <Eye className="size-4 mr-1.5" />
+                Visualizar
+              </Button>
+              <Button
+                onClick={downloadComplete}
+                disabled={!classId}
+                className="bg-primary hover:bg-primary/90"
+              >
+                <Download className="size-4 mr-1.5" />
+                Baixar PDF
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              Documento completo para comprovação. Visualize antes de imprimir.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
 
       {!classId ? (
         <Card>
@@ -282,11 +378,22 @@ export default function AdminReportsPage() {
                     <div>
                       <p className="font-medium text-sm">{e.title}</p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-secondary/40 text-secondary hover:bg-secondary/10"
+                        onClick={() => previewExamPDF(e.id, false)}
+                        title="Visualizar sem gabarito"
+                      >
+                        <Eye className="size-3 mr-1" />
+                        Ver
+                      </Button>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => downloadExamPDF(e.id, false)}
+                        title="Baixar sem gabarito"
                       >
                         <Download className="size-3 mr-1" />
                         Sem gabarito
@@ -294,6 +401,7 @@ export default function AdminReportsPage() {
                       <Button
                         size="sm"
                         onClick={() => downloadExamPDF(e.id, true)}
+                        title="Baixar com gabarito"
                       >
                         <Download className="size-3 mr-1" />
                         Com gabarito
