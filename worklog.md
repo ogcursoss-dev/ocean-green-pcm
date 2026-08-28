@@ -59,3 +59,41 @@ Stage Summary:
 - ✅ Gabaritos balanceados: A:75, B:77, C:73, D:75
 - ✅ Admin: CPF 000.000.001-91 / Senha: OceanGreen@2024
 - ✅ App funcional: login, dashboard admin, banco de questões operacional
+
+---
+Task ID: FINAL-v2
+Agent: main
+Task: Reformulação do sistema - prova com 20 questões aleatórias + recuperação + 3 relatórios PDF
+
+Work Log:
+- Admin trocado: CPF 124.521.557-48 (Lucas Skopek), admin antigo desativado
+- Schema atualizado: campos questionCount, poolSubjectIds, poolDifficulty, isRecovery, parentExamId no Exam; questionIds no ExamAttempt
+- Push do schema para Supabase executado com sucesso
+- Cadastro de alunos simplificado: admin cadastra apenas CPF + Nome (senha automática = CPF)
+- API de criação de provas atualizada: passingScore padrão 60%, questionCount padrão 20
+- API de start da prova: sortear 20 questões aleatórias do banco para cada aluno (anti-cola)
+- API GET da prova: retorna as questões sorteadas do attempt (não fixas do exam)
+- API de submit: calcula nota usando questões sorteadas + cria recuperação automática se nota < 60%
+- Recuperação automática: prova clonada com isRecovery=true, atribuída apenas ao aluno reprovado, janela de 8 dias
+- Listagem de provas do aluno: inclui flag isRecovery
+- Relatório PDF 1 (Boletim): notas por aluno + situação Aprovado/Reprovado + estatísticas
+- Relatório PDF 2 (Completo): resumo na primeira página + todas as provas de cada aluno com acertos/erros questão por questão
+- PDF da prova individual: cabeçalho com NOME e CPF do aluno
+- Página de relatórios: 3 botões de PDF (Boletim, Completo, CSV)
+- Página de provas: formulário com campo "Nº de questões (sorteadas por aluno)"
+- Página de usuários: campo senha opcional com label explicativo
+- Dados de teste limpos: 0 alunos, 0 provas, 1 admin, 1 turma, 300 questões
+- Validação no browser: login admin OK, dashboard OK, formulários OK, fluxo de prova OK, recuperação automática OK, PDFs gerados OK
+- 2 commits + pushes para GitHub
+
+Stage Summary:
+- ✅ Admin: Lucas Skopek (CPF 124.521.557-48)
+- ✅ Login apenas por CPF cadastrado
+- ✅ Cadastro simplificado de alunos (CPF + Nome)
+- ✅ Prova: 20 questões aleatórias por aluno do banco de 300
+- ✅ Nota mínima: 60% (média 6.0)
+- ✅ Recuperação automática para nota < 6
+- ✅ Agendamento: turma + individual com datas/horários próprios
+- ✅ 3 relatórios PDF: Boletim, Completo, Prova individual com nome/CPF
+- ✅ Sistema limpo para produção (0 dados fictícios)
+- ✅ GitHub: https://github.com/ogcursoss-dev/ocean-green-pcm
