@@ -38,6 +38,6 @@ fi
 
 echo "[start-prod] ✅ DATABASE_URL: ${DATABASE_URL:0:40}..."
 
-# Inicia o Next.js
-export NODE_ENV=production
+# Inicia o Next.js (mantém NODE_ENV=development para estabilidade do dev server)
+export NODE_ENV=development
 exec node_modules/.bin/next dev -p ${PORT:-3000}
