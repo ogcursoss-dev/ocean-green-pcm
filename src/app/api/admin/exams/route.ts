@@ -94,6 +94,24 @@ export async function POST(req: Request) {
         poolDifficulty: poolDifficulty || null,
       },
     });
+
+    // ===== ATRIBUIÇÃO AUTOMÁTICA À TURMA =====
+    // Toda prova criada é automaticamente atribuída a todos os alunos da turma.
+    // Isso garante que os alunos vejam a prova sem precisar de atribuição manual.
+    try {
+      await db.examAssignment.create({
+        data: {
+          examId: exam.id,
+          userId: null, // null = turma inteira
+          classId: classId,
+          notes: "Atribuição automática para a turma",
+        },
+      });
+    } catch (assignErr: any) {
+      // Se já existe atribuição, ignora o erro
+      console.log("[exams/create] Atribuição automática:", assignErr?.message);
+    }
+
     return NextResponse.json({ ok: true, examId: exam.id });
   } catch (err: any) {
     console.error("[exams/create]", err);

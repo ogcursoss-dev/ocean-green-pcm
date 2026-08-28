@@ -100,13 +100,10 @@ export async function POST(
       },
     });
     if (!existingRecovery) {
-      // Janela de recuperação: 7 dias a partir de amanhã, 23h59
-      const recStart = new Date();
-      recStart.setDate(recStart.getDate() + 1);
-      recStart.setHours(8, 0, 0, 0);
-      const recEnd = new Date();
-      recEnd.setDate(recEnd.getDate() + 8);
-      recEnd.setHours(23, 59, 0, 0);
+      // Janela de recuperação: IMEDIATA — disponível agora mesmo
+      // Duração: 120 minutos (2 horas) para o aluno fazer na hora
+      const recStart = new Date(); // AGORA
+      const recEnd = new Date(Date.now() + 120 * 60 * 1000); // 120 minutos a partir de agora
 
       const recovery = await db.exam.create({
         data: {
@@ -116,7 +113,7 @@ export async function POST(
           type: "OFFICIAL",
           startDateTime: recStart,
           endDateTime: recEnd,
-          durationMinutes: attempt.exam.durationMinutes,
+          durationMinutes: 120, // 120 minutos para a recuperação
           passingScore: attempt.exam.passingScore,
           showResults: attempt.exam.showResults,
           shuffleQuestions: true,

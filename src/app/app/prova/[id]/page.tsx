@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -95,19 +95,94 @@ export default function ExamTakingPage() {
   // Carrega dados
   useEffect(() => {
     if (!id) return;
-    apiFetch<ExamData>(`/api/student/exams/${id}`).then((res) => {
+    let cancelled = false;
+
+    async function loadExam() {
+      // Primeira tentativa: carregar a prova
+      let res = await apiFetch<any>(`/api/student/exams/${id}`);
+
+      // Se a prova não tem questões configuradas (needStart), iniciar automaticamente
+      if (!res.ok && (res.data as any)?.needStart) {
+        // Chamar o endpoint /start para sortear as questões
+        const startRes = await apiFetch<{ ok: boolean; attemptId: string }>(
+          `/api/student/exams/${id}/start`,
+          { method: "POST" }
+        );
+
+        if (startRes.ok) {
+          // Após iniciar, recarregar a prova para pegar as questões
+          res = await apiFetch<any>(`/api/student/exams/${id}`);
+        } else {
+          if (!cancelled) {
+            toast.error(startRes.error || "Não foi possível iniciar a prova.");
+            router.replace("/app/provas");
+          }
+          return;
+        }
+      }
+
+      if (cancelled) return;
+
       if (!res.ok || !res.data) {
         toast.error(res.error || "Prova não encontrada.");
-        router.replace("/app/aluno");
+        router.replace("/app/provas");
         return;
       }
-      setData(res.data);
-      setAnswers(res.data.answers || {});
-      if (res.data.attempt && res.data.attempt.status !== "IN_PROGRESS") {
+
+      const examData = res.data as any;
+      // Normaliza os dados — a API pode retornar em formatos diferentes
+      const normalized: ExamData = {
+        exam: {
+          ...examData.exam,
+          type: examData.exam?.type || "OFFICIAL",
+          status: examData.exam?.status || "AVAILABLE",
+          hasIndividualAssignment: examData.exam?.hasIndividualAssignment || false,
+          window: examData.exam?.window || {
+            start: examData.exam?.startDateTime || new Date().toISOString(),
+            end: examData.exam?.endDateTime || new Date().toISOString(),
+            durationMinutes: examData.exam?.durationMinutes || 60,
+            isIndividual: false,
+          },
+          class: examData.exam?.class || { name: examData.exam?.className || "" },
+        },
+        attempt: examData.attempt || (examData.attemptId ? {
+          id: examData.attemptId,
+          status: "IN_PROGRESS",
+          startedAt: examData.startedAt || new Date().toISOString(),
+          submittedAt: null,
+          score: null,
+          correctCount: null,
+          totalCount: null,
+          timeSpentSeconds: null,
+        } : null),
+        questions: (examData.questions || []).map((q: any) => ({
+          id: q.id,
+          order: q.order || 0,
+          statement: q.statement,
+          optionA: q.optionA,
+          optionB: q.optionB,
+          optionC: q.optionC,
+          optionD: q.optionD,
+          subject: q.subjectName || q.subject,
+        })),
+        answers: examData.answers || (examData.existingAnswers ? Object.fromEntries(
+          examData.existingAnswers.map((a: any) => [a.questionId, a.selected])
+        ) : {}),
+      };
+
+      if (cancelled) return;
+      setData(normalized);
+      setAnswers(normalized.answers || {});
+      if (normalized.attempt && normalized.attempt.status !== "IN_PROGRESS") {
         setShowResult(true);
       }
       setLoading(false);
-    });
+    }
+
+    loadExam();
+    return () => {
+      cancelled = true;
+    };
   }, [id, router]);
 
   // Tick do relógio a cada segundo
@@ -156,7 +231,7 @@ export default function ExamTakingPage() {
         }
       }
       setSubmitting(true);
-      const res = await apiFetch<{ score: number; correctCount: number; totalCount: number; passed: boolean }>(
+      const res = await apiFetch<{ score: number; correctCount: number; totalCount: number; passed: boolean; recoveryCreated?: boolean; recoveryExamId?: string }>(
         `/api/student/exams/${id}/submit`,
         { method: "POST" }
       );
@@ -165,21 +240,34 @@ export default function ExamTakingPage() {
         toast.error(res.error || "Erro ao enviar prova.");
         return;
       }
-      toast.success(
-        auto
-          ? "Prova finalizada automaticamente."
-          : `Prova enviada! Score: ${formatPct(res.data?.score)}`
-      );
-      // Recarrega
-      const fresh = await apiFetch<ExamData>(`/api/student/exams/${id}`);
-      if (fresh.ok && fresh.data) {
-        setData(fresh.data);
-        setAnswers(fresh.data.answers || {});
-        setShowResult(true);
-        setCurrentIdx(0);
+
+      const score = res.data?.score ?? 0;
+      const passed = res.data?.passed ?? false;
+      const recoveryCreated = res.data?.recoveryCreated ?? false;
+
+      // Mostra a nota imediatamente
+      if (passed) {
+        toast.success(`🎉 Parabéns! Você foi aprovado(a)! Nota: ${formatPct(score)}`, {
+          duration: 5000,
+        });
+      } else {
+        if (recoveryCreated) {
+          toast.error(`Nota: ${formatPct(score)}. Você foi reprovado(a), mas a RECUPERAÇÃO foi liberada AGORA! Você tem 120 minutos para fazê-la.`, {
+            duration: 8000,
+          });
+        } else {
+          toast.error(`Nota: ${formatPct(score)}. Você não atingiu a média.`, {
+            duration: 5000,
+          });
+        }
       }
+
+      // Redireciona para o dashboard do aluno após 4 segundos
+      setTimeout(() => {
+        router.replace("/app/aluno");
+      }, 3000);
     },
-    [data, submitting, answers, id]
+    [data, submitting, answers, id, router]
   );
 
   const selectAnswer = useCallback(
@@ -383,6 +471,7 @@ export default function ExamTakingPage() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Botão Finalizar — apenas na última questão */}
         <div className="flex items-center justify-between gap-3">
           <Button
             variant="outline"
@@ -413,41 +502,20 @@ export default function ExamTakingPage() {
           )}
         </div>
 
-        {/* Status de salvamento */}
-        <Card className="bg-muted/40 sticky bottom-3 z-20 shadow-md">
-          <CardContent className="p-3 flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-2 text-sm">
-              {savedAt ? (
-                <>
-                  <CheckCircle2 className="size-4 text-accent" />
-                  <span className="text-accent font-medium">Salvo</span>
-                  <span className="text-muted-foreground text-xs">
-                    {savedAt.toLocaleTimeString("pt-BR")}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <Loader2 className="size-4 text-muted-foreground animate-spin" />
-                  <span className="text-muted-foreground">Salvando...</span>
-                </>
-              )}
-              <span className="text-muted-foreground mx-1">•</span>
-              <span className="text-muted-foreground text-xs">
-                {answered} / {total} respondidas
-              </span>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => submit(false)}
-              disabled={submitting}
-              className="text-accent hover:text-accent"
-            >
-              <Send className="size-3 mr-1" />
-              Finalizar agora
-            </Button>
-          </CardContent>
-        </Card>
+        {/* Status de salvamento minimalista (inline, sem card) */}
+        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground py-1">
+          {savedAt ? (
+            <>
+              <CheckCircle2 className="size-3 text-accent" />
+              <span>Salvo {savedAt.toLocaleTimeString("pt-BR")} • {answered}/{total} respondidas</span>
+            </>
+          ) : (
+            <>
+              <Loader2 className="size-3 animate-spin" />
+              <span>Salvando... • {answered}/{total} respondidas</span>
+            </>
+          )}
+        </div>
       </main>
     </div>
   );

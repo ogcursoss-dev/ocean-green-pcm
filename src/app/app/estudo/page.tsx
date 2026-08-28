@@ -11,7 +11,9 @@ import {
   Sliders,
   Sparkles,
   AlertTriangle,
+  ArrowLeft,
 } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -115,6 +117,15 @@ export default function StudyConfigPage() {
 
   return (
     <div className="p-4 md:p-6 lg:p-8 max-w-5xl mx-auto space-y-6">
+      {/* Botão voltar */}
+      <div className="flex items-center gap-2">
+        <Link href="/app/aluno">
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="size-4 mr-1" />
+            Voltar
+          </Button>
+        </Link>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
