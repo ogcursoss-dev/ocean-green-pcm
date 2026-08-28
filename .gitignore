@@ -53,3 +53,4 @@ Thumbs.db
 # agent context
 agent-ctx/
 tool-results/
+prod.log
