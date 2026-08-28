@@ -7,14 +7,13 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Loader2, Lock, UserCircle, ShieldCheck, Waves } from 'lucide-react'
+import { Loader2, UserCircle, ShieldCheck, Waves, LogIn } from 'lucide-react'
 import { toast } from 'sonner'
 import { maskCpf, cleanCpf } from '@/lib/auth'
 
 export default function LoginPage() {
   const router = useRouter()
   const [cpf, setCpf] = useState('')
-  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [checking, setChecking] = useState(true)
 
@@ -35,16 +34,12 @@ export default function LoginPage() {
       toast.error('CPF inválido. Digite os 11 dígitos.')
       return
     }
-    if (!password) {
-      toast.error('Digite sua senha.')
-      return
-    }
     setLoading(true)
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cpf: cleanCpf(cpf), password }),
+        body: JSON.stringify({ cpf: cleanCpf(cpf) }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Erro ao entrar')
@@ -93,7 +88,7 @@ export default function LoginPage() {
               Acesso Restrito
             </CardTitle>
             <CardDescription>
-              Entre com seu CPF e senha para acessar a plataforma
+              Entre com seu CPF para acessar a plataforma
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -109,34 +104,23 @@ export default function LoginPage() {
                     placeholder="000.000.000-00"
                     value={cpf}
                     onChange={(e) => setCpf(maskCpf(e.target.value))}
-                    className="pl-9"
+                    className="pl-9 text-lg font-medium tracking-wide"
                     maxLength={14}
                     autoComplete="username"
+                    autoFocus
                   />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium">Senha</Label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-9"
-                    autoComplete="current-password"
-                  />
-                </div>
+                <p className="text-xs text-muted-foreground">
+                  Apenas CPFs cadastrados pelo administrador têm acesso
+                </p>
               </div>
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={loading || cleanCpf(cpf).length !== 11}
                 className="w-full bg-primary hover:bg-primary/90"
                 size="lg"
               >
-                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Waves className="mr-2 h-4 w-4" />}
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <LogIn className="mr-2 h-4 w-4" />}
                 {loading ? 'Entrando...' : 'Entrar'}
               </Button>
             </form>

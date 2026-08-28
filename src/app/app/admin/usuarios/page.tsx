@@ -9,6 +9,7 @@ import {
   Pencil,
   Power,
   Shield,
+  ShieldCheck,
   GraduationCap,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -449,23 +450,14 @@ function UserDialog({
                 placeholder="email@exemplo.com"
               />
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">
-                Senha {editing ? "(deixe em branco para manter)" : "(opcional — padrão: CPF)"}
-              </Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={editing ? "Deixe em branco para manter a atual" : "Deixe em branco para usar o CPF como senha"}
-                minLength={0}
-              />
-              {!editing && (
-                <p className="text-xs text-muted-foreground">
-                  Se não informada, a senha padrão será o CPF do aluno (apenas números).
-                </p>
-              )}
+            <div className="rounded-lg bg-accent/10 border border-accent/30 p-3">
+              <p className="text-xs text-accent font-medium flex items-center gap-1.5">
+                <ShieldCheck className="size-3.5" />
+                Login apenas por CPF
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                O acesso à plataforma é feito apenas com o CPF. Não é necessário cadastrar senha — o sistema valida se o CPF está cadastrado e ativo.
+              </p>
             </div>
             {role === "STUDENT" && (
               <div className="grid gap-2">
