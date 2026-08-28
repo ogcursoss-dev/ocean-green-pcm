@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Green Treinamentos — Plataforma PCM</title>
+<meta name="description" content="Plataforma de Simulados e Avaliações para Planejamento e Controle da Manutenção (PCM).">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--verde-limao:#8BC34A;--verde-medio:#7CB342;--azul-marinho:#0D47A1;--azul-ciano:#00ACC1;--verde-escuro:#0A5C36;--off-white:#F4F7F6}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#8BC34A 0%,#7CB342 30%,#0D47A1 75%,#00ACC1 100%);min-height:100vh;color:#1a2e22;overflow-x:hidden}
+.waves-bg{position:fixed;bottom:0;left:0;width:100%;opacity:0.15;pointer-events:none;z-index:0}
+.container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 1.5rem;min-height:100vh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:16px;margin-bottom:2rem}
+.logo{display:flex;align-items:center;gap:1rem}
+.logo-icon{width:60px;height:60px;border-radius:12px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+.logo-text h1{color:white;font-size:1.5rem;font-weight:700;letter-spacing:-0.5px}
+.logo-text p{color:rgba(255,255,255,0.85);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:500}
+.badge{background:rgba(255,255,255,0.2);color:white;padding:0.4rem 1rem;border-radius:50px;font-size:0.8rem;font-weight:500;border:1px solid rgba(255,255,255,0.3)}
+.hero{background:white;border-radius:24px;padding:3rem 2rem;box-shadow:0 20px 60px rgba(0,0,0,0.2);text-align:center;margin-bottom:2rem}
+.hero h2{font-size:2.5rem;color:var(--verde-escuro);margin-bottom:0.5rem;line-height:1.2}
+.hero .subtitle{font-size:1.15rem;color:#4a6b5c;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0}
+.feature{background:var(--off-white);border-radius:16px;padding:1.5rem;border-top:4px solid var(--verde-limao);transition:transform 0.3s,box-shadow 0.3s}
+.feature:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,0.1)}
+.feature:nth-child(2){border-top-color:var(--azul-ciano)}
+.feature:nth-child(3){border-top-color:var(--azul-marinho)}
+.feature:nth-child(4){border-top-color:var(--verde-medio)}
+.feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.5rem}
+.feature h3{color:var(--verde-escuro);font-size:1.1rem;margin-bottom:0.5rem}
+.feature p{color:#5a6b62;font-size:0.9rem;line-height:1.5}
+.stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:2.5rem 0;padding:2rem;background:linear-gradient(135deg,var(--azul-marinho),var(--azul-ciano));border-radius:20px;color:white}
+.stat{text-align:center}
+.stat .num{font-size:2.5rem;font-weight:700;display:block}
+.stat .label{font-size:0.85rem;opacity:0.9;text-transform:uppercase;letter-spacing:0.1em}
+.cta{margin:2.5rem 0}
+.btn-access{display:inline-block;background:linear-gradient(135deg,var(--verde-escuro),var(--verde-medio));color:white;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-size:1.1rem;font-weight:600;box-shadow:0 8px 24px rgba(10,92,54,0.4);transition:transform 0.3s,box-shadow 0.3s;border:none;cursor:pointer}
+.btn-access:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(10,92,54,0.5)}
+.access-note{margin-top:1rem;color:#5a6b62;font-size:0.9rem}
+.contact{background:var(--off-white);border-radius:16px;padding:2rem;margin-top:2rem;text-align:center}
+.contact h3{color:var(--verde-escuro);margin-bottom:0.5rem}
+.contact p{color:#5a6b62;line-height:1.6}
+footer{text-align:center;color:rgba(255,255,255,0.7);padding:2rem 0 1rem;font-size:0.85rem}
+@media (max-width:640px){.hero h2{font-size:1.8rem}.stats{gap:1.5rem}.stat .num{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<svg class="waves-bg" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#ffffff" fill-opacity="0.3" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L0,320Z"></path><path fill="#00ACC1" fill-opacity="0.4" d="M0,256L48,266.7C96,277,192,299,288,288C384,277,480,235,576,218.7C672,203,768,213,864,224C960,235,1056,245,1152,240C1248,235,1344,213,1392,202.7L1440,192L1440,320L0,320Z"></path></svg>
+<div class="container">
+<header>
+<div class="logo">
+<div class="logo-icon"><svg width="36" height="36" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#8BC34A"/><path d="M6 30 Q12 24 18 30 T30 30 T42 30" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M6 34 Q12 28 18 34 T30 34 T42 34" stroke="#00ACC1" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/></svg></div>
+<div class="logo-text"><h1>Ocean Green</h1><p>Treinamentos</p></div>
+</div>
+<span class="badge">Turma PCM 2026</span>
+</header>
+<div class="hero">
+<h2>Plataforma de Simulados e Avaliações</h2>
+<p class="subtitle">Sistema completo de treinamento para <strong>Planejamento e Controle da Manutenção (PCM)</strong>. Provas oficiais com questões aleatórias, simulados livres e relatórios detalhados.</p>
+<div class="stats">
+<div class="stat"><span class="num">300</span><span class="label">Questões</span></div>
+<div class="stat"><span class="num">33</span><span class="label">Disciplinas</span></div>
+<div class="stat"><span class="num">20</span><span class="label">Questões/Prova</span></div>
+<div class="stat"><span class="num">60%</span><span class="label">Aprovação</span></div>
+</div>
+<div class="cta">
+<a class="btn-access" href="https://pcmogcursos.space-z.ai/" target="_blank" rel="noopener">Acessar Sistema</a>
+<p class="access-note">Acesso restrito — apenas CPFs cadastrados pelo administrador<br><strong>Aluno:</strong> digite apenas o seu CPF na tela de login</p>
+</div>
+<div class="features">
+<div class="feature"><div class="feature-icon" style="background:#e8f5e3;">📘</div><h3>Modo Estudo</h3><p>Simulados livres com questões de múltiplas disciplinas. Treine quantas vezes quiser com gabarito comentado.</p></div>
+<div class="feature"><div class="feature-icon" style="background:#e0f7fa;">📝</div><h3>Prova Oficial</h3><p>20 questões aleatórias por aluno (anti-cola). Cronômetro, salvamento automático e recuperação automática.</p></div>
+<div class="feature"><div class="feature-icon" style="background:#e3f2fd;">📊</div><h3>Relatórios PDF</h3><p>Boletim da turma, relatório completo com acertos/erros e prova individual com nome e CPF do aluno.</p></div>
+<div class="feature"><div class="feature-icon" style="background:#f1f8e9;">⏰</div><h3>Agendamento</h3><p>Provas com data/hora programadas. Agendamento individual para alunos que farão em horários diferentes.</p></div>
+</div>
+<div class="contact">
+<h3>Como acessar</h3>
+<p>1. Clique em <strong>"Acessar Sistema"</strong> acima<br>2. Digite apenas o seu <strong>CPF</strong> (11 dígitos, com máscara automática)<br>3. Se seu CPF estiver cadastrado, você entra direto no sistema<br><br><strong>Não tem acesso?</strong> Contate o administrador para cadastrar seu CPF.</p>
+</div>
+</div>
+<footer>© 2026 Ocean Green Treinamentos — Todos os direitos reservados<br>Planejamento e Controle da Manutenção (PCM)</footer>
+</div>
+</body>
+</html>
