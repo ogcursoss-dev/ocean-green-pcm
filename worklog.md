@@ -1,0 +1,99 @@
+# Ocean Green Treinamentos - Worklog
+
+Projeto: Sistema de Simulados e Avaliações PCM
+Stack: Next.js 16, TypeScript, Prisma (SQLite dev / Supabase PostgreSQL prod), Tailwind, shadcn/ui
+
+## Cores da Identidade Visual
+- Verde Oceano Profundo: #0A5C36
+- Verde Menta Corporativo: #2E8B57
+- Azul Petróleo: #1B4965
+- Off-White: #F4F7F6
+
+---
+Task ID: 1
+Agent: main
+Task: Setup inicial - worklog, schema do banco, identidade visual Ocean Green
+
+Work Log:
+- Criado arquivo de worklog
+- Definido schema Prisma completo (Users, Classes, Subjects, Questions, Exams, ExamAssignments, ExamAttempts, Simulations)
+- Configurando tema visual Ocean Green
+
+Stage Summary:
+- Schema Prisma completo criado: User, Class, ClassMember, Subject, Question, Exam, ExamQuestion, ExamAssignment, ExamAttempt, Simulation
+- `bun run db:push` executado com sucesso
+- Tema Ocean Green configurado em globals.css (cores: #0A5C36, #2E8B57, #1B4965, #F4F7F6)
+- Utilidades de auth criadas: src/lib/auth.ts (hash/verify password, JWT, CPF mask/clean/validate)
+- Utilidades de sessão criadas: src/lib/session.ts (create/destroy session, getCurrentUser, requireAdmin)
+- Seed script em scripts/seed.ts
+- Admin criado: CPF 000.000.001-91 | Senha: OceanGreen@2024
+- 33 disciplinas PCM criadas no banco
+- Dependências instaladas: bcryptjs, jsonwebtoken, jspdf, jspdf-autotable
+- Próximo: delegar construção da app + geração das 300 questões em paralelo
+
+---
+Task ID: FINAL
+Agent: main
+Task: Integração Supabase + GitHub + 300 questões
+
+Work Log:
+- Schema Prisma alterado de SQLite para PostgreSQL
+- Variáveis de ambiente configuradas para Supabase (pooler porta 5432)
+- Tabelas criadas no Supabase via `bun run db:push` (9 modelos: User, Class, ClassMember, Subject, Question, Exam, ExamQuestion, ExamAssignment, ExamAttempt, Simulation)
+- Seed executado no Supabase: admin + 33 disciplinas PCM criadas
+- Repo GitHub criado via API: ogcursoss-dev/ocean-green-pcm (privado)
+- Projeto commitado e enviado para GitHub (2 pushes)
+- Script generate-questions-direct.ts: gera questões via LLM em batches incrementais
+- 4 execuções do gerador para completar 291 questões
+- Script generate-questions-extra.ts: 8 questões extras para chegar a 299
+- 1 questão final adicionada manualmente para chegar a 300
+- Script balance-answers.ts: balanceou gabaritos trocando posições de alternativas
+- Dev server reiniciado com env Supabase correto (start-dev.sh supervisor)
+- Validação no Agent Browser: login admin funciona, dashboard carrega, 300 questões visíveis
+
+Stage Summary:
+- ✅ Banco de dados: Supabase PostgreSQL (pooler aws-0-sa-east-1)
+- ✅ Repo GitHub: https://github.com/ogcursoss-dev/ocean-green-pcm
+- ✅ 300 questões PCM no Supabase (145 EASY + 155 MEDIUM)
+- ✅ 33 disciplinas cobertas
+- ✅ Gabaritos balanceados: A:75, B:77, C:73, D:75
+- ✅ Admin: CPF 000.000.001-91 / Senha: OceanGreen@2024
+- ✅ App funcional: login, dashboard admin, banco de questões operacional
+
+---
+Task ID: FINAL-v2
+Agent: main
+Task: Reformulação do sistema - prova com 20 questões aleatórias + recuperação + 3 relatórios PDF
+
+Work Log:
+- Admin trocado: CPF 124.521.557-48 (Lucas Skopek), admin antigo desativado
+- Schema atualizado: campos questionCount, poolSubjectIds, poolDifficulty, isRecovery, parentExamId no Exam; questionIds no ExamAttempt
+- Push do schema para Supabase executado com sucesso
+- Cadastro de alunos simplificado: admin cadastra apenas CPF + Nome (senha automática = CPF)
+- API de criação de provas atualizada: passingScore padrão 60%, questionCount padrão 20
+- API de start da prova: sortear 20 questões aleatórias do banco para cada aluno (anti-cola)
+- API GET da prova: retorna as questões sorteadas do attempt (não fixas do exam)
+- API de submit: calcula nota usando questões sorteadas + cria recuperação automática se nota < 60%
+- Recuperação automática: prova clonada com isRecovery=true, atribuída apenas ao aluno reprovado, janela de 8 dias
+- Listagem de provas do aluno: inclui flag isRecovery
+- Relatório PDF 1 (Boletim): notas por aluno + situação Aprovado/Reprovado + estatísticas
+- Relatório PDF 2 (Completo): resumo na primeira página + todas as provas de cada aluno com acertos/erros questão por questão
+- PDF da prova individual: cabeçalho com NOME e CPF do aluno
+- Página de relatórios: 3 botões de PDF (Boletim, Completo, CSV)
+- Página de provas: formulário com campo "Nº de questões (sorteadas por aluno)"
+- Página de usuários: campo senha opcional com label explicativo
+- Dados de teste limpos: 0 alunos, 0 provas, 1 admin, 1 turma, 300 questões
+- Validação no browser: login admin OK, dashboard OK, formulários OK, fluxo de prova OK, recuperação automática OK, PDFs gerados OK
+- 2 commits + pushes para GitHub
+
+Stage Summary:
+- ✅ Admin: Lucas Skopek (CPF 124.521.557-48)
+- ✅ Login apenas por CPF cadastrado
+- ✅ Cadastro simplificado de alunos (CPF + Nome)
+- ✅ Prova: 20 questões aleatórias por aluno do banco de 300
+- ✅ Nota mínima: 60% (média 6.0)
+- ✅ Recuperação automática para nota < 6
+- ✅ Agendamento: turma + individual com datas/horários próprios
+- ✅ 3 relatórios PDF: Boletim, Completo, Prova individual com nome/CPF
+- ✅ Sistema limpo para produção (0 dados fictícios)
+- ✅ GitHub: https://github.com/ogcursoss-dev/ocean-green-pcm

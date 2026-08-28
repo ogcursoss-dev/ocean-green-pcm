@@ -1,0 +1,2369 @@
+                                    Cópia não autorizada
+
+
+
+
+                                                                                          NOV 1994          NBR 5462
+                                      Confiabilidade e mantenabilidade
+ABNT-Associação
+Brasileira de
+Normas Técnicas
+
+Sede:
+Rio de Janeiro
+Av. Treze de Maio, 13 - 28º andar
+CEP 20003-900 - Caixa Postal 1680
+Rio de Janeiro - RJ
+Tel.: PABX (021) 210 -3122
+Telex: (021) 34333 ABNT - BR
+Endereço Telegráfico:
+NORMATÉCNICA                          Terminologia
+
+                                      Origem: Projeto NBR 5462/1993
+                                      CB-03 - Comitê Brasileiro de Eletricidade
+                                      CE-03:056.01 - Comissão de Estudo de Confiabilidade
+                                      NBR 5462 - Reliability and maintainability - Terminology
+                                      Descriptors: Reliability. Maintainability
+                                      Esta Norma substitui a NBR 5462/1981
+Copyright © 1990,                     Esta Norma foi baseada na IEC 50 (191)
+ABNT–Associação Brasileira            Válida a partir de 30.12.1994
+de Normas Técnicas
+Printed in Brazil/
+Impresso no Brasil                    Palavras-chave: Confiabilidade. Mantenabilidade                                   37 páginas
+Todos os direitos reservados
+
+
+
+
+     SUMÁRIO                                                                      c) listas de equivalência dos termos técnicos relacionados à
+     1 Objetivo                                                                      confiabilidade e mantenabilidade - Entrada em Português
+     2 Definições                                                                    (Anexo C);
+     ANEXO A - Relações entre os conceitos de defeito, falha e
+                  pane                                                            d) listas de equivalência dos termos técnicos relacionados
+     ANEXO B - Lista de símbolos e abreviações                                       à confiabilidade e mantenabilidade - Entrada em Inglês
+     ANEXO C - Listas de equivalência dos termos técnicos                            (Anexo D).
+                  relacionados à confiabilidade e mantenabi-
+                  lidade - Entrada em Português                              2 Definições (1)
+     ANEXO D - Listas de equivalência dos termos técnicos re-
+                  lacionados à confiabilidade e mantenabilidade -            Para os efeitos desta Norma são adotadas as definições de 2.1
+                  Entrada em Inglês                                          a 2.21.
+     Índice alfabético
+                                                                             2.1 Conceitos básicos
+     1 Objetivo                                                              2.1.1 Item
+
+     Esta Norma define os termos relacionados com a confiabi-                Qualquer parte, componente, dispositivo, subsistema, unida-
+     lidade e a mantenabilidade.                                             de funcional, equipamento ou sistema que possa ser con-
+                                                                             siderado individualmente.
+     Nota: Nesta Norma são dados quatro Anexos, a saber:
+                                                                             Nota: Um item pode eventualmente incluir pessoas.
+             a) relações entre os conceitos de defeito, falha e pane
+                (Anexo A);                                                   2.1.2 Item reparado
+
+             b) lista de símbolos e abreviações (Anexo B);                   Item reparável que será de fato reparado depois de uma falha.
+
+
+
+
+     (1)
+           As definições desta Norma são baseadas na “International Electrotechnical Vocabulary - Chapter 191 - Dependability and Quality of
+           Service” da IEC, não se tratando porém de termos relacionados à Qualidade de Serviços. É entendido que todos os termos são
+           definidos de acordo com o campo delimitado no Capítulo 1.
+    Cópia não autorizada
+2                                                                                                         NBR 5462/1994
+
+
+    2.1.3 Item não-reparado                                       2.1.15 Solicitação reduzida
+
+    Item que não será reparado depois de uma falha.               Redução intencional da ação de um ou mais fatores ambien-
+                                                                  tais, ou de uma ou mais condições de funcionamento de um
+    Nota: Um item não-reparado pode, ou não, ser reparável.
+                                                                  item, com o propósito de diminuir a ocorrência de falhas
+                                                                  relacionadas a estes fatores e condições, considerados iso-
+    2.1.4 Serviço
+                                                                  ladamente ou combinados.
+    Conjunto de funções oferecidas a um usuário por uma orga-
+    nização.                                                      2.1.16 Pré-envelhecimento
+
+    2.1.5 Função requerida                                        Tratamento prévio de um item com a finalidade de estabilizar
+                                                                  suas características.
+    Função ou combinação de funções de um item que são con-
+    sideradas necessárias para prover um dado serviço.            2.1.17 Acessibilidade
+
+    2.1.6 Modo de funcionamento
+                                                                  Facilidade relativa de acesso às diversas áreas de um item.
+    Subconjunto das possíveis funções de um item.
+                                                                  2.2 Desempenho relativo ao item
+    2.1.7 Instante
+                                                                  2.2.1 Eficácia
+    Ponto singelo em uma escala de tempo.
+                                                                  Capacidade de um item atender a uma demanda de serviço
+    Nota: A escala de tempo pode ser contínua, como um calendá-   de determinadas características quantitativas.
+          rio, ou discreta, como por exemplo, número de ciclos.
+                                                                  Nota: Esta capacidade depende dos aspectos combinados da
+    2.1.8 Intervalo de tempo
+                                                                        capabilidade e da disponibilidade do item.
+    Parte de uma escala de tempo limitada por dois instantes
+    dados.                                                        2.2.2 Durabilidade
+
+    2.1.9 Duração                                                 Capacidade de um item desempenhar uma função requerida
+                                                                  sob dadas condições de uso e manutenção, até que um estado-
+    Diferença entre os instantes extremos de um intervalo de      limite seja alcançado.
+    tempo.
+                                                                  Nota: O estado-limite de um item pode ser caracterizado pelo fim
+    2.1.10 Tempo acumulado                                              da vida útil, inadequação por razões econômicas ou técni-
+                                                                        cas e outros.
+    Soma das durações caracterizadas por dadas condições,
+    contidas em um determinado intervalo de tempo.                2.2.3 Dependabilidade
+
+    2.1.11 Medida (como aplicada no tratamento probabilístico
+                                                                  Termo coletivo usado para descrever o desempenho da dis-
+    da confiabilidade e áreas relacionadas)
+                                                                  ponibilidade e seus fatores de influência: confiabilidade, man-
+                                                                  tenabilidade e suporte logístico de manutenção.
+    Função ou quantidade usada para descrever uma variável
+    aleatória ou um processo aleatório.
+                                                                  Nota: A dependabilidade é usada para descrições genéricas,
+    Nota: Exemplos de medidas para uma variável aleatória são a         sem expressão quantitativa.
+          função distribuição e a média.
+                                                                  2.2.4 Capabilidade
+    2.1.12 Operação
+                                                                  Capacidade de um item atender a uma demanda de serviço
+    Combinação de todas as ações técnicas e administrativas       de determinadas características quantitativas, sob dadas con-
+    destinadas a permitir que um item cumpra uma função re-       dições internas.
+    querida, reconhecendo-se a necessidade de adaptação na
+    ocorrência de mundanças nas condições externas.               Nota: As condições internas se referem, por exemplo, a qual-
+                                                                        quer combinação de subitens em pane ou não.
+    Nota: Entende-se como condições externas, por exemplo: a
+          demanda do serviço e as condições ambientais.
+                                                                  2.2.5 Disponibilidade
+    2.1.13 Modificação
+                                                                  Capacidade de um item estar em condições de executar uma
+    Combinação de todas as ações técnicas e administrativas       certa função em um dado instante ou durante um intervalo de
+    destinadas a modificar um item.                               tempo determinado, levando-se em conta os aspectos com-
+                                                                  binados de sua confiabilidade, mantenabilidade e suporte de
+    2.1.14 Nível de confiança                                     manutenção, supondo que os recursos externos requeridos
+                                                                  estejam assegurados.
+    Probabilidade de que um determinado intervalo de confiança,
+    calculado a partir de um valor amostral, contenha o verda-    Nota: O termo “disponibilidade” é usado como uma medida do
+    deiro valor da população.                                           desempenho de disponibilidade.
+                           Cópia não autorizada
+NBR 5462/1994                                                                                                                                 3
+
+
+  2.2.6 Confiabilidade                                                        2.3.6 Defeito menor
+
+  Capacidade de um item desempenhar uma função requerida                      Defeito que não seja maior.
+  sob condições especificadas, durante um dado intervalo de
+  tempo.                                                                      Nota: Um defeito menor pode ser crítico ou não-crítico.
+
+  Nota: O termo “confiabilidade” é usado como uma medida de                   2.3.7 Defeituoso
+        desempenho de confiabilidade.
+                                                                              Item que contém um ou mais defeitos.
+  2.2.7 Mantenabilidade
+                                                                              2.3.8 Defeituoso crítico
+  Capacidade de um item ser mantido ou recolocado em con-
+  dições de executar suas funções requeridas, sob condições                   Item que contém um ou mais defeitos críticos.
+  de uso especificadas, quando a manutenção é executada sob
+  condições determinadas e mediante procedimentos e meios                     2.3.9 Defeituoso maior
+  prescritos.
+                                                                              Item que contém um ou mais defeitos maiores.
+  Nota: O termo “mantenabilidade” é usado como uma medida do
+        desempenho de mantenabilidade.                                        2.3.10 Defeituoso menor
+  2.2.8 Desempenho do suporte de manutenção
+                                                                              Item que contém um ou mais defeitos menores, mas nenhum
+                                                                              defeito maior.
+  Capacidade de uma organização de manutenção prover, sob
+  demanda, os recursos necessários para manter um item sob
+                                                                              2.3.11 Defeito de projeto
+  condições especificadas e de acordo com uma dada política
+  de manutenção.
+                                                                              Defeito de um item devido a projeto inadequado.
+  Nota: As condições especificadas estão relacionadas com o pró-
+        prio item e com as condições sob as quais é usado e man-              2.3.12 Defeito de fabricação
+        tido.
+                                                                              Defeito de um item devido à não-conformidade da fabricação
+  2.3 Defeitos (2)                                                            com o projeto ou com os processos de fabricação especi-
+                                                                              ficados.
+  2.3.1 Defeito
+                                                                              2.4 Falhas (3)
+  Qualquer desvio de uma característica de um item em rela-
+  ção aos seus requisitos.                                                    2.4.1 Falha
+
+  Notas: a)Os requisitos podem, ou não, ser expressos na forma                Término da capacidade de um item desempenhar a função
+           de uma especificação.                                              requerida.
+             b)Um defeito pode, ou não, afetar a capacidade de um             Notas: a) Depois da falha, o item tem uma pane.
+               item em desempenhar uma função requerida.
+                                                                                     b)A “falha” é um evento; diferente de “pane” que é um
+  2.3.2 Bug                                                                            estado.
+  Defeito de software.                                                               c) Este conceito, como definido, não se aplica a itens com-
+                                                                                        postos somente por software.
+  2.3.3 Defeito crítico
+                                                                              2.4.2 Critério de falha
+  Defeito que provavelmente resultará em condições perigosas
+  e inseguras para pessoas, danos materiais significativos ou                 Conjunto de regras aplicáveis ao julgamento de tipos e gra-
+  outras conseqüências inaceitáveis.                                          vidade de falhas, para determinação dos limites de aceitação
+                                                                              de um item.
+  2.3.4 Defeito não-crítico
+                                                                              2.4.3 Falha crítica
+  Defeito que não seja crítico.
+
+  2.3.5 Defeito maior                                                         Falha que provavelmente resultará em condições perigosas e
+                                                                              inseguras para pessoas, danos materiais significativos ou
+  Defeito que provavelmente resultará em uma falha ou redu-                   outras conseqüências inaceitáveis.
+  zirá substancialmente a utilização do item para o fim a que se
+  destina.                                                                    2.4.4 Falha não-crítica
+
+  Nota: Um defeito maior pode ser crítico ou não-crítico.                     Falha que não seja crítica.
+
+
+
+
+  (2)
+        O Anexo A fornece as relações entre os conceitos de defeito, falha e pane.
+  (3)
+        Ver nota (2).
+    Cópia não autorizada
+4                                                                                                                NBR 5462/1994
+
+
+    2.4.5 Falha por uso incorreto                                       2.4.16 Falha não-relevante
+
+    Falha devida à aplicação de solicitações além dos limites es-       Falha a ser desconsiderada na interpretação dos resultados
+    pecificados ou a erros de instalação ou operação.                   operacionais ou de ensaios, ou no cálculo do valor de uma
+                                                                        medida de confiabilidade.
+    2.4.6 Falha por manuseio
+                                                                        Nota: O critério para desconsideração deve ser especificado.
+    Falha causada por manuseio incorreto ou falta de cuidado
+    com o item.                                                         2.4.17 Falha primária
+
+    2.4.7 Falha por fragilidade                                         Falha de um item que não é causada direta ou indiretamente
+                                                                        pela falha ou pane de outro item.
+    Falha devida a uma fragilidade no próprio item, quando
+    submetido a solicitações previstas nas especificações.              2.4.18 Falha secundária
+
+    Nota: Uma fragilidade pode ser inerente ou induzida.                Falha de um item causada direta ou indiretamente pela falha
+                                                                        ou pane de outro item.
+    2.4.8 Falha de projeto
+                                                                        2.4.19 Causa de falha
+    Falha de um item devida a projeto inadequado.
+                                                                        Circunstâncias relativas ao projeto, fabricação ou uso que
+    2.4.9 Falha de fabricação
+                                                                        conduzem a uma falha.
+    Falha de um item devida à não-conformidade da fabricação
+                                                                        2.4.20 Mecanismo de falha
+    com o projeto ou com os processos de fabricação espe-
+    cificados.                                                          Conjunto de processos físicos, químicos ou outros que
+                                                                        conduzem a uma falha.
+    2.4.10 Falha aleatória
+                                                                        2.4.21 Falha sistemática
+    Qualquer falha cuja causa ou mecanismo faça com que seu
+    instante de ocorrência se torne imprevisivel, a não ser no
+                                                                        Falha relacionada de um modo determinístico a uma certa
+    sentido probabilístico ou estatístico.
+                                                                        causa, que somente pode ser eliminada por uma modificação
+                                                                        do projeto, do processo de fabricação, dos procedimentos
+    2.4.11 Falha por deterioração
+                                                                        operacionais, da documentação ou de outros fatores rele-
+    Falha que resulta de mecanismos de deterioração inerentes           vantes.
+    ao item, os quais determinam uma taxa de falha instantânea
+                                                                        Nota: A falha sistemática pode ser reproduzida, sempre que se
+    crescente ao longo do tempo.
+                                                                              queira, simulando-se a causa da falha.
+    2.4.12 Falha repentina
+                                                                        2.4.22 Falha parcial
+    Falha que não poderia ser prevista por um exame anterior ou
+                                                                        Falha que resulta na incapacidade do item desempenhar al-
+    monitoração.
+                                                                        gumas, mas não todas, funções requeridas.
+    2.4.13 Falha gradual
+                                                                        2.4.23 Falha por degradação
+    Falha devida a uma mudança gradual com o tempo de dadas
+    características de um item.                                         Falha que é simultaneamente gradual e parcial.
+
+    Nota: Uma falha gradual pode ser prevista por um exame ante-        2.4.24 Falha completa
+          rior ou monitoração e pode, às vezes, ser evitada por ações
+          de manutenção.                                                Falha caracterizada pelo fato de o item não conseguir de-
+                                                                        sempenhar nenhuma das funções requeridas.
+    2.4.14 Falha catastrófica
+                                                                        2.5 Panes (4)
+    Falha repentina que resulta na incapacidade completa de um
+    item desempenhar todas as funções requeridas.                       2.5.1 Pane
+
+    2.4.15 Falha relevante                                              Estado de um item caracterizado pela incapacidade de de-
+                                                                        sempenhar uma função requerida, excluindo a incapacidade
+    Falha que deve ser considerada na interpretação dos resulta-        durante a manutenção preventiva ou outras ações planeja-
+    dos operacionais ou de ensaios, ou no cálculo do valor de           das, ou pela falta de recursos externos.
+    uma medida de confiabilidade.
+                                                                        Nota: Uma pane é geralmente o resultado de uma falha de um
+    Nota: O critério para consideração deve ser especificado.                 item, mas pode existir sem uma falha anterior.
+
+
+
+
+    (4)
+          Ver nota (2).
+                        Cópia não autorizada
+
+NBR 5462/1994                                                                                                              5
+
+
+  2.5.2 Pane crítica                                             2.5.16 Pane permanente
+
+  Pane que provavelmente resultará em condições perigosas e      Pane que persiste até que uma ação de manutenção corretiva
+  inseguras para pessoas, danos materiais significativos ou      seja realizada.
+  outras conseqüências inaceitáveis.
+                                                                 2.5.17 Pane temporária
+  2.5.3 Pane não-crítica
+                                                                 Pane que persiste por uma duração limitada, após a qual o
+  Pane que não seja crítica.                                     item recupera sua capacidade de executar a função requerida
+                                                                 sem ser submetido a qualquer ação de manutenção corretiva.
+  2.5.4 Pane maior
+                                                                 Nota: Esta pane normalmente se repete.
+  Pane que afeta uma função considerada de maior impor-
+  tância.                                                        2.5.18 Pane intermitente
+
+  2.5.5 Pane menor                                               Pane temporária, que se repete.
+
+  Pane que não afeta uma função considerada de maior im-         2.5.19 Pane determinada
+  portância.
+                                                                 Pane cuja resposta é sempre a mesma para todas as ações
+  2.5.6 Pane por uso incorreto                                   (para itens que produzem uma resposta como resultado de
+                                                                 uma ação).
+  Pane devida à aplicação de solicitações além dos limites es-
+  pecificados ou por erros de instalação ou operação.            2.5.20 Pane indeterminada
+
+  2.5.7 Pane por manuseio                                        Pane em que o erro que afeta a resposta depende da ação
+                                                                 aplicada (para itens que produzem uma resposta como resul-
+  Pane causada por manuseio incorreto ou falta de cuidado.       tado de uma ação).
+
+  2.5.8 Pane por fragilidade                                     Nota: Um exemplo é a pane evidenciada por dados.
+
+
+  Pane devida a uma fragilidade do próprio item, quando          2.5.21 Pane latente
+  submetido a solicitações previstas nas especificações.
+                                                                 Pane existente, mas que ainda não foi percebida.
+  Nota: Uma fragilidade pode ser inerente ou induzida.
+                                                                 2.5.22 Pane sistemática
+  2.5.9 Pane de projeto
+                                                                 Pane resultante de uma falha sistemática.
+  Pane de um item devida a projeto inadequado.
+                                                                 2.5.23 Modo de pane
+  2.5.10 Pane de fabricação
+                                                                 Um dos possíveis estados de um item em pane.
+  Pane de um item devida à não-conformidade da fabricação
+                                                                 2.5.24 Item em pane
+  com o projeto ou com os processos de fabricação espe-
+  cificados.
+                                                                 Item em estado de pane.
+  2.5.11 Pane por deterioração
+                                                                 2.6 Erros
+  Pane de um item devida a uma falha por deterioração.
+                                                                 2.6.1 Erro
+  2.5.12 Pane evidenciada por programa
+                                                                 Diferença entre um valor ou uma condição observada ou me-
+                                                                 dida e a correspondente condição ou valor verdadeiro espe-
+  Pane revelada pela execução de uma certa seqüência de
+                                                                 cificado ou teórico.
+  instruções de um programa de computador.
+                                                                 Notas: a)Um erro pode ser causado por um item em pane; por
+  2.5.13 Pane evidenciada por dados                                       exemplo, um erro de cálculo feito por um computador
+                                                                          em pane.
+  Pane revelada pelo processamento de uma configuração par-
+  ticular de dados.                                                    b) O termo “erro” pode também designar um erro humano.
+
+  2.5.14 Pane completa                                           2.6.2 Erro humano/Engano
+
+  Pane caracterizada pelo fato de o item não conseguir de-       Ação humana que produz um resultado diferente daquele que
+  sempenhar nenhuma das funções requeridas.                      se pretendia ou que se deveria obter.
+
+  2.5.15 Pane parcial                                            2.7 Estados de um item
+
+  Pane que não seja completa.                                    Ver Figura 1.
+    Cópia não autorizada
+6                                                                                                                 NBR 5462/1994
+
+
+                                    Disponibilidade                              Indisponibilidade
+    ▲
+
+
+
+
+                                                                         ▲
+
+
+
+
+                                                                                                                                       ▲
+                                                          Estado de incapacidade
+
+
+
+
+                                                  ▲
+
+
+
+
+                                                                                                                                       ▲
+        Estado de    Estado livre     Estado de       Estado de                          Estado de indisponibilidade
+        prontidão                     ocupação/       incapacidade por
+                                      operação        razões externas          Sujeito à manutenção preventiva              Em pane
+
+                                                      Figura 1 - Estados de um item
+
+
+
+    2.7.1 Estado de operação                                             2.7.10 Estado crítico
+
+    Estado de um item quando ele está desempenhando a função             Estado de um item que provavelmente resultará em condi-
+    requerida.                                                           ções perigosas e inseguras para pessoas, perdas materiais
+                                                                         significativas ou outras conseqüências danosas.
+    2.7.2 Estado de não-operação
+                                                                         Nota: Um estado crítico pode ser o resultado de uma pane crítica,
+    Estado de um item quando ele não está desempenhando a                      mas não necessariamente.
+    função requerida.
+                                                                         2.8 Termos relacionados à manutenção
+    2.7.3 Estado de prontidão
+                                                                         2.8.1 Manutenção
+    Estado de um item que está disponível, mas não em opera-
+    ção, durante o tempo requerido.                                      Combinação de todas as ações técnicas e administrativas,
+                                                                         incluindo as de supervisão, destinadas a manter ou recolocar
+    2.7.4 Estado livre                                                   um item em um estado no qual possa desempenhar uma fun-
+                                                                         ção requerida.
+    Estado de um item que está disponível, mas não em ope-
+    ração, durante o tempo não-requerido.                                Nota: A manutenção pode incluir uma modificação do item.
+
+
+    2.7.5 Estado de incapacidade                                         2.8.2 Filosofia de manutenção
+
+
+    Estado de um item caracterizado por sua incapacidade de              Um conjunto de princípios para a organização e execução da
+    desempenhar a função requerida, por qualquer razão.                  manutenção.
+
+    2.7.6 Estado de incapacidade por razões externas                     2.8.3 Política de manutenção
+
+
+    Estado de um item disponível que se acha em estado de in-            Descrição das inter-relações entre os escalões de manuten-
+    capacidade por falta de recursos externos ou por estarem sen-        ção, os níveis de intervenção e os níveis de manutenção a se-
+    do executadas ações planejadas que não as de manutenção.             rem aplicados para a manutenção de um item.
+
+    2.7.7 Estado de indisponibilidade                                    2.8.4 Escalão de manutenção
+
+
+    Estado de um item caracterizado por uma pane ou por uma              A posição, dentro de uma organização, onde níveis de ma-
+    eventual incapacidade de desempenhar uma função requerida            nutenção especificados são efetuados em um item.
+    durante a manutenção preventiva.
+                                                                         Notas: a)Exemplos de escalões de manutenção são os seguintes:
+                                                                                  no campo, na oficina de reparos ou no fabricante.
+    Nota: Este estado relaciona-se com o desempenho de dis-
+          ponibilidade.
+                                                                                b)O escalão de manutenção é caracterizado pela compe-
+                                                                                  tência do pessoal, recursos disponíveis, local e outros.
+    2.7.8 Estado de disponibilidade
+                                                                         2.8.5 Nível de intervenção
+    Estado de um item caracterizado por ele poder desempenhar
+    uma função requerida, desde que os recursos externos neces-          A subdivisão de um item sobre a qual são realizadas as ações
+    sários sejam providos.                                               de manutenção.
+    Nota: Este estado relaciona-se com o desempenho de dis-
+                                                                         Notas: a)Exemplos de níveis de intervenção: subsistema, placa
+          ponibilidade.
+                                                                                  de circuito impresso, componentes.
+
+    2.7.9 Estado de ocupação                                                    b)O nível de intervenção depende da complexidade da
+                                                                                  construção do item, da acessibilidade dos subitens, da
+    Estado de um item que está desempenhando uma função                           competência do pessoal de manutenção, dos recursos
+    requerida para um usuário e que, por esta razão, não pode ser                 em equipamentos de ensaios, das considerações de
+    utilizado por outros.                                                         segurança e outros.
+                     Cópia não autorizada
+NBR 5462/1994                                                                                                                7
+
+
+  2.8.6 Nível de manutenção                                     2.8.17 Atividade elementar de manutenção
+
+  Conjunto de ações de manutenção a serem efetuadas em um       Cada uma das unidades de trabalho nas quais pode ser divi-
+  nível de intervenção especificado.                            dida uma atividade de manutenção em um dado nível de in-
+                                                                tervenção.
+  Nota: Como exemplo de ação de manutenção, tem-se: substi-
+        tuição de um componente, de uma placa de circuito im-   2.8.18 Ação de manutenção
+        presso, de um subsistema e outros.
+                                                                Seqüência de atividades elementares de manutenção efe-
+  2.8.7 Manutenção preventiva
+                                                                tuadas com uma dada finalidade.
+
+  Manutenção efetuada em intervalos predeterminados, ou de      Nota: Como exemplo de tais ações, têm-se: o diagnóstico da pa-
+  acordo com critérios prescritos, destinada a reduzir a pro-         ne, a localização da pane, a verificação do funcionamento
+  babilidade de falha ou a degradação do funcionamento de um          e suas combinações.
+  item.
+                                                                2.8.19 Reparo
+  2.8.8 Manutenção corretiva
+                                                                Parte da manutenção corretiva na qual são efetuadas as ações
+  Manutenção efetuada após a ocorrência de uma pane desti-      de manutenção efetiva sobre o item, excluindo-se os atrasos
+  nada a recolocar um item em condições de executar uma fun-    técnicos.
+  ção requerida.
+                                                                2.8.20 Detecção da pane
+  2.8.9 Manutenção controlada/Manutenção preditiva
+                                                                Constatação de que um item está em pane.
+  Manutenção que permite garantir uma qualidade de serviço
+  desejada, com base na aplicação sistemática de técnicas de
+                                                                2.8.21 Localização da pane
+  análise, utilizando-se de meios de supervisão centralizados
+  ou de amostragem, para reduzir ao mínimo a manutenção
+                                                                Ações tomadas para identificar o subitem ou subitens em pa-
+  preventiva e diminuir a manutenção corretiva.
+                                                                ne, ao nível de intervenção apropriado.
+  2.8.10 Manutenção programada
+                                                                2.8.22 Diagnóstico da pane
+  Manutenção preventiva efetuada de acordo com um progra-
+  ma preestabelecido.                                           Ações tomadas para detectar a pane, sua localização e a
+                                                                identificação da causa.
+  2.8.11 Manutenção não-programada
+                                                                2.8.23 Correção da pane
+  Manutenção que não é feita de acordo com um programa
+  preestabelecido, mas depois da recepção de uma informação     Ações tomadas depois da localização da pane, para resta-
+  relacionada ao estado de um item.                             belecer a capacidade do item desempenhar uma função re-
+                                                                querida.
+  2.8.12 Manutenção no campo
+                                                                2.8.24 Verificação funcional
+  Manutenção efetuada no local onde o item é utilizado.
+                                                                Ações efetuadas depois da correção da pane para verificar se
+  2.8.13 Manutenção fora do local de utilização                 o item recuperou sua capacidade de desempenhar a função
+                                                                requerida.
+  Manutenção efetuada em um local diferente daquele em que o
+  item é utilizado.                                             2.8.25 Restabelecimento funcional
+
+  Nota: Um exemplo é o reparo de um subitem em um centro de     Recuperação da capacidade de um item desempenhar uma
+        manutenção.                                             função requerida depois de uma pane.
+
+  2.8.14 Manutenção remota                                      2.8.26 Supervisão/Monitoração
+
+  Manutenção efetuada sem acesso direto de pessoal ao item.     Atividade executada, manual ou automaticamente, para
+                                                                observar o estado de um item.
+  2.8.15 Manutenção automática
+                                                                Nota: A supervisão automática pode ser feita no interior ou no
+  Manutenção efetuada sem intervenção humana.                         exterior de um item.
+
+  2.8.16 Manutenção deferida                                    2.8.27 Célula de manutenção
+
+  Manutenção corretiva que não é iniciada imediatamente         Qualquer subitem de um dado item que, tendo uma pane, po-
+  após a detecção da pane, mas é retardada de acordo com        de ser identificado sem qualquer ambigüidade por um alarme
+  certas regras de manutenção.                                  ou outro meio qualquer, para ser substituído ou reparado.
+    Cópia não autorizada
+8                                                                                                          NBR 5462/1994
+
+
+    2.8.28 Manutenção afetando o funcionamento                     2.9.6 Tempo de manutenção preventiva efetiva
+
+    Ação de manutenção que interrompe ou degrada uma ou mais       Parte do tempo de manutenção efetiva durante a qual são
+    das funções requeridas do item objeto da manutenção.           efetuadas ações de manutenção preventiva em um item.
+
+    Nota: A manutenção afetando o funcionamento está dividida em   2.9.7 Tempo de manutenção corretiva efetiva
+          manutenção impedindo o funcionamento e manutenção
+          degradando o funcionamento.                              Parte do tempo de manutenção efetiva durante a qual são
+                                                                   efetuadas ações de manutenção corretiva em um item.
+    2.8.29 Manutenção impedindo o funcionamento
+                                                                   2.9.8 Tempo de pane não-detectada
+    Ação de manutenção que impede um item de desempenhar
+    qualquer função requerida, por causar a perda completa de      Intervalo de tempo entre a falha e a detecção da pane.
+    todas as funções.
+                                                                   2.9.9 Atraso administrativo (para a manutenção corretiva)
+    2.8.30 Manutenção degradando o funcionamento
+                                                                   Tempo acumulado durante o qual uma ação de manutenção
+    Ação de manutenção que degrada ou impede o desempenho          corretiva não é efetuada por razões administrativas.
+    de uma ou mais das funções requeridas de um item, porém
+    sem causar a perda de todas as funções.                        2.9.10 Atraso logístico
+
+    2.8.31 Manutenção permitindo o funcionamento                   Tempo acumulado durante o qual uma ação de manutenção
+                                                                   não pode ser executada devida à necessidade de se obterem
+    Ação de manutenção que não interrompe nem degrada qual-        os recursos necessários, excluindo-se qualquer atraso
+    quer das funções requeridas de um item.                        administrativo.
+
+    2.9 Tempos relacionados à manutenção                           Nota: Os atrasos logísticos podem ser devidos a, por exemplo:
+                                                                         viagem até instalação não-atendida, espera por peças de
+    Ver Figura 2.                                                        reposição, de especialistas, de equipamentos de ensaio,
+                                                                         de informações e de condições ambientais apropriadas.
+    2.9.1 Tempo de manutenção
+                                                                   2.9.11 Tempo de correção da pane
+    Intervalo de tempo durante o qual é executada uma ação de
+    manutenção em um item, manual ou automaticamente, in-          Parte do tempo de manutenção corretiva efetiva durante a
+    cluindo os atrasos técnicos e logísticos.                      qual é feita a correção da pane.
+
+    Nota: A manutenção pode ser feita enquanto o item está de-     2.9.12 Atraso técnico
+          sempenhando uma função requerida.
+                                                                   Tempo acumulado necessário para executar ações técnicas
+    2.9.2 Tempo de manutenção em homens-hora                       auxiliares associadas às ações de manutenção propriamente
+                                                                   ditas.
+    Soma das durações dos tempos de manutenção que cada
+    indivíduo da equipe utilizou, expressa em homens-hora, para    2.9.13 Tempo de verificação
+    um certo tipo de ação de manutenção ou durante um dado
+    intervalo de tempo.                                            Parte do tempo de manutenção corretiva efetiva durante a
+                                                                   qual é efetuada a verificação funcional.
+    2.9.3 Tempo de manutenção efetiva
+                                                                   2.9.14 Tempo de diagnóstico da pane
+    Parte do tempo de manutenção durante a qual uma ação de
+    manutenção é efetuada em um item, tanto automática como        Parte do tempo de manutenção corretiva efetiva durante a
+    manualmente, excluindo atrasos logísticos.                     qual é feito o diagnóstico da pane.
+
+    Nota: Uma ação de manutenção pode ser efetuada enquanto o      2.9.15 Tempo de localização da pane
+          item está desempenhando uma função requerida.
+                                                                   Parte do tempo de diagnóstico da pane durante a qual é feita
+    2.9.4 Tempo de manutenção preventiva                           sua localização.
+
+    Parte do tempo de manutenção durante a qual é efetuada a       2.9.16 Tempo de reparo
+    manutenção preventiva em um item, incluindo os atrasos
+    técnicos e logísticos a ela inerentes.                         Parte do tempo de manutenção corretiva durante a qual são
+                                                                   executadas as ações de reparo em um item.
+    2.9.5 Tempo de manutenção corretiva
+                                                                   2.9.17 Tempo de detecção da pane
+    Parte do tempo de manutenção durante a qual é efetuada a
+    manutenção corretiva em um item, incluindo os atrasos          Parte do tempo de diagnóstico da pane durante a qual é
+    técnicos e logísticos a ela inerentes.                         confirmada sua existência.
+Cópia não autorizada
+
+
+
+
+                                                                                                                                                                                    NBR 5462/1994
+                                                                                  TEMPO TOTAL
+
+
+
+
+                                                                                                                                                                                ▼
+▼
+
+
+
+
+    Tempo não-requerido                                                                  TEMPO REQUERIDO
+
+                          Tempo de disponibilidade                                   TEMPO DE INCAPACIDADE                                           Tempo de disponibilidade
+
+                                                                                  TEMPO DE INDISPONIBILIDADE                           Tempo de incapacidade por razões externas
+
+                                           TEMPO DE MANUTENÇÃO                Tempo de pane não-detectada      Atraso administrativo
+
+
+
+
+                                                                           TEMPO DE MANUTENÇÃO
+
+                                                                      TEMPO DE MANUTENÇÃO EFETIVA
+
+                                          Tempo de manutenção preventiva               TEMPO DE MANUTENÇÃO CORRETIVA
+
+                                       Atrasos    Tempo de manutenção      TEMPO DE MANUTENÇÃO CORRETIVA EFETIVA Atrasos
+                                       logísticos preventiva efetiva                                             logísticos
+
+                                                           Atrasos técnicos                   TEMPO DE REPARO
+
+                                                                                  TEMPO DE            Tempo de Tempo de
+                                                                                  DIAGNÓSTICO         correção verificação
+                                                                                                      da pane
+
+                                                                              Tempo de Tempo de
+                                                                              detecção localização
+                                                                              da pane  da pane
+
+
+                                                                              Figura 2 - Diagrama dos tempos
+
+
+
+
+                                                                                                                                                                                    9
+       Cópia não autorizada
+10                                                                                                          NBR 5462/1994
+
+
+     2.10 Tempos relacionados com o estado de um item               2.11 Tempos relacionados às medidas de desempenho de
+                                                                    confiabilidade
+     2.10.1 Tempo de operação
+                                                                    2.11.1 Tempo até a primeira falha
+     Intervalo de tempo durante o qual um item está em estado de
+     operação.
+                                                                    Duração acumulada dos tempos de operação de um item, des-
+     2.10.2 Tempo de não-operação
+                                                                    de sua colocação pela primeira vez no estado de disponi-
+                                                                    bilidade até o instante de ocorrência da falha.
+     Intervalo de tempo durante o qual um item está em estado de
+     não-operação.                                                  2.11.2 Tempo até falha
+
+     2.10.3 Tempo requerido                                         Duração acumulada dos tempos de operação de um item, des-
+                                                                    de sua colocação em estado de disponibilidade até a ocor-
+     Intervalo de tempo durante o qual o usuário exige que o item   rência da falha, ou do instante do restabelecimento funcional
+     esteja em condição de desempenhar uma função requerida.        até a ocorrência da próxima falha.
+
+     2.10.4 Tempo não-requerido
+                                                                    2.11.3 Tempo entre falhas
+     Intervalo de tempo durante o qual o usuário não exige que o
+     item esteja em condição de desempenhar uma função re-          Tempo acumulado entre duas falhas consecutivas de um item
+     querida.                                                       reparado.
+
+     2.10.5 Tempo de prontidão                                      2.11.4 Tempo de operação entre falhas
+
+     Intervalo de tempo durante o qual um item está em estado de    Duração acumulada dos tempos de operação entre duas fa-
+     prontidão.                                                     lhas consecutivas de um item reparado.
+     2.10.6 Tempo livre
+                                                                    2.11.5 Tempo de restabelecimento
+     Intervalo de tempo durante o qual um item está em estado
+     livre.                                                         Intervalo de tempo entre a ocorrência de uma falha e a colo-
+                                                                    cação do item em estado de disponibilidade.
+     2.10.7 Tempo de incapacitação
+                                                                    2.11.6 Vida útil
+     Intervalo de tempo durante o qual o item está em estado de
+     incapacitação.
+                                                                    Sob dadas condições, é o intervalo de tempo desde o instante
+     2.10.8 Tempo de indisponibilidade
+                                                                    em que um item é colocado pela primeira vez em estado de
+                                                                    disponibilidade, até o instante em que a intensidade de falha
+     Intervalo de tempo durante o qual um item está em estado de    torna-se inaceitável ou até que o item seja considerado ir-
+     indisponibilidade.                                             recuperável depois de uma pane.
+
+     2.10.9 Tempo de indisponibilidade acumulado                    2.11.7 Vida em armazenagem
+
+     Tempo acumulado durante o qual um item está em estado de       Intervalo de tempo durante o qual um item pode ser armaze-
+     indisponibilidade em um dado intervalo de tempo.               nado sob condições dadas, e continuar satisfazendo os re-
+                                                                    quisitos especificados.
+     2.10.10 Tempo de indisponibilidade acumulado médio;
+     abreviação: MADT
+                                                                    2.11.8 Período de falhas prematuras
+     Esperança matemática do tempo de indisponibilidade
+     acumulado durante dado intervalo de tempo.                     O eventual período inicial na vida de um item, durante o qual a
+                                                                    intensidade de falha instantânea para um item reparado, ou a
+     2.10.11 Tempo de incapacidade por razões externas              taxa de falha instantânea para um item não-reparado, é con-
+                                                                    sideravelmente maior que aquela do período subseqüente.
+     Intervalo de tempo durante o qual um item está em estado de
+     incapacidade por razões externas.                              2.11.9 Período de intensidade de falha constante
+
+     2.10.12 Tempo de disponibilidade
+                                                                    Período eventual na vida de um item reparado, durante o qual
+                                                                    a intensidade de falha é aproximadamente constante.
+     Intervalo de tempo durante o qual um item está em estado de
+     disponibilidade.
+                                                                    2.11.10 Período de taxa de falha constante
+     2.10.13 Tempo de disponibilidade médio; abreviação: MUT
+                                                                    Período eventual na vida de um item não-reparado, durante o
+     Esperança matemática do tempo de disponibilidade.              qual a taxa de falha é aproximadamente constante.
+                                    Cópia não autorizada
+NBR 5462/1994                                                                                                                           11
+
+
+  2.11.11 Período de falhas por deterioração                             2.12.6 Indisponibilidade assintótica; símbolo: u
+
+  Eventual período final da vida de um item, durante o qual a            Limite, se existir, da indisponibilidade instantânea, quando o
+  intensidade de falha instantânea para um item reparado, ou a           tempo tende ao infinito, usado em modelos matemáticos.
+  taxa de falha instantânea para um item não-reparado, é con-
+  sideravelmente maior que aquela do período precedente.                 Nota: Sob certas condições, para taxa de falha e taxa de reparo
+                                                                               constantes, a indisponibilidade assintótica pode ser expressa
+  2.11.12 Vida média                                                           pela equação:
+
+
+  Média aritmética dos tempos até falha de um grupo de itens                  u = (MDT)/(MUT+MDT)
+  não-reparados e de características semelhantes.
+                                                                         Onde:
+  2.12 Medidas de disponibilidade
+                                                                              MDT = tempo médio de indisponibilidade (mean down
+  2.12.1 Disponibilidade instantânea; símbolo: A(t)                                 time)
+
+
+  Probabilidade de um item ser capaz de desempenhar uma                       MUT = tempo médio de disponibilidade (mean up time)
+  função requerida sob dadas condições, em um dado instante,
+  supondo-se que os recursos externos tenham sido providos.              2.12.7 Disponibilidade assintótica média; símbolo: A
+
+
+  2.12.2 Indisponibilidade instantânea; símbolo: u(t)                    Limite, se existir, da disponibilidade média durante um intervalo
+                                                                         de tempo (t1, t2), quando se faz t2 tender ao infinito, usado em
+  Probabilidade de um item não ser capaz de desempenhar uma              modelos matemáticos.
+  função requerida sob dadas condições, em um dado instante,
+  supondo-se que os recursos externos tenham sido providos.              Notas: a)A disponibilidade assintótica média se obtém da disponibi-
+                                                                                  lidade média, pela equação:
+  2.12.3 Disponibilidade média; símbolo: A (t1, t2)
+                                                                                    A = lim A (t1, t 2 )
+  Média da disponibilidade instantânea durante um dado inter-                             t2 → ∞
+  valo de tempo A (t1, t2).
+
+  Nota: A disponibilidade média está relacionada à disponibilidade               b) Se o limite existir, ele independe de t1.
+        instantânea, pela equação:
+                                                                         2.12.8 Indisponibilidade assintótica média; símbolo: u
+
+                            1        t
+       A (t1, t 2 ) =
+                        t 2 − t1 t1
+                                    ∫ 2 A(t) . dt                        Limite, se existir, da indisponibilidade média durante um
+                                                                         intervalo de tempo (t1, t2), quando se faz t2 tender ao infinito,
+                                                                         usado em modelos matemáticos.
+  2.12.4 Indisponibilidade média; símbolo: u (t1, t2)
+                                                                         Notas: a)A indisponibilidade assintótica média se obtém da
+  Média da indisponibilidade instantânea durante um dado                          indisponibilidade média, pela equação:
+  intervalo de tempo u (t1, t2).
+                                                                                    u = lim u (t1, t 2 )
+  Nota: A indisponibilidade média está relacionada à indisponibilidade
+        instantânea, pela equação:                                                        t2 → ∞
+
+
+                            1       t
+                                                                                 b) Se o limite existir, ele independe de t1.
+       u (t1, t 2 ) =         ∫ 2 u(t) . dt
+                        t − t t1
+                        2       1
+                                                                         2.13 Medidas de confiabilidade
+
+  2.12.5 Disponibilidade assintótica; símbolo: A                         2.13.1 Confiabilidade; símbolo: R(t1, t2)
+
+  Limite, se existir, da disponibilidade instantânea, quando o           Probabilidade de um item poder desempenhar uma função
+  tempo tende ao infinito, usado em modelos matemáticos.                 requerida, sob dadas condições, durante um dado intervalo de
+                                                                         tempo (t1, t2).
+  Nota: Sob certas condições, por exemplo para taxa de falha e
+        taxa de reparo constantes, a disponibilidade assintótica po-     Notas: a)Supõe-se que o item esteja em condições de de-
+        de ser expressa pela equação:                                             sempenhar a função requerida no início do intervalo
+                                                                                  de tempo.
+       A = (MUT)/(MUT+MDT)
+                                                                                 b) Também chamada “Taxa de êxito”.
+  Onde:
+                                                                         2.13.2 Taxa de falha instantânea; símbolo: ( λt)
+       MDT = tempo médio de indisponibilidade (mean down
+             time)                                                       Limite, se existir, da razão da probabilidade condicional de
+                                                                         que a falha de um item ocorra em um dado intervalo de tempo
+       MUT = tempo médio de disponibilidade (mean up time)               (t, t + ∆t), visto que o item estava disponível no instante t, pela
+     Cópia não autorizada
+12                                                                                                                                   NBR 5462/1994
+
+
+     duração ∆t deste intervalo, quando ∆t tende a zero. Matemati-                  2.13.7 Tempo médio até falha; abreviação: MTTF
+     camente,
+                                                                                    Esperança matemática do tempo até a falha de um item.
+
+          λ(t) = lim
+                           [
+                     Pr t < T < (t + ∆t) T > t    ] = F(t + ∆t) − F(t) . 1 = f(t)   2.13.8 Tempo médio entre falhas; abreviação: MTBF
+                                                                        ∆t   R(t)
+                 ∆t → 0         ∆t                          R(t)
+
+                                                                                    Esperança matemática do tempo entre falhas de um item.
+     Onde:
+                                                                                    2.13.9 Tempo médio de operação entre falhas; abreviação:
+          t=       variável aleatória de interesse                                  MOTBF
+
+                                                                                    Esperança matemática do tempo de operação entre falhas de
+          F(t) = função de distribuição acumulada para o instante t
+                                                                                    um item.
+          R(t) = função de confiabilidade para o instante t
+                                                                                    2.14 Medidas de mantenabilidade
+          f(t) = função de densidade de probabilidade para o ins-                   2.14.1 Mantenabilidade
+                 tante t
+                                                                                    Probabilidade de uma dada ação de manutenção efetiva, para
+     Nota: A variável t pode ser o tempo até a primeira falha, ou o                 um item sob dadas condições de uso, poder ser efetuada den-
+           tempo entre a falha de um item reparado, ou o tempo até                  tro de um intervalo de tempo determinado, quando a ma-
+           a falha de um item não-reparado.
+                                                                                    nutenção é feita sob condições estabelecidas e usando pro-
+                                                                                    cedimentos e recursos prescritos.
+     2.13.3 Taxa de falha média; símbolo: λ (t1, t2)
+                                                                                    2.14.2 Taxa de reparo instantânea; símbolo: µ (t)
+     Média da taxa de falha instantânea em um dado intervalo de
+     tempo (t1, t2).                                                                Limite, se existir, da razão da probabilidade condicional de
+                                                                                    que o instante T de término de uma ação de manutenção
+     Nota: A taxa da falha média se relaciona com a taxa de falha                   corretiva ocorra em um dado intervalo de tempo (t, t + ∆t), pela
+           instantânea, pela equação:                                               duração t deste intervalo, quando ∆t tende a zero, supondo-
+                                     1        t                                     se que a ação esteja em andamento no início do intervalo
+             λ (t1, t 2 ) =           ∫ 2 λ(t) . dt
+                                t − t t1                                            de tempo.
+                                 2       1
+
+
+     2.13.4 Intensidade de falha instantânea; símbolo: z(t)                         Nota: A taxa de reparo instantânea é expressa pela equação:
+
+     Limite, se existir, da razão do número médio de falhas de um
+                                                                                                        Pr [t < T < (t + ∆t) T > t]
+     item reparado em um intervalo de tempo (t, t + ∆ t), pela du-                        µ (t) = lim
+                                                                                                                     ∆t
+     ração do intervalo t, quando esta duração tende a zero.                                        ∆t → 0
+
+     Nota: A intensidade de falha instantânea é expressa pela equação:
+                                                                                    2.14.3 Taxa de reparo média; símbolo: µ (t1, t2)
+                               E [N (t + ∆t) − N(t)]
+             z(t) = lim =                                                           Média da taxa de reparo instantânea em um dado intervalo de
+                                             ∆t
+                    ∆t→0
+                                                                                    tempo (t1, t2).
+
+                                                                                    Nota: A taxa de reparo média se relaciona com a taxa de reparo
+     Onde:                                                                                instantânea, pela equação:
+
+          N(t) = número de falhas no intervalo (0, t)                                                          1      t2
+                                                                                                           t 2 − t1 ∫t1
+                                                                                          µ (t1, t 2 ) =                 µ(t) . dt
+          E = esperança matemática
+                                                                                    2.14.4 Tempo de manutenção médio em homens-hora
+     2.13.5 Intensidade de falha média; símbolo: z (t1, t2)
+                                                                                    Esperança matemática do tempo de manutenção em homens-
+     Média da intensidade de falha instantânea em um dado intervalo                 hora.
+     de tempo (t1, t2).
+                                                                                    2.14.5 Tempo de indisponibilidade médio; abreviação: MDT
+     Nota: A intensidade de falha média se relaciona com a intensidade
+           de falha instantânea, pela equação:                                      Esperança matemática do tempo de indisponibilidade.
+
+                                                                                    2.14.6 Tempo de reparo médio; abreviação: MRT
+                               1      t2
+                           t 2 − t1 ∫t1
+          z (t1, t 2 ) =                 z(t) . dt
+                                                                                    Esperança matemática do tempo de reparo.
+
+     2.13.6 Tempo médio até a primeira falha; abreviação: MTTFF                     2.14.7 Tempo de manutenção corretiva efetiva médio
+
+     Esperança matemática do tempo até a primeira falha de um                       Esperança matemática do tempo de manutenção corretiva
+     item.                                                                          efetiva.
+                      Cópia não autorizada
+NBR 5462/1994                                                                                                                  13
+
+
+  2.14.8 Tempo de restabelecimento médio; abreviação: MTTR          durante um intervalo de tempo. Para ser válido, o ensaio
+                                                                    acelerado não deve alterar os modos de panes básicos e os
+  Esperança matemática do tempo de restabelecimento.                mecanismos de falhas ou suas prevalências relativas.
+
+  2.14.9 Eficiência de detecção de panes                            2.16.8 Ensaio de solicitação escalonada
+
+  Proporção de panes de um item que pode ser detectada, sob         Ensaio durante o qual vários níveis crescentes de solici-tações
+  dadas condições.                                                  são aplicados seqüencialmente a um item em etapas de
+                                                                    durações predeterminadas.
+  2.14.10 Eficiência de reparo
+                                                                    2.16.9 Ensaio seletivo
+  Proporção de panes de um item que pode ser corrigida com
+  sucesso.                                                          Ensaio ou conjunto de ensaios destinados a remover ou detectar
+                                                                    itens defeituosos ou aqueles que poderiam apre-sentar falhas
+  2.15 Medidas do suporte de manutenção                             prematuras.
+
+  2.15.1 Atraso administrativo médio; abreviação: MAD               2.16.10 Fator de aceleração
+
+  Esperança matemática do atraso administrativo.                    Relação entre as durações necessárias para se obter o mesmo
+                                                                    número estabelecido de falhas ou degradações em duas
+  2.15.2 Atraso logístico médio; abreviação: MLD                    amostras de tamanhos iguais sob dois con-juntos diferentes
+                                                                    de condições de solicitação, envolven-do os mesmos
+  Esperança matemática do atraso logístico.                         mecanismos de falhas e modos de pa-nes e suas freqüências
+                                                                    relativas.
+  2.16 Conceitos relativos a ensaios
+                                                                    2.16.11 Verificação da mantenabilidade
+  2.16.1 Ensaio
+                                                                    Procedimento aplicado com a finalidade de determinar se os
+  Experimento executado para medir, quantificar ou clas-sificar
+                                                                    requisitos para as características de mantenabi-lidade de um
+  uma característica ou propriedade de um item.
+                                                                    item foram, ou não, atingidos.
+  2.16.2 Ensaio de conformidade
+                                                                    Nota: Os procedimentos podem ir desde a análise de dados
+                                                                          apropriados até uma demonstração de mantenabilidade.
+  Ensaio usado para mostrar se uma característica ou
+  propriedade de um item está em conformidade com os                2.16.12 Demonstração de mantenabilidade
+  requisitos estabelecidos.
+                                                                    Verificação da mantenabilidade feita como um ensaio de
+  2.16.3 Ensaio de determinação
+                                                                    conformidade.
+  Ensaio usado para estabelecer o valor de uma característica
+                                                                    2.17 Conceitos sobre dados
+  ou propriedade de um item.
+
+  2.16.4 Ensaio de laboratório                                      2.17.1 Dados observados
+
+
+  Ensaio de conformidade ou de determinação feito sob               Valores relativos a um item ou processo obtidos pela
+  condições prescritas e controladas, que podem, ou não, simular    observação direta.
+  condições de campo.
+                                                                    Notas: a)Estes valores podem ser eventos, instantes, intervalos
+  2.16.5 Ensaio de campo                                                     de tempo e outros.
+
+                                                                          b)Ao registrar os dados, todas as condições e critérios
+  Ensaio de conformidade ou de determinação feito no local de
+                                                                            relevantes devem ser indicados.
+  utilização, registrando as condições de opera-ção, ambientais,
+  de medidas e manutenção.
+                                                                    2.17.2 Dados de ensaio
+  2.16.6 Ensaio de vida
+                                                                    Dados observados obtidos durante ensaios.
+  Ensaio efetuado em um certo intervalo de tempo para in-vestigar
+  como as propriedades de um item são afeta-das pela aplicação      2.17.3 Dados de campo
+  de solicitações especificadas e suas durações.
+                                                                    Dados observados obtidos durante operação em campo.
+  2.16.7 Ensaio acelerado
+                                                                    2.17.4 Dados de referência
+  Ensaio no qual os níveis das solicitações aplicados são
+  escolhidos de modo a exceder aqueles especificados nas            Dados que por concordância geral podem ser usados como
+  condições de referência, a fim de reduzir o tempo necessário      padrões ou como base para previsão e/ou comparação com
+  para se observar a reação do item, ou para ampliar esta reação    dados observados.
+       Cópia não autorizada
+14                                                                                                          NBR 5462/1994
+
+
+     2.18 Conceitos relativos a projetos                             2.19.5 Análise da árvore de panes; abreviação: FTA
+
+     2.18.1 Redundância                                              Análise, apresentada na forma de árvore de panes, para
+                                                                     determinar quais modos de pane de subitens, quais eventos
+     Existência, em um item, de mais de um meio de desempenhar       externos ou quais combinações destes modos e eventos podem
+     uma função requerida.                                           resultar em um dado modo de pane de um item.
+
+     Nota: Tais meios não são necessariamente idênticos.
+                                                                     2.19.6 Análise de solicitações
+     2.18.2 Redundância ativa
+                                                                     Determinação das solicitações físicas, químicas e outras a
+     Redundância onde todos os meios para desempenhar uma            que um item é submetido sob dadas condições.
+     função requerida são projetados para operar simultaneamente.
+                                                                     2.19.7 Diagrama de blocos da confiabilidade
+     2.18.3 Redundância de prontidão (stand by)
+                                                                     Diagrama de blocos mostrando, para um ou mais modos de
+     Redundância onde somente um dos meios para desempenhar          funcionamento de um item completo, como as panes dos
+     uma função requerida é projetado para operar, enquanto os       subitens (representados por blocos) ou combinações delas
+     restantes permanecem inativos até serem necessários.            resultam em panes do item.
+
+     2.18.4 Proteção contra falhas
+                                                                     2.19.8 Árvore de panes
+
+     Propriedade de projeto de um item que evita que suas falhas
+     resultem em panes críticas.                                     Diagrama lógico mostrando quais modos de pane de subitens,
+                                                                     quais eventos externos ou quais combinações desses modos
+     2.18.5 Tolerância a panes                                       e eventos resultam em um dado modo de pane do item.
+
+     Propriedade de um item que o torna capaz de desempenhar         2.19.9 Diagrama de transição de estados
+     uma função requerida na presença de certas panes de de-
+     terminados subitens.                                            Diagrama mostrando os possíveis estados de um item e as
+                                                                     transições diretas entre eles.
+     2.18.6 Mascaramento de pane
+                                                                     2.19.10 Modelo de solicitações
+     Condição de pane em um subitem que não pode ser detectada
+     em razão da estrutura do item ou por causa de uma outra pane
+     no mesmo subitem ou em outro.                                   Modelo matemático que descreve as influências das
+                                                                     solicitações aplicadas a um item, sobre suas características
+     2.19 Conceitos relativos à análise                              de confiabilidade ou outras propriedades.
+
+     2.19.1 Previsão                                                 2.19.11 Análise de panes
+
+     Processo de cálculo para obtenção do valor previsto de uma      Exame lógico e sistemático de um item para identificar e
+     grandeza.                                                       analisar as probabilidades, as causas e conseqüências de
+                                                                     possíveis panes.
+     Nota: O termo “previsão” pode também ser usado para indicar
+           o(s) valor(es) previsto(s) de uma grandeza.
+                                                                     2.19.12 Análise de falhas
+     2.19.2 Modelo de confiabilidade
+                                                                     Exame lógico e sistemático de um item que falhou, para
+     Modelo matemático usado para previsão ou estimação das          identificar e analisar o mecanismo, a causa e as conseqüências
+     medidas de confiabilidade de um item.                           da falha.
+
+     2.19.3 Análise dos modos de pane e seus efeitos;                2.19.13 Modelo de mantenabilidade
+     abreviação: FMEA
+                                                                     Modelo matemático usado para previsão ou estimação das
+     Método qualitativo de análise de confiabilidade que envolve o   características de mantenabilidade de um item.
+     estudo dos modos de panes que podem existir para cada
+     subitem, e a determinação dos efeitos de cada modo de pane
+                                                                     Nota: Um exemplo é a árvore de manutenção.
+     sobre os outros subitens e sobre a função requerida do item.
+
+     2.19.4 Análise dos modos de pane, seus efeitos e sua            2.19.14 Previsão da mantenabilidade
+     criticidade; abreviação: FMECA
+                                                                     Atividade executada a fim de prever os valores numéricos de
+     Análise dos modos de pane e seus efeitos, em conjunto com       uma medida de mantenabilidade, levando-se em conta as
+     uma avaliação da probabilidade de ocorrência e do grau de       medidas de confiabilidade e mantenabilidade de seus subitens,
+     criticidade das panes.                                          sob dadas condições operacionais e de manutenção.
+                       Cópia não autorizada
+NBR 5462/1994                                                                                                                         15
+
+
+  2.19.15 Árvore de manutenção                                          2.20.9 Programa de confiabilidade e mantenabilidade
+
+  Diagrama lógico mostrando as diferentes seqüências de ações           Conjunto documentado de atividades, recursos e eventos
+  elementares de manutenção, possíveis de serem executadas              planejados segundo um cronograma, destinados a implementar
+  sobre um item, e as condições de escolha de cada alternativa.         a estrutura da organização, as responsabilidades, os
+                                                                        procedimentos, as atividades, as capacidades e os recursos
+  2.19.16 Alocação de mantenabilidade                                   que, em conjunto, visam a garantir que um item atenderá aos
+                                                                        requisitos de confiabilidade e mantenabilidade exigidos por
+  Procedimento aplicado durante o projeto de um item, com a             um projeto ou contrato.
+  finalidade de alocar os requisitos de mantenabilidade entre
+  seus subitens, de acordo com dados critérios.                         2.20.10 Plano de confiabilidade e mantenabilidade
+
+  2.20 Processo de melhoria                                             Documento que estipula práticas específicas, recursos e
+                                                                        atividades necessárias para garantir que um item atenderá
+  2.20.1 Processo de aprendizagem (para confiabilidade)                 aos requisitos de confiabilidade e mantenabilidade exigidos
+                                                                        por um certo projeto ou contrato.
+  Processo pelo qual o pessoal adquire experiência crescente
+  que resulta em melhoria da confiabilidade de um item.                 2.20.11 Plano/Auditoria da confiabilidade e mantenabilidade
+
+  2.20.2 Depuração (Burn-in) (para item reparável)                      Exame sistemático, feito por pessoal independente, para
+                                                                        verificar se as atividades e resultados estão conforme as
+  Processo para aumentar a confiabilidade do item, fazendo-o            disposições preestabelecidas, e se estas disposições estão
+  funcionar em condições predeterminadas e efetuando-se                 efetivamente implementadas e são apropriadas para que os
+  reparos (manutenções corretivas) após cada falha, durante o           objetivos sejam atingidos.
+  período de falhas prematuras.
+                                                                        2.20.12 Supervisão da confiabilidade e mantenabilidade
+  2.20.3 Depuração (Burn-in) (para itens não-reparáveis)
+                                                                        Observação contínua dos procedimentos, métodos, condições,
+  Ensaio seletivo que se aplica sobre uma população de itens            produtos, processos e serviços, com análise dos relatórios, a
+  não-reparáveis, fazendo-os funcionar em condições                     fim de verificar se os requisitos de confiabilidade e
+  predeterminadas, com o objetivo de remover itens com falhas           mantenabilidade estão sendo atendidos.
+  prematuras.
+                                                                        Nota: Esta supervisão é, muitas vezes, feita pelo cliente ou por
+                                                                              terceiros.
+  2.20.4 Crescimento da confiabilidade
+                                                                        2.20.13 Revisão de projeto
+  Melhoria progressiva de uma medida de confiabilidade de um
+  item, ao longo do tempo.                                              Exame formal de um projeto, feito por pessoal independente,
+                                                                        com a finalidade de:
+  2.20.5 Melhoria da confiabilidade
+                                                                               - detectar e corrigir as deficiências nas especificações
+  Processo executado com a intenção deliberada de melhorar a                     e no projeto que poderiam afetar a confiabilidade,
+  confiabilidade, pela eliminação das causas de falhas                           mantenabilidade e suporte à manutenção;
+  sistemáticas ou pela redução da probabilidade de outras falhas.
+                                                                               - verificar a adequação do projeto à sua finalidade;
+  2.20.6 Gerenciamento da confiabilidade e mantenabilidade
+                                                                               - identificar possíveis melhorias.
+  Administração das funções e atividades necessárias para
+  determinar e satisfazer os requisitos de confiabilidade e             Nota: A revisão do projeto, por si mesma, não é suficiente para
+  mantenabilidade de um item.                                                 garantir um projeto correto.
+
+  2.20.7 Garantia da confiabilidade e mantenabilidade                   2.21 Qualificadores de medidas
+
+  Implementação de um conjunto apropriado de ações planejadas           2.21.1 Verdadeiro
+  e sistemáticas para que se tenha confiança de que um item
+  atenderá a requisitos de confiabilidade e mantenabilidade.            Valor real da grandeza perfeitamente definida, em determinadas
+                                                                        condições.
+  Nota: Isto inclui uma avaliação contínua da adequação e efetividade
+        das funções e atividades, a fim de deflagrar medidas            Nota: Somente se poderia chegar a este valor se todas as causas
+        corretivas e de realimentação, quando necessárias. Em                 de erros de medida fossem eliminadas e toda a população
+        cada caso particular, a garantia inclui planos e ações para           fosse considerada.
+        prover confiança, através de verificações detalhadas,
+        auditorias e avaliações.                                        2.21.2 Previsto
+
+  2.20.8 Controle da confiabilidade e mantenabilidade                   Valor numérico atribuído a uma grandeza, antes que ela seja
+                                                                        observada, com base em valores anteriormente observados,
+  Técnicas e atividades empregadas para atender aos requisitos          ou o valor estimado da mesma grandeza ou de outras, utilizando-
+  de confiabilidade e mantenabilidade.                                  se um modelo matemático.
+     Cópia não autorizada
+16                                                                                                           NBR 5462/1994
+
+
+     2.21.3 Extrapolado                                                2.21.6 Operacional
+
+
+     Valor previsto para determinadas condições (tais como: tempo,     Valor determinado, sob dadas condições operacionais.
+     condições ambientais, etc.), com base em valores observados
+     ou estimados em um outro conjunto de condições.                   2.21.7 Médio
+
+     2.21.4 Estimado                                                   Valor obtido como esperança matemática de uma variável
+                                                                       aleatória; integral normalizada de uma grandeza dependente
+     Valor obtido a partir de uma amostra, com a finalidade de         do tempo.
+     atribuir valores numéricos aos parâmetros de distribuição
+     escolhida como modelo estatístico da respectiva população.        2.21.8 Fráctil de ordem p
+
+
+     Nota: O resultado pode ser expresso por valor numérico simples,   Valor obtido como o fráctil de ordem p da distribuição de uma
+           estimativa por pontos ou intervalo de confiança.            variável aleatória.
+
+     2.21.5 Intrínseco/Inerente                                        2.21.9 Instantâneo
+
+
+     Valor determinado, quando se considera que a manutenção e         Valor, em um dado instante, de uma grandeza variável no
+     as condições operacionais são ideais.                             tempo.
+
+
+
+
+                                                                                                                         /ANEXO A
+                    Cópia não autorizada
+NBR 5462/1994                                                                                                   17
+
+
+                             ANEXO A - Relações entre os conceitos de defeito, falha e pane
+
+     Defeito                                  Falha                             Pane
+
+     Defeito crítico                         Falha crítica                      Pane crítica
+     Defeito não-crítico                     Falha não-crítica                  Pane não-crítica
+     Defeito maior                           -                                  Pane maior
+     Defeito menor                           -                                  Pane menor
+     -                                       Falha por uso incorreto            Pane por uso incorreto
+     -                                       Falha por manuseio                 Pane por manuseio
+     -                                       Falha por fragilidade inerente     Pane por fragilidade inerente
+     Defeito de projeto                      Falha de projeto                   Pane de projeto
+     Defeito de fabricação                   Falha de fabricação                Pane de fabricação
+     -                                       Falha por deterioração             Pane por deterioração
+     -                                       Falha repentina                    -
+     -                                       Falha gradual                      -
+     -                                       Falha catastrófica                 -
+     -                                       Falha não-relevante                -
+     -                                       Falha primária                     -
+     -                                       Falha secundária                   -
+     -                                       Causa de falha                     -
+     -                                       Mecanismo de falha                 -
+     -                                       -                                  Pane evidenciada por programa
+     -                                       -                                  Pane evidenciada por dados
+     -                                       -                                  Pane completa
+     -                                       -                                  Pane parcial
+     -                                       -                                  Pane persistente
+     -                                       -                                  Pane temporária
+     -                                       -                                  Pane intermitente
+     -                                       -                                  Modo de pane
+     -                                       -                                  Pane determinada
+     -                                       -                                  Pane indeterminada
+     -                                       -                                  Pane latente
+     -                                       Falha sistemática                  Pane sistemática
+     Bug                                     -                                  -
+     -                                       Falha por degradação               -
+
+
+
+
+                                                                                                          /ANEXO B
+     Cópia não autorizada
+18                                                                                                        NBR 5462/1994
+
+
+                                         ANEXO B - Lista de símbolos e abreviações
+
+                        λ (t)                 Taxa de falha instantânea
+                        λ (t1, t2)            Taxa de falha média [no intervalo (t1, t2)]
+                        µ (t)                 Taxa de reparo instantânea
+                           (t , t )           Taxa de reparo média [no intervalo (t1, t2)]
+                        µ 1 2
+                        A                     Disponibilidade assintótica
+                        A (t)                 Disponibilidade instantânea
+                                              Disponibilidade assintótica média
+                        A
+                          (t1,t2)             Disponibilidade média [no intervalo (t1, t2)]
+                        E(x)                  Esperança matemática (de X)
+                        FMEA                  Análise dos modos de pane e seus efeitos
+                        FMECA                 Análise dos modos de pane, seus efeitos e sua criticidade
+                        FTA                   Análise da árvore de panes
+                        MADT                  Tempo de indisponibilidade acumulado médio
+                        MAD                   Atraso administrativo médio
+                        MDT                   Tempo de indisponibilidade médio
+                        MLD                   Atraso logístico médio
+                        MMH                   Tempo de manutenção em homens-hora
+                        MOTBF                 Tempo médio de operação entre falhas
+                        MRT                   Tempo de reparo médio
+                        MTBF                  Tempo médio entre falhas
+                        MTTF                  Tempo médio até falha
+                        MTTFF                 Tempo médio até a primeira falha
+                        MTTR                  Tempo de restabelecimento médio
+                        MUT                   Tempo de disponibilidade médio
+                        N(t)                  Número de falhas [no intervalo (0, ∆t )]
+                        N(t1, t2)             Intensidade de falha [no intervalo (t1, t2)]
+                        R(t1, t2)             Confiabilidade
+                        u                     Indisponibilidade assintótica
+                        u(t)                  Indisponibilidade instantânea
+                            u                 Indisponibilidade assintótica média
+
+                            u (t1, t2)        Indisponibilidade média [no intervalo (t1, t2)]
+                            z(t)              Intensidade de falha instantânea
+                            z (t1, t2)        Intensidade de falha média [no intervalo (t1, t2)]
+
+
+
+
+                                                                                                                /ANEXO C
+                     Cópia não autorizada
+NBR 5462/1994                                                                                                                19
+
+
+                    ANEXO C - Listas de equivalência dos termos técnicos relacionados à confiabilidade e
+                           mantenabilidade - Entrada em Português
+
+             Português                                  Inglês                               Francês
+
+    - Ação de manutenção                      - Maintenance action                  - Opération de maintenance/Tâche
+                                                                                      de maintenance
+    - Ação de manutenção                      - Maintenance task                    - Opération de maintenance/Tâche
+                                                                                      de maintenance
+    - Alocação de mantenabilidade             - Maintainability allocation/         - Allocation de maintenabilité
+                                                Maintainability apportionment
+    - Análise de árvore de panes              - Fault tree analysis                 - Analyse par arbre de panne
+    - Análise de falhas                       - Failure analysis                    - Analyse des pannes
+    - Análise de solicitação                  - Stress analysis                     - Analyse des contraintes
+    - Análise dos modos de panes              - Fault modes and effects             - Analyse des modes de panne
+      e seus efeitos                            analysis                              e leurs effets
+    - Análise dos modos de panes,             - Fault modes, effects and            - Analyse des modes de panne,
+      seus efeitos e sua criticidade            criticality analysis                  de leurs effets et de leur criticité
+    - Árvore de manutenção                    - Maintenance tree                    - Arbre de maintenance
+    - Árvore de panes                         - Fault tree                          - Arbre des pannes
+    - Atividade elementar de                  - Elementary maintenance              - Opération élémentaire de
+      manutenção                                activity                              maintenance
+    - Atraso administrativo                   - Administrative delay                - Délai administratif
+    - Atraso administrativo médio             - Mean administrative delay           - Durée moyenne du délai
+                                                administratif
+    - Atraso logístico                        - Logistic delay                      - Délai logistique
+    - Atraso logístico médio                  - Mean logistic delay                 - Durée du délai logistique
+    - Atraso técnico                          - Technical delay                     - Délai technique
+    - Auditoria da confiabilidade e           - Reliability and maintainability     - Audit de la fiabilité et de la
+      mantenabilidade                           audit                                 maintenabilité
+    - Bug                                     - Bug                                 - Bogue
+    - Célula de manutenção                    - Maintenance entity                  - Cellule de maintenance
+    - Capabilidade                            - Capability                          - Capacité
+    - Causa de falha                          - Failure cause                       - Cause de défaillance
+    - Confiabilidade                          - Reliability                         - Fiabilité
+    - Controle da confiabilidade e            - Reliability and maintainability     - Maîtrise de la fiabilité et de
+      mantenabilidade                           control                               la maintenabilité
+    - Correção de pane                        - Fault correction                    - Correction de panne
+    - Crescimento da confiabilidade           - Reliability growth                  - Croissance de la fiabilité
+    - Dados de campo                          - Field data                          - Données d’explointation
+    - Dados de ensaio                         - Test data                           - Données d’essai
+    - Dados de referência                     - Reference data                      - Valeur de reférénce/Donnée
+                                                de reférénce
+    - Dados observados                        - Observed data                       - Valeur observée/Donnée observée
+    - Defeito                                 - Defect                              - Défaut
+    - Defeito crítico                         - Critical defect                     - Défaut critique
+    - Defeito de fabricação                   - Manufacturing defect                - Défaut de fabrication
+    - Defeito de projeto                      - Design defect                       - Défaut de conception
+    - Defeito maior                           - Major defect                        - Défaut majeur
+    - Defeito menor                           - Minor defect                        - Défaut mineur
+    - Imperfeição                             - Imperfection                        - Imperfection
+    - Defeito não-crítico                     - Non-critical defect                 - Défaut non critique
+    - Defeituoso                              - Defective                           - Défectuex/Entité défectueuse
+    - Defeituoso crítico                      - Critical defective                  - Défectueux critique
+    - Defeituoso maior                        - Major defective                     - Défectueux majeur
+    - Defeituoso menor                        - Minor defective                     - Défectueux mineur
+                                                                                                                   /continua
+      Cópia não autorizada
+20                                                                                                    NBR 5462/1994
+
+
+     /continuação
+
+                    Português                           Inglês                              Francês
+
+        - Demonstração de                    - Maintainability                      - Vérification experimentale
+          mantenabilidade                      demonstration                          de la maintenabilité
+        - Dependabilidade                    - Dependability                        - Surêté de fonctionnement
+        - Depuração                          - Burn-in                              - Rodage
+        - Desempenho do suporte              - Maintenance support                  - Logistique de maintenance
+          à manutenção                         performance
+        - Detecção da pane                   - Fault recognition                    - Détection de panne
+        - Diagnóstico da pane                - Fault diagnosis                      - Diagnostic de panne
+        - Diagrama de blocos da              - Reliability bloc diagram             - Diagramme de fiabilité
+          confiabilidade
+        - Diagrama de transição de estados   - State-transition diagram             - Diagramme de transition
+        - Disponibilidade                    - Availability                         - Disponibilité
+        - Disponibilidade assintótica        - Asymptotic availability              - Disponibilité asymptotique
+        - Disponibilidade assintótica        - Asymptotic mean availability         - Disponibilité moyenne
+          média                                                                       asymptotique
+        - Disponibilidade instantânea        - Instantaneous availability           - Disponibilité (instantanée)
+        - Disponibilidade média              - Mean availability                    - Disponibilité moyenne
+        - Durabilidade                       - Durability                           - Durabilité
+        - Duração                            - Duration                             - Durée
+        - Eficácia                           - Effectiveness                        - Efficacité
+        - Eficiência de confirmação de       - Fault coverage                       - Couverture des pannes
+          panes
+        - Eficiência de reparo               - Repair coverage                      - Couverture des réparations
+        - Erro humano/Engano                 - Human error/Mistake                  - Erreur humaine/Faute
+        - Ensaio                             - Test                                 - Essai
+        - Ensaio acelerado                   - Accelerated test                     - Essai accéléré
+        - Ensaio de campo                    - Field test                           - Essai sur site/Essai en campagne
+        - Ensaio de conformidade             - Compliance test                      - Essai de conformité
+        - Ensaio de determinação             - Determination test                   - Essai de détermination
+        - Ensaio de laboratório              - Laboratory test                      - Essai en laboratoire
+        - Ensaio de solicitação escalonada   - Step stress test                     - Essai sous contrainte échelonnée
+        - Ensaio de vida                     - Endurance test                       - Essai d’endurance
+        - Ensaio seletivo                    - Sereening test                       - Essai de sélection
+        - Erro                               - Error                                - Erreur
+        - Escalão de manutenção              - Line of maintenance/                 - Échelon de maintenance
+                                               Maintenance echelon                  - Échelon de maintenance
+        - Estado crítico                     - Critical state                       - État critique
+        - Estado de disponibilidade          - Up state                             - État de disponibilité
+        - Estado de incapacidade             - Disabled state/Outage                - État d’incapacité
+        - Estado de incapacidade             - External disabled state              - État d’incapacité externe
+          por razões externas
+        - Estado de indisponibilidade        - Down state/Internal disabled state   - État d’indisponibilité/État
+                                                                                      d’incapacité interne
+        - Estado de não-operação             - Non-operating state                  - État de non fonctionnement
+        - Estado de ocupação                 - Busy state                           - Occupation/État occupé
+        - Estado de operação                 - Operating state                      - État de fonctionnement
+        - Estado de prontidão                - Stand-by state                       - Attente
+        - Estado livre                       - Free state/Idle state                - État vacant/État libre
+        - Estimado                           - Estimated                            - Estimé
+        - Extrapolado                        - Extrapolated                         - Extrapolé
+        - Falha                              - Failure                              - Défaillance
+                                                                                                                    /continua
+                       Cópia não autorizada
+NBR 5462/1994                                                                                                            21
+
+
+  /continuação
+
+                 Português                               Inglês                           Francês
+
+    - Falha catastrófica                      - Cataleptic failure/               - Défaillance catalectique
+                                               Catastrophic failure
+    - Falha completa                          - Complete failure                  - Défaillance compléte
+    - Falha crítica                           - Critical failure                  - Défaillance critique
+    - Falha de fabricação                     - Manufacturing failure             - Défaillance de fabrication
+    - Falha de projeto                        - Design failure                    - Défaillance de conception
+    - Falha gradual                           - Drift failure/Gradual failure     - Défaillance progressive/
+                                                                                     Défaillance par dérive
+    - Falha não-crítica                       - Non-critical failure              - Défaillance non critique
+    - Falha não-relevante                     - Non-relevant failure              - Défaillance non pertinente/
+                                                                                     Défaillance a ne pas pendre en
+                                                                                     compte
+    - Falha parcial                           - Partial failure                   - Défaillance partielle
+    - Falha por degradação                    - Degradation failure               - Défaillance par dégradation
+    - Falha por deterioração                  - Ageing failure/Wearout failure    - Défaillance par vieillissement/
+                                                                                     Défaillance par usure
+    - Falha por fragilidade                   - Weakness failure                  - Défaillance par fragilité
+    - Falha por manuseio                      - Mishandling failure               - Défaillance par fausse monoeuvre
+    - Falha por uso incorreto                 - Misuse failure                    - Défaillance par mauvais emploi
+    - Falha primária                          - Primary failure                   - Défaillance primaire
+    - Falha relevante                         - Relevant failure                  - Défaillance pertinente/Défaillance
+                                                                                     a pendre en compte
+    - Falha repentina                         - Sudden failure                    - Défaillance soudaine
+    - Falha secundária                        - Secondary failure                 - Défaillance secondaire
+    - Falha sistemática                       - Reproducible failure/             - Défaillance systématique/
+                                                Systematic failure                   Défaillance reproductible
+    - Fator de aceleração temporal            - Time acceleration factor          - Facteur d’accélération temporelle
+    - Filosofia de manutenção                 - Maintenance philosophy            - Philosophie de maintenance
+    - Fráctil de ordem p                      - p-fractile                        - Fractile d’ordre p
+    - Função requerida                        - Required function                 - Fonction requisé
+    -Garantia da confiabilidade e             - Reliability and maintainability   - Assurance de la fiabilité et de
+      mantenabilidade                           assurance                            la maintenabilité
+    - Gerenciamento de confiabilidade         - Reliability and maintainability   - Gestion de la fiabilité et de
+      e mantenabilidade                         management                           la maintenabilité
+    - Indisponibilidade assintótica           - Asymptotic unavailability         - Indisponibilité asymptotique
+    - Indisponibilidade em regime             - Steady-state unavailability       - Indisponibilité en regime établi
+    - Indisponibilidade instantânea           - Instantaneous unavailability      - Indisponibilité (instantanée)
+    - Indisponibilidade média                 - Mean unavailability               - Indisponibilité moyenne
+    - Indisponibilidade média                 - Asymptotic mean unavailability    - Indisponibilité moyenne
+      assintótica                                                                    asymptotique
+    - Inerente                                - Inherent                          - Inhérent
+    - Instantâneo                             - Instantaneous                     - Instantané
+    - Instante                                - Instant                           - Instant
+    - Intensidade de falha instantânea        - Instantaneous failure intensity   - Intensité (instantanée) de
+                                                                                     défaillance
+    - Intensidade de falha média              - Mean failure intensity            - Intensité moyenne de défaillance
+    - Intervalo de tempo                      - Time interval                     - Intervalle de temps
+    - Intrínseco                              - Intrinsic                         - Intrinséque
+    - Item                                    - Item                              - Entité/Dispositif/Individu
+    - Item em pane                            - Faulty item                       - Entité en panne
+    - Item não-reparado                       - Non-repaired item                 - Entité non réparée
+    - Item reparado                           - Repaired item                     - Entité réparée
+
+                                                                                                                 /continua
+     Cópia não autorizada
+22                                                                                          NBR 5462/1994
+
+
+                Português                       Inglês                            Francês
+
+      - Localização da pane           - Fault localization                - Localisation de panne
+      - Mantenabilidade               - Maintainability                   - Maintenabilité
+      - Manutenção                    - Maintenance                       - Maintenance
+      - Manutenção afetando o         - Function-affecting                - Maintenance
+        funcionamento                   maintenance                         afectante les fonctions
+      - Manutenção automática         - Automatic maintenance             - Maintenance automatique
+      - Manutenção controlada/        - Controlled maintenance            - Maintenance dirigée
+        Manutenção preditiva
+      - Manutenção corretiva          - Corrective maintenance            - Maintenance corrective/Dépannage
+      - Manutenção deferida           - Deferred maintenance              - Maintenance differée/Intervention
+                                                                            differée
+      - Manutenção degradando o       - Function degrading                - Maintenance en fonctionnement
+        funcionamento                   maintenance                         dégradé/Maintenance dégradant
+                                                                            des fonctions
+      - Manutenção fora do local de   - Off-site maintenance              - Maintenance hors site
+        utilização
+      - Manutenção impedindo o        - Function-preventing               - Maintenance a l’ arrêt/Maintenance
+        funcionamento                   maintenance                         empêchant l’ acomplissement des
+                                                                            fonctions
+      - Manutenção no campo           - Field maintenance/In situ         - Maintenance sur site
+                                        maintenance/On-site maintenance
+      - Manutenção não-programada     - Unscheduled maintenance           - Maintenance conditionnelle
+      -Manutenção permitindo o        - Function-permitting               - Maintenance en fonctionnement/
+        funcionamento                   maintenance                         Maintenance en exploitation
+      - Manutenção preventiva         - Preventive maintenance            - Entretien/Maintenance preventive
+      - Manutenção programada         - Scheduled maintenance             - Entretien systematique/
+                                                                            Maintenance systematique
+      - Manutenção remota             - Remote maintenance                - Télémaintenance
+      - Mascaramento de pane          - Fault masking                     - Masquage de panne
+      - Mecanismo de falha            - Failure mechanism                 - Mécanisme de défaillance
+      - Medida                        - Measure                           - Caracteristique/Mesure
+      - Médio                         - Average                           - Moyen
+      - Melhoria da confiabilidade    - Reliability improvement           - Amélioration de la fiabilité
+      - Modelo de confiabilidade      - Reliability model                 - Modéle de fiabilité
+      - Modelo de mantenabilidade     - Maintainability model             - Modéle de maintenabilité
+      - Modelo de solicitações        - Stress model                      - Modéle de contraintes
+      - Modificação                   - Modification                      - Modification
+      - Modo de funcionamento         - Functional mode                   - Mode de fonctionnement
+      - Modo de pane                  - Fault mode                        - Mode de panne
+      - Nível de confiança            - Confidence level                  - Niveau de confiance
+      - Nível de intervenção          - Identure level                    - Niveau d’intervention
+      - Nível de manutenção           - Level of maintenance              - Niveau de maintenance
+      - Operação                      - Operation                         - Exploitation
+      - Operacional                   - Operational                       - Opérationnel
+      - Pane                          - Fault                             - Panne/Dérangement
+      - Pane completa                 - Complete fault/Function           - Panne complète
+                                        preventing fault
+      - Pane crítica                  - Critical fault                    - Panne critique
+      - Pane de fabricação            - Manufacturing fault               - Panne de fabrication
+      - Pane de projeto               - Design fault                      - Panne de conception
+      - Pane determinada              - Determinate fault                 - Panne franche
+      - Pane evidenciada por dados    - Data-sensitive fault              - Panne mise en evidence par les
+                                                                            données
+
+                                                                                                         /continua
+                      Cópia não autorizada
+NBR 5462/1994                                                                                                                    23
+
+
+  /continuação
+                 Português                             Inglês                                  Francês
+
+    - Pane evidenciada por programa          - Programme sensitive fault              - Panne mise en evidence par le
+                                                                                        programme
+    - Pane indeterminada                     - Indeterminate fault                    - Panne indéterminée
+    - Pane intermitente                      - Intermittent fault                     - Panne intermittente
+    - Pane latente                           - Latent fault                           - Panne latente
+    - Pane maior                             - Major fault                            - Panne majeure
+    - Pane menor                             - Minor fault                            - Panne mineure
+    - Pane não-crítica                       - Non-critical fault                     - Panne non critique
+    - Pane parcial                           - Partial fault                          - Panne partielle
+    - Pane permanente                        - Persistent fault/Permanent             - Panne permanente
+                                               Solid fault
+    - Pane por deterioração                  - Ageing fault/Wearout fault             - Panne par vieillissement/
+                                                                                        Panne par usure
+    - Pane por fragilidade                   - Weakness fault                         - Panne par fragilité
+    - Pane por manuseio                      - Mishandling fault                      - Panne par fausse manoeuvre
+    - Pane por uso incorreto                 - Misuse fault                           - Panne par mauvais emploi
+    - Pane sistemática                       - Systematic fault                       - Panne systématique
+    - Pane temporária                        - Transient fault                        - Panne volatile fanet intermittente/
+                                                                                        Panne temporaire
+    - Período de falhas por deterioração     - Wearout failure period                 - Période de défailance par
+                                                                                        vieillissement/Période de
+                                                                                        défaillance par usure
+    - Período de falhas prematuras           - Early failure period                   - Période de défaillance précoce
+    - Período de intensidade de              - Constant failure intensity period      - Période d’ intensité constante
+      falha constante                                                                   de défaillance
+    - Período de taxa de falha constante     - Constant failure rate period           - Période de taux constant de
+                                                                                        défaillance/Période de densité
+                                                                                        constant de défaillance
+    - Plano de confiabilidade e              - Reliability and maintainability plan   - Plan de fiabilité et de maintenabilité
+      mantenabilidade
+    - Política de manutenção                 - Maintenance policy                     - Politique de maintenance
+    - Previsão                               - Prediction                             - Prévision/ Prédiction
+    - Previsão de mantenabilidade            - Maintainability prediction             - Prevision de la maintenabililité/
+                                                                                        Prédiction de la maintenabilité
+    - Previsto                               - Predicted                              - Prévu/Predit
+    - Processo de aprendizagem               - Learning process                       - Aprentissage (enfiabilité)
+    - Programa de confiabilidade e           - Reliability and maintainability        - Programme de fiabilité
+      mantenabilidade                          programme                                et de maintenabilité
+    - Proteção contra falhas                 - Fail safe                              - De securité intrinséque/À
+                                                                                        sûreté integrée
+    - Redundância                            - Redundance                             - Redondance (de moyens)
+    - Redundância ativa                      - Active redundance                      - Redondance active
+    - Redundância de prontidão               - Stand-by redundance                    - Redondance en attente/Redondance
+                                                                                        passive/Redondance en secours
+    - Restabelecimento funcional             - Recovery/Restoration                   - Rétablissement
+    - Revisão de projeto                     - Design review                          - Revue de conception/Revue de projet
+    - Serviço                                - Service                                - Service
+    - Solicitação reduzida                   - Derating
+    - Supervisão da confiabilidade e         - Reliability and maintainability        - Surveillance de la fiabilité et de
+      mantenabilidade                          surveillance                             la maintenabilité
+    - Supervisão/Monitoração)                - Supervision/Monitoring                 - Surveillance/Supervision
+    - Taxa de falha instantânea              - Instantaneous failure rate             - Taux instantané de défaillance/
+                                                                                        Densité instantané de défaillance
+                                                                                                                          /continua
+      Cópia não autorizada
+24                                                                                              NBR 5462/1994
+
+
+     /continuação
+                    Português                        Inglês                           Francês
+
+       - Taxa de falha média              - Mean failure rate                 - Taux moyen de défaillance
+                                                                                Densité moyenne de défaillance
+       - Taxa de reparo instantânea       - Instantaneous repair rate         - Taux instantané de réparation
+       - Taxa de reparo média             - Mean repair rate                  - Taux moyen de réparation/Densité
+                                                                                moyenne de réparation
+       - Tempo acumulado                  - Accumulated time                  - Durée cumulée
+       - Tempo até a primeira falha       - Time to first failure             - Durée de fonctionnement
+                                                                                avant la première défaillance
+       - Tempo até falha                  - Time to failure                   - Durée de fonctionnement
+                                                                                avant défaillance
+       - Tempo de atraso                  - Logistic delay                    - Délai logistic
+       - Tempo de correção de pane        - Fault correction time             - Temps de correction de panne
+       - Tempo de detecção de pane        - Fault confirmation time
+       - Tempo de diagnóstico da pane     - Fault diagnosis time              - Temps de diagnostic de panne
+       - Tempo de disponibilidade         - Up time                           - Temps de disponibilité
+       - Tempo de disponibilidade médio   - Mean up time                      - Temps moyen de disponibilité/
+                                                                                Durée moyenne de disponibilité
+       - Tempo de incapacidade            - Disabled time                     - Temps d’incapacité
+       - Tempo de incapacidade por        - External disabled time/           - Temps d’incapacité externe
+         razões externas                    External loss time
+       - Tempo de indisponibilidade       - Down time                         - Temps d’indisponibilité
+       - Tempo de indisponibilidade       - Accumulated down time             - Durée cumulée d’indisponibilité
+         acumulado
+       -Tempo de indisponibilidade        - Mean accumulated down time        - Durée cumulée moyenne
+         acumulado médio                                                        d’indisponibilité
+       - Tempo de indisponibilidade       - Mean down time                    - Temps moyen d’indiponibilité/
+         médio                                                                  Durée moyenne d’indisponibilité
+       - Tempo de localização da pane     - Fault localization time           - Temps de localisation de panne
+       - Tempo de manutenção              - Maintenance time                  - Temps de maintenance
+       - Tempo de manutenção corretiva    - Corrective maintenance time       - Temps de maintenance corrective
+       -Tempo de manutenção               - Active corrective                 - Temps de maintenance
+         corretiva efetiva                  maintenance time                    corrective active
+       - Tempo de manutenção corretiva    - Mean active corrective            - Durée moyenne de maintenance
+         efetiva médio                      maintenance time                    corrective
+       - Tempo de manutenção              - Active maintenance time           - Temps de maintenance active
+         efetiva
+       - Tempo de manutenção em           - Maintenance men-hour (MMH)        - Durée équivalente de maintenance/
+         homens-hora                                                            Durée en hommes-heure
+       - Tempo de manutenção médio        - Mean maintenance men-hour         - Durée moyenne équivalente de
+         em homens-hora                                                         maintenance/Durée moyenne en
+                                                                                hommes-heure
+       - Tempo de manutenção              - Preventive maintenance time       - Temps d’entretien
+         preventiva
+       - Tempo de manutenção preventiva   - Active preventive maintenance     - Temps d’entretien actif
+         efetiva                            time
+       - Tempo de não-operação            - Non-operating time                - Temps de non-fonctionnement
+       - Tempo de operação                - Operation time                    - Temps de fonctionnement
+       - Tempo de operação entre falhas   - Operating time between failures   - Durée de bon fonctionnement/
+                                                                                Temps de bon fonctionnement
+       - Tempo de pane não-detectada      - Undetected fault time             - Temps de panne latente
+       - Tempo de prontidão               - Stand-by time                     - Période d’attente
+       - Tempo de reparo                  - Repair time                       - Temps de réparation
+       - Tempo de reparo efetivo          - Active repair time                - Temps d’entretien actif
+                                                                                                             /continua
+                       Cópia não autorizada
+NBR 5462/1994                                                                                                            25
+
+
+  /continuação
+                 Português                               Inglês                          Francês
+
+    - Tempo de reparo médio                   - Mean repair time                - Durée moyenne de réparation
+    - Tempo de restabelecimento médio         - Mean time to restoration/Mean   - Durée moyenne de panne/Moyenne
+                                                time to recovery                  des temps pour la taux de réparation
+    - Tempo de verificação                    - Check-out time                  - Temps de vérification du
+                                                                                  fonctionnement
+    - Tempo entre falhas                      - Time between failures           - Temps entre défaillances
+    - Tempo livre                             - Free time/Idle time             - Temps mort/Temps libre/Période
+                                                                                  vacante
+    - Tempo médio até a primeira              - Mean time to first failure      - Durée moyenne de
+      falha                                                                       fonctionnement avant la
+                                                                                  première défaillance
+    - Tempo médio até falha                   - Mean time to failure            - Durée moyenne de fonctionnement
+                                                                                  avant défaillance
+    - Tempo médio de operação                 - Mean operating time             - Moyenne des
+      entre falhas                              between failures                  temps de bon fonctionnement
+    - Tempo médio entre falhas                - Mean time between failures      - Temps moyen entre défaillance
+    - Tempo não-requerido                     - Non-required time               - Période non requise
+    - Tempo para restabelecimento             - Time to recovery                - Temps de panne
+    - Tempo requerido                         - Required time                   - Période requise
+    - Tolerância a panes                      - Fault tolerance                 - Tolérant aux pannes
+    - Verdadeiro                              - True                            - Vrai
+    - Verificação da mantenabilidade          - Maintainability demonstration   - Vérification de la maintenabilité
+    - Verificação funcional                   - Function check-out              - Vérification de fonctionnement
+    - Vida média                              - Mean life
+    - Vida útil                               - Useful life                     - Vie utile
+
+
+
+
+                                                                                                              /ANEXO D
+     Cópia não autorizada
+26                                                                                                        NBR 5462/1994
+
+
+                                                             ANEXO D
+
+           Listas de equivalência de termos técnicos relacionados à confiabilidade e mantenabilidade - Entrada em Inglês
+
+                 Inglês                                     Português                           Francês
+
+       - Accelerated test                       - Ensaio acelerado                      - Essai accéléré
+       - Accumulated down time                  - Tempo de indisponibilidade            - Durée cumuleé d’ indisponibilité
+                                                  acumulado
+       - Accumulated time                       - Tempo acumulado                       - Durée cumulée
+       - Active corrective                      - Tempo de manutenção                   - Temps de maintenance
+         maintenance time                         corretiva efetiva                       corrective active
+       - Active maintenance time                - Tempo de manutenção efetiva           - Temps de maintenance active
+       - Active preventive                      - Tempo de manutenção                   - Temps d’ entretien actif
+         maintenance time                         preventiva efetiva
+       - Active redundance                      - Redundância ativa                     - Redondance active
+       - Active repair time                     - Tempo de reparo efetivo               - Temps d’ entretien actif
+       - Administrative delay                   - Atraso administrativo                 - Délai administratif
+       - Ageing failure                         - Falha por deterioração                - Défaillance par vieillissement/
+                                                                                          Défaillance par usure
+       - Ageing fault                           - Pane por deterioração                 - Panne par vieillissement/
+                                                                                          Panne par usure
+       - Asymptotic availability                - Disponibilidade assintótica           - Disponibilité asymptotique
+       - Asymptotic mean availability           - Disponibilidade assintótica média     - Disponibilité moyenne asymptotique
+       - Asymptotic mean unavailability         - Indisponibilidade média assintótica   - Indisponibilité moyenne asymptotique
+       - Asymptotic unavailability              - Indisponibilidade assintótica         - Indisponibilité asymptotique
+       - Automatic maintenance                  - Manutenção automática                 - Maintenance automatique
+       - Availability                           - Disponibilidade                       - Disponibilité
+       - Average                                  Médio                                 - Moyen
+       - Bug                                    - Bug                                   - Bogue
+       - Burn-in                                - Depuração                             - Rodage
+       - Busy state                             - Estado de ocupação                    - Occupation/État occupé
+       - Capability                             - Capabilidade                          - Capacité
+       - Cataleptic failure/Catastrophic        - Falha catastrófica                    - Defaillance catalectique
+         failure
+       - Check out time                         - Tempo de verificação                  - Temps de verification du
+                                                                                          fonctionnement
+       - Complete failure                       - Falha completa                        - Défaillance compléte
+       - Complete fault                         - Pane completa                         - Panne compléte
+       - Compliance test                        - Ensaio de conformidade                - Essai de comformité
+       - Confidence level                       - Nível de confiança
+       - Constant failure                       - Período de intensidade de falha       - Période d’ intensité constante
+         intensity period                         constante                               défaillance
+       - Constant failure rate                  - Período de taxa de                    - Période de taux constante de
+         period                                  falha constante                          défaillance/Période de densité
+                                                                                          constant de défaillance
+       - Controlled maintenance                 - Manutenção controlada/                - Maintenance dirigée
+                                                  Manutenção preditiva
+       - Corrective maintenance                 - Manutenção corretiva                  - Maintenance corrective/Dépannage
+       - Corrective maintenance time            - Tempo de manutenção corretiva         - Temps de maintenance corrective
+       - Critical defective                     - Defeituoso crítico                    - Défectueux critique/Défectueux
+       - Critical failure                       - Falha crítica                         - Défaillance critique
+       - Critical fault                         - Pane crítica                          - Panne critique
+       - Critical state                         - Estado crítico                        - État critique
+       - Data-sensitive fault                   - Pane evidenciada por dados            - Panne mise en evidence par les
+                                                                                          données
+                                                                                                                           /continua
+                          Cópia não autorizada
+NBR 5462/1994                                                                                                            27
+
+
+  /continuação
+                 Inglês                                     Português                     Francês
+
+    - Defect                                     - Defeito                        - Défaut
+    - Defective                                  - Defeituoso                     - Défectuex/Entité défectueuse
+    - Deferred maintenance                       - Manutenção deferida            - Maintenance differée /Intervention
+                                                                                    differée
+    - Degradation failure                        - Falha por degradação           - Défaillance par dégradation
+    - Dependability                              - Dependabilidade                - Sûreté fonctionnement
+    - Derating                                   - Solicitação reduzida
+    - Desing defect                              - Defeito de projeto             - Défault de conception
+    - Desing failure                             - Falha de projeto               - Défaillance de conception
+    - Desing fault                               - Pane de projeto                - Panne de conception
+    - Desing review                              - Revisão de projeto             - Revue de conception/Revue de projet
+    - Determinate fault                          - Pane determinada               - Panne franche
+    - Determination test                         - Ensaio de determinação         - Essai de determination
+    - Disabled state                             - Estado de incapacitadade       - État d’ incapacité
+    - Disabled time                              - Tempo de incapacidade          - Temps d’ incapacité
+    - Down state                                 - Estado de indisponibilidade    - État d’ indisponibilité/État d’
+                                                                                    incapacité interne
+    - Down time                                  - Tempo de indisponibilidade     - Temps d’indisponibilité
+    - Drift failure                              - Falha gradual                  - Défaillance progressive/
+                                                                                    Défaillance par derive
+    - Durability                                 - Durabilidade                   - Durabilité
+    - Duration                                   - Duração                        - Durée
+    - Early failure period                       - Periodo de falhas prematuras   - Période de défaillance précoce
+    - Effectiveness                              - Eficácia                       - Efficacité
+    - Elementary maintenance                     - Atividade elementar de         - Operation
+      activity                                     manutenção                       elementaire de maintenance
+    - Endurance test                             - Ensaio de vida                 - Essai d’endurance
+    - Error                                      - Erro                           - Erreur
+    - Estimated                                  - Estimado                       - Estimé
+    - External disabled state                    - Estado de incapacitadade       - État d’ incapacite externe
+                                                   por razões externas
+    - External disabled time                     - Tempo de incapacidade          - Temps d’ incapacité externe
+                                                   por razões externas
+    - External loss time                         - Tempo de incapacidade          - Temps d’ incapacité externe
+                                                   por razões externas
+    - Extrapolated                               - Extrapolado                    - Extrapolé
+    - Fail safe                                  - Proteção contra falhas         - De securité intrinséque/À
+                                                                                    sûreté integrée
+    - Failure                                    - Falha                          - Défaillance
+    - Failure analysis                           - Análise de falhas              - Analyse des pannes
+    - Failure cause                              - Causa de falha                 - Cause de défaillance
+    - Failure mechanism                          - Mecanismo de falha             - Mécanisme de défaillance
+    - Fault                                      - Pane                           - Panne/Dérangement
+    - Fault confirmation time                    - Tempo de detecção de pane
+    - Fault correction                           - Correção da pane               - Correction de panne
+    - Fault correction time                      - Tempo de correção de pane      - Temps de correction de panne
+    - Fault coverage                             - Eficiência de confirmação      - Couverture des pannes
+                                                   de panes
+    - Fault diagnosis                            - Diagnóstico da pane            - Diagnostic de panne
+    - Fault diagnosis time                       - Tempo de diagnóstico           - Temps de diagnostic de
+                                                   da pane                          panne
+    - Fault localization                         - Localização da pane            - Localisation de panne
+
+                                                                                                                   /continua
+     Cópia não autorizada
+28                                                                                                  NBR 5462/1994
+
+
+     /continuação
+                    Inglês                             Português                         Francês
+
+       - Fault localization time           - Tempo de localização da pane       - Temps de localisation de panne
+       - Fault masking                     - Mascaramento de pane               - Masquage de panne
+       - Fault mode                        - Modo de pane                       - Mode de panne
+       - Fault modes and effects           - Análise dos modos de panes e       - Analyse des mode
+         analysis                            seus efeitos                         de panne e leurs effets
+       - Fault modes, effects and          - Análise dos modos de panes,        - Analyse des modes de panne, de
+         criticality analysis                seus efeitos e sua criticidade       leurs effets et de leur criticité
+       - Fault recognition                 - Detecção da pane                   - Détection de panne
+       - Fault tolerance                   - Tolerância a panes                 - Tolérant aux pannes
+       - Fault tree                        - Árvore de panes                    - Arbre des pannes
+       - Fault tree analysis               - Análise de árvore de panes         - Analyse par arbre de panne
+       - Faulty item                       - Item em pane                       - Entité en panne
+       - Field data                        - Dados de campo                     - Données d’ exploitation
+       - Field maintenance                 - Manutenção no campo                - Maintenance sur site
+       - Field test                        - Ensaio de campo                    - Essai sur sit/Essai en campagne
+       - Free state                        - Estado livre                       - État vacant/État libre
+       - Free time                         - Tempo livre                        - Temps mort/Temps libre/Période
+                                                                                  vacante
+       - Function check-out                - Verificação funcional              - Vérification de fonctionnement
+       - Function degrading                - Manutenção degradando o            - Maintenance en fonctionnement
+         maintenance                         funcionamento                        Dégradé/Maintenance dégradant
+                                                                                  des fonctions
+       - Function preventing fault         - Pane completa                      - Panne compléte
+       - Function-affecting                - Manutenção afetando o              - Maintenance affectance les
+         maintenance                         funcionamento                        fonctions
+       - Function-permitting               - Manutenção permitindo o            - Maintenance en fonctionnement/
+         maintenance                         funcionamento                        Maintenance en exploitation
+       - Function-preventing               - Manutenção impedindo o             - Maintenance a l’ arrêt /Maintenance
+         maintenance                         funcionamento                        empêchant l’acomplissement des
+                                                                                  fonctions
+       - Functional mode                   - Modo de funcionamento              - Mode de fonctionnement
+       - Gradual failure                   - Falha gradual                      - Défaillance progressive/Défaillance
+                                                                                  par dérive
+       - Human error                       - Erro humano/engano                 - Erreur humaine/Faute
+       - Identure level                    - Nível de intervenção               - Niveau d’ intervention
+       - Idle state                        - Estado livre                       - État vacant/État libre
+       - Idle time                         - Tempo livre                        - Temps mort/Temps libre/
+                                                                                  Période vacante
+       - Imperfection                      - Defeito menor                      - Imperfection
+       - In situ maintenance               - Manutenção no campo                - Maintenance sur site
+       - Indeterminate fault               - Pane indeterminada                 - Panne indéterminée
+       - Inherent                          - Inerente                           - Inhérent
+       - Instant                           - Instante                           - Instant
+       - Instantaneous                     - Instantâneo                        - Instantanée
+       - Instantaneous availability        - Disponibilidade instantânea        - Disponibilité (instantanée)
+       - Instantaneous failure intensity   - Intensidade de falha instantânea   - Intensité (instantanée) de défaillance
+       - Instantaneous failure rate        - Taxa de falha instantânea          - Taux instantané de défaillance/
+                                                                                  Densité instantané de défaillance
+       - Instantaneous repair rate         - Taxa de reparos instantânea        - Taux instantané de reparation
+       - Instantaneous unavailability      - Indisponibilidade instantânea      - Indisponibilité (instantanée)
+       - Intermittent fault                - Pane intermitente                  - Panne intermittente
+       - Internal disabled state           - Estado de indisponibilidade        - État d’ indisponibilité/État
+                                                                                  d’incapacité interne
+                                                                                                                    /continua
+                          Cópia não autorizada
+NBR 5462/1994                                                                                                                29
+
+
+  /continuação
+                 Inglês                                     Português                         Francês
+
+    - Intrinsic                                  - Intrínsico                         - Intrinséque
+    - Item                                       - Item                               - Entité/Dispositif/Individu
+    - Laboratory test                            - Ensaio de laboratório              - Essai en laboratoire
+    - Latent fault                               - Pane latente                       - Panne latente
+    - Learning process                           - Processo de aprendizagem           - Aprentissage (enfiabilité)
+    - Level of maintenance                       - Nível de manutenção                - Niveau de maintenance
+    - Line of maintenance                        - Escalão de manutenção              - Échelon de maintenance
+    - Logistic delay                             - Tempo de atraso logístico          - Délai logistic
+    - Logistic delay                             - Atraso logístico                   - Délai logistique
+    - Maintainability                            - Mantenabilidade                    - Maintenabilité
+    - Maintainability allocation/                - Alocação de mantenabilidade        - Allocation de maintenabilité
+      Maintainability apportionment
+    - Maintainability demonstration              - Verificação da mantenabilidade/    - Vérification de la maintenabilité/
+                                                   Demonstração de mantenabilidade      Vérification experimentale de la
+                                                                                        maintenabilité
+    - Maintainability model                      - Modelo de mantenabilidade          - Modéle de maintenabilité
+    - Maintainability prediction                 - Previsão de mantenabilidade        - Prevision de la maintenabilité/
+                                                                                        Prédicition de la maintenabilité
+    - Maintenance                                - Manutenção                         - Maintenance
+    - Maintenance action                         - Ação de manutenção                 - Opération de maintenance/
+                                                                                        Tâche de maintenance
+    - Maintenance echelon                        - Escalão de manutenção              - Échelon de maintenance
+    - Maintenance entity                         - Célula de manutenção               - Cellule de maintenance
+    - Maintenance man-hours (MMH)                - Tempo de manutenção                - Durée équivalente de maintenance/
+                                                  homens-horas                         Durée en hommes-heures
+    - Maintenance philosophy                     - Filosofia de manutenção            - Philosophie de maintenance
+    - Maintenance policy                         - Política de manutenção             - Politique de maintenance
+    - Maintenance support performance            - Desempenho do suporte à            - Logistique de maintenance
+                                                   manutenção
+    - Maintenance task                           - Ação de manutenção                 - Opération de maintenance/
+                                                                                        Tâche de maintenance
+    - Maintenance time                           - Tempo de manutenção                - Temps de maintenance
+    - Maintenance tree                           - Árvore de manutenção               - Arbre de maintenance
+    - Major defect                               - Defeito maior                      - Défaut majeur
+    - Major defective                            - Defeituoso maior                   - Défectueux majeur
+    - Major fault                                - Pane maior                         - Panne majeure
+    - Manufacturing defect                       - Defeito de fabricação              - Défaut de fabrication
+    - Manufacturing failure                      - Falha de fabricação                - Défaillance de fabrication
+    - Manufacturing fault                        - Pane de fabricação                 - Panne de fabrication
+    - Mean accumulated down time                 - Tempo médio acumulado de           - Durée cumulée moyenne
+                                                   indisponibilidade                    d’indisponibilité
+    - Mean active corrective                     - Tempo de manutenção                - Durée moyenne de maintenance
+      maintenance time                             corretiva efetiva médio              corrective
+    - Mean administrative delay                  - Atraso administrativo médio        - Durée moyenne du delai administratif
+    - Mean availability                          - Disponibilidade média              - Disponibilité moyenne
+    - Mean down time                             - Tempo de indisponibilidade médio   - Temps moyen d’ indisponibilité/
+                                                                                        Durée moyenne d’indisponibilité
+    - Mean failure intensity                     - Intensidade de falha média         - Intensité moyenne de défaillance
+    - Mean failure rate                          - Taxa de falha média                - Taux moyen de défaillance/
+                                                                                        Densité moyenne de défaillance
+    - Mean life                                  - Vida média
+    - Mean logistic delay                        - Atraso logístico médio             - Durée du delai logistique
+
+                                                                                                                       /continua
+      Cópia não autorizada
+30                                                                                                NBR 5462/1994
+
+
+     /continuação
+                    Inglês                            Português                         Francês
+
+       - Mean maintenance man-hours        - Tempo de manutenção médio          - Durée moyenne équivalente de
+                                             em homens-horas                      maintenance/Durée moyenne en
+                                                                                  hommes-heures
+       - Mean operating time between       - Tempo médio de operação            - Moyenne des temps de
+         failures                            entre falhas                         bon fonctionnement
+       - Mean repair rate                  - Taxa de reparo média               - Taux moyen de reparation/Densité
+                                                                                  moyenne de reparation
+       - Mean repair time                  - Tempo de reparo médio              - Durée moyenne de reparation
+       - Mean time between failures        - Tempo médio entre falhas           - Temps moyen entre défaillance
+       - Mean time to failure              - Tempo médio até falha              - Durée moyenne de fonctionnement
+                                                                                  avant défaillance
+       - Mean time to first failure        - Tempo médio até a primeira falha   - Durée moyenne de fonctionnement
+                                                                                  avant la premiére défaillance
+       - Mean time to recovery             - Tempo de restabelecimento médio    - Durée moyenne de panne/Moyenne
+                                                                                  des temps pour la tâche de reparation
+       - Mean time to restoration          - Tempo de restabelecimento médio    - Durée moyenne panne/Moyenne des
+                                                                                  temps pour la tâche de reparation
+       - Mean unavailability               - Indisponibilidade média            - Indisponibilité moyenne
+       - Mean up time                      - Tempo médio de disponibilidade     - Temps moyen de disponibilité/Durée
+                                                                                  moyenne de disponibilité
+       - Measure                           - Medida                             - Caracteristique/Mesure
+       - Minor defect                      - Defeito menor                      - Défault mineur
+       - Minor defective                   - Defeituoso menor                   - Défectueux mineur
+       - Minor fault                       - Pane menor                         - Panne mineure
+       - Mishandling failure               - Falha por manuseio                 - Défaillance par fausse monoeuvre
+       - Mishandling fault                 - Pane por manuseio                  - Panne par fausse manoeuvre
+       - Mistake                           - Engano/Erro humano                 - Erreur humaine/Faute
+       - Misuse failure                    - Falha por uso incorreto            - Défaillance par mauvais emploi
+       - Misuse fault                      - Pane por uso incorreto             - Panne par mauvais emploi
+       - Modification                      - Modificação                        - Modification
+       - Monitoring                        - Supervisão/Monitoração             - Surveillance/Supervision
+       - Non-critical defect               - Defeito não crítico                - Défault non critique
+       - Non-critical failure              - Falha não crítica                  - Défaillance non critique
+       - Non-critical fault                - Pane não crítica                   - Panne non critique
+       - Non-operating state               - Estado de não operação             - (État de) non fonctionnement
+       - Non-operating time                - Tempo de não operação              - Temps de non-fonctionnement
+       - Non-relevant failure              - Falha não relevante                - Défaillance non pertinente/Défaillance
+                                                                                  a ne pas pendre en compte
+       - Non-repaired item                 - Item não reparado                  - Entité non réparée
+       - Non-required time                 - Tempo não requerido                - Période non requise
+       - Observed data                     - Dados observados                   - Valeur observée/Donnée observée
+       - Off-site maintenance              - Manutenção fora do local de        - Maintenance hors site
+                                             utilização
+       - Off-site maintenance              - Manutenção no campo                - Maintenance sur site
+       - Operating state                   - Estado de operação                 - (État de) fonctionnement
+       - Operating time between failures   - Tempo de operação entre falhas     - Durée de bon fonctionnement/ Temps
+                                                                                  de bon fonctionnement
+       - Operation                         - Operação                           - Exploitation
+       - Operation time                    - Tempo de operação                  - Temps de fonctionnement
+       - Operational                       - Operacional                        - Opérationnel
+       - Outage                            - Estado de incapacitação            - État d’incapacité
+       - P-fractile                        - Fractil de ordem p                 - Fractile d’ordre p
+       - Partial failure                   - Falha parcial                      - Défaillance partielle
+                                                                                                               /continua
+                          Cópia não autorizada
+NBR 5462/1994                                                                                                                31
+
+
+  /continuação
+                 Inglês                                     Português                         Francês
+
+    - Partial fault                              - Pane parcial                       - Panne partielle
+    - Permanent fault/Persistent fault           - Pane permanente                    - Panne permanente
+    - Predicted                                  - Previsto                           - Prévu/Predit
+    - Prediction                                 - Previsão                           - Prévision /Prédiction
+    - Preventive maintenance                     - Manutenção preventiva              - Entretien/Maintenance preventive
+    - Preventive maintenance time                - Tempo de manutenção preventiva     - Temps d’entretien
+    - Primary failure                            - Falha primária                     - Défaillance primaire
+    - Programme sensitive fault                  - Pane evidenciada por programa      - Panne mise en evidence par le
+                                                                                        programme
+    - Recovery                                   - Restabelecimento                   - Rétablissement
+    - Redundance                                 - Redundância                        - Redondance (de moyens)
+    - Reference data                             - Dados de referência                - Valeur de reference/Donnée de
+                                                                                        reference
+    - Relevant failure                           - Falha relevante                    - Défaillance pertinente/Défaillance
+                                                                                        pendre en compte
+    - Reliability                                - Confiabilidade                     - Fiabilité
+    - Reliability and maintainability            - Garantia mantenabilidade e         - Assurance de la fiabilité et de la
+      assurance                                    confiabilidade                       maintenabilité
+    - Reliability and maintainability            - Auditoria da mantenabilidade e     - Audit de la fiabilité e de la
+      audit                                        confiabilidade                       maintenabilité
+    - Reliability and maintainability            - Controle da mantenabilidade e      - Maîtrise de la fiabilité et de
+      control                                       confiabilidade                      la maintenabilité
+    - Reliability and maintainability            - Gerenciamento de mantenabilidade   - Gestion de la fiabilité et de
+      management                                   e confiabilidade                     la maintenabilité
+    - Reliability and maintainability plan       - Plano de confiabilidade            - Plan de fiabilité et de
+                                                   e mantenabilidade                    maintenabilité
+    - Reliability and maintainability            - Programa de mantenabilidade e      - Programme de fiabilité et de
+      programme                                    confiabilidade                       maintenabilité
+    - Reliability and maintainability            - Supervisão da mantenabilidade e    - Surveillance de la fiabilité et
+      surveillance                                 confiabilidade                       de la maintenabilité
+    - Reliability bloc diagram                   - Diagrama de blocos da              - Diagrame de fiabilité
+                                                   confiabilidade
+    - Reliability growth                         - Crescimento da confiabilidade      - Croissance de la fiabilité
+    - Reliability improvement                    - Melhoria da confiabilidade         - Amélioration de la fiabilité
+    - Reliability model                          - Modelo de confiabilidade           - Modéle de fiabilité
+    - Remote maintenance                         - Manutenção remota                  - Télemaintenance
+    - Repair                                     - Reparo                             - Réparation
+    - Repair coverage                            - Eficiência de reparo               - Couverture des reparations
+    - Repair time                                - Tempo de reparo                    - Temps de réparation
+    - Repaired item                              - Item reparado                      - Entité réparée
+    - Reproducible failure                       - Falha sistemática                  - Défaillance systematique/
+                                                                                        Défaillance reproductible
+    - Required function                          - Função requerida                   - Fonction requise
+    - Required time                              - Tempo requerido                    - Période requise
+    - Restoration                                - Restabelecimento funcional         - Réstablissement
+    - Scheduled maintenance                      - Manutenção programada              - Entretien systematique/
+                                                                                        Maintenance systematique
+    - Secondary failure                          - Falha secundária                   - Défaillance secondaire
+    - Sereening test                             - Ensaio seletivo                    - Essai de sélection
+    - Service                                    - Serviço                            - Service
+    - Solid fault                                - Pane permanente                    - Panne permanente
+    - Stand-by redundance                        - Redundância de prontidão           - Redondance en attente/Redondance
+                                                                                        passive/Redondance en secours
+                                                                                                                      /continua
+      Cópia não autorizada
+
+32                                                                                           NBR 5462/1994
+
+
+     /continuação
+                    Inglês                     Português                           Francês
+
+       - Stand-by state             - Estado de prontidão                  - Attente
+       - Stand-by time              - Tempo de prontidão                   - Periode de attente
+       - State-transition diagram   - Diagrama de transição de estados     - Diagramme de transitio
+       - Step stress test           - Ensaio de solicitação escalonada     - Essai soub contrainte échelonnée
+       - Stress analysis            - Análise de solicitações              - Analyse des contraintes
+       - Stress model               - Modelo de solicitações               - Modéle de contraintes
+       - Sudden failure             - Falha repentina                      - Défaillance soudaine
+       - Supervision                - Supervisão/Monitoração               - Surveillance/Supervision
+       - Systematic failure         - Falha sistemática                    - Défaillance systématique/
+                                                                             Défaillance reproductible
+       - Systematic fault           - Pane sistemática                     - Panne systématique
+       - Technical delay            - Atraso técnico                       - Délai technique
+       - Test                       - Ensaio                               - Essai
+       - Test data                  - Dados de ensaio                      - Données d’essai
+       - Time acceleration factor   - Fator de aceleração                  - Facteur d’ accélération temporelle
+       - Time between failures      - Tempo entre falhas                   - Temps entre défaillances
+       - Time interval              - Intervalo de tempo                   - Intervalle de temps
+       - Time to failure            - Tempo até falha                      - Durée de fonctionnement avant
+                                                                             défaillance
+       - Time to first failure      - Tempo até a primeira falha           - Durée de fonctionnement avant la
+                                                                             premiére défaillance
+       - Time to recovery           - Tempo para restabelecimento          - Temps de panne
+       - Transient fault            - Pane temporária                      - Panne intermittente/Panne temporaire
+       - True                       - Verdadeiro                           - Vrai
+       - Undetected fault time      - Tempo de pane não detectada          - Temps de panne latente
+       - Unscheduled maintenance    - Manutenção não programada            - Maintenance conditionnelle
+       - Up state                   - Estado de disponibilidade            - État de disponibilité
+       - Up time                    - Tempo de disponibilidade             - Temps de disponibilité
+       - Useful life                - Vida útil                            - Vie utile
+       - Volatile fault             - Panne temporária                     - Panne intermittente/Panne temporaire
+       - Weakness failure           - Falha por fragilidade                - Défaillance par fragilité
+       - Weakness fault             - Pane por fragilidade                 - Panne par fragilité
+       - Wearout failure            - Falha por deterioração               - Défaillance par vieillissement/
+                                                                             Défaillance par usure
+       - Wearout failure period     - Período de falhas por deterioração   - Période de défaillance par
+                                                                             vieillissement/Période de défaillance
+                                                                             par usure
+       - Wearout fault              - Pane por deterioração                - Panne par vieillissement/Panne par
+                                                                             usure
+                     Cópia não autorizada
+NBR 5462/1994                                                                                       33
+
+
+                                                          Índice alfabético
+
+  Acessibilidade                                                              2.1.17
+  Ação de manutenção                                                          2.8.18
+  Alocação de mantenabilidade                                                 2.19.16
+  Análise de árvore de panes                                                  2.19.5
+  Análise de falhas                                                           2.19.12
+  Análise de panes                                                            2.19.11
+  Análise de solicitações                                                     2.19.6
+  Análise dos modos de pane e seus efeitos                                    2.19.3
+  Análise dos modos de pane, seus efeitos e sua criticidade                   2.19.4
+  Árvore de manutenção                                                        2.19.15
+  Árvore de panes                                                             2.19.8
+  Atividade elementar de manutenção                                           2.8.17
+  Atraso administrativo                                                       2.9.9
+  Atraso administrativo médio                                                 2.15.1
+  Atraso logístico                                                            2.9.10
+  Atraso logístico médio                                                      2.15.2
+  Atraso técnico                                                              2.9.12
+  Auditoria da confiabilidade e mantenabilidade                               2.20.11
+  “ Bug ”                                                                     2.3.2
+  Capabilidade                                                                2.2.4
+  Causa de falha                                                              2.4.19
+  Célula de manutenção                                                        2.8.27
+  Confiabilidade                                                              2.13.1 e 2.2.6
+  Controle da confiabilidade e mantenabilidade                                2.20.8
+  Correção da pane                                                            2.8.23
+  Crescimento da confiabilidade                                               2.20.4
+  Critério de falha                                                           2.4.2
+  Dados de campo                                                              2.17.3
+  Dados de ensaio                                                             2.17.2
+  Dados de referência                                                         2.17.4
+  Dados observados                                                            2.17.1
+  Defeito                                                                     2.3.1
+  Defeito critíco                                                             2.3.3
+  Defeito de fabricação                                                       2.3.12
+  Defeito de projeto                                                          2.3.11
+  Defeito maior                                                               2.3.5
+  Defeito menor                                                               2.3.6
+  Defeito não-crítico                                                         2.3.4
+  Defeituoso                                                                  2.3.7
+  Defeituoso crítico                                                          2.3.8
+  Defeituoso maior                                                            2.3.9
+  Defeituoso menor                                                            2.3.10
+  Demonstração de mantenabilidade                                             2.16.12
+  Dependabilidade                                                             2.2.3
+  Depuração (para itens não-reparáveis)                                       2.20.3
+  Depuração (para item reparável)                                             2.20.2
+  Desempenho do suporte de manutenção                                         2.2.8
+  Detecção da pane                                                            2.8.20
+  Diagnóstico da pane                                                         2.8.22
+  Diagrama de blocos da confiabilidade                                        2.19.7
+  Diagrama de transição de estados                                            2.19.9
+  Disponibilidade                                                             2.2.5
+  Disponibilidade assintótica                                                 2.12.5
+  Disponibilidade assintótica média                                           2.12.7
+  Disponibilidade instantânea                                                 2.12.1
+  Disponibilidade média                                                       2.12.3
+  Durabilidade                                                                2.2.2
+  Duração                                                                     2.1.9
+                                                                                               /continua
+      Cópia não autorizada
+
+34                                                                 NBR 5462/1994
+
+
+     /continuação
+     Eficácia                                            2.2.1
+     Eficiência de confirmação de panes                  2.14.9
+     Eficiência de reparo                                2.14.10
+     Engano                                              2.6.2
+     Ensaio                                              2.16.1
+     Ensaio acelerado                                    2.16.7
+     Ensaio de campo                                     2.16.5
+     Ensaio de conformidade                              2.16.2
+     Ensaio de determinação                              2.16.3
+     Ensaio de laboratório                               2.16.4
+     Ensaio de solicitação escalonada                    2.16.8
+     Ensaio de vida                                      2.16.6
+     Ensaio seletivo                                     2.16.9
+     Erro                                                2.6.1
+     Erro humano                                         2.6.2
+     Escalão de manutenção                               2.8.4
+     Estado crítico                                      2.7.10
+     Estado de disponibilidade                           2.7.8
+     Estado de incapacidade                              2.7.5
+     Estado de incapacidade por razões externas          2.7.6
+     Estado de indisponibilidade                         2.7.7
+     Estado de não-operação                              2.7.2
+     Estado de ocupação                                  2.7.9
+     Estado de operação                                  2.7.1
+     Estado de prontidão                                 2.7.3
+     Estado livre                                        2.7.4
+     Estimado                                            2.21.4
+     Extrapolado                                         2.21.3
+     Falha                                               2.4.1
+     Falha aleatória                                     2.4.10
+     Falha catastrófica                                  2.4.14
+     Falha completa                                      2.4.24
+     Falha crítica                                       2.4.3
+     Falha de fabricação                                 2.4.9
+     Falha de projeto                                    2.4.8
+     Falha gradual                                       2.4.13
+     Falha não-crítica                                   2.4.4
+     Falha não-relevante                                 2.4.16
+     Falha parcial                                       2.4.22
+     Falha por degradação                                2.4.23
+     Falha por deterioração                              2.4.11
+     Falha por fragilidade                               2.4.7
+     Falha por manuseio                                  2.4.6
+     Falha por uso incorreto                             2.4.5
+     Falha primária                                      2.4.17
+     Falha relevante                                     2.4.15
+     Falha repentina                                     2.4.12
+     Falha secundária                                    2.4.18
+     Falha sistemática                                   2.4.21
+     Fator de aceleração                                 2.16.10
+     Filosofia de manutenção                             2.8.2
+     Fráctil de ordem p                                  2.21.8
+     Função requerida                                    2.1.5
+     Garantia da confiabilidade e mantenabilidade        2.20.7
+     Gerenciamento de confiabilidade e mantenabilidade   2.20.6
+     Indisponibilidade assintótica                       2.12.6
+     Indisponibilidade assintótica média                 2.12.8
+     Indisponibilidade instantânea                       2.12.2
+     Indisponibilidade média                             2.12.4
+                                                                          /continua
+                   Cópia não autorizada
+NBR 5462/1994                                                    35
+
+
+  /continuação
+  Inerente                                 2.21.5
+  Instantâneo                              2.21.9
+  Instante                                 2.1.7
+  Intensidade de falha instantânea         2.13.4
+  Intensidade de falha média               2.13.5
+  Intervalo de tempo                       2.1.8
+  Intrínseco                               2.21.5
+  Item                                     2.1.1
+  Item em pane                             2.5.24
+  Item não-reparado                        2.1.3
+  Item reparado                            2.1.2
+  Lista de símbolos e abreviações          Anexo B
+  Localização da pane                      2.8.21
+  Mantenabilidade                          2.14.1 e 2.2.7
+  Manutenção                               2.8.1
+  Manutenção afetando o funcionamento      2.8.28
+  Manutenção automática                    2.8.15
+  Manutenção controlada                    2.8.9
+  Manutenção corretiva                     2.8.8
+  Manutenção deferida                      2.8.16
+  Manutenção degradando o funcionamento    2.8.30
+  Manutenção fora do local de utilização   2.8.13
+  Manutenção impedindo o funcionamento     2.8.29
+  Manutenção não-programada                2.8.11
+  Manutenção no campo                      2.8.12
+  Manutenção permitindo o funcionamento    2.8.31
+  Manutenção preditiva                     2.8.9
+  Manutenção preventiva                    2.8.7
+  Manutenção programada                    2.8.10
+  Manutenção remota                        2.8.14
+  Mascaramento de pane                     2.18.6
+  Mecanismo de falha                       2.4.20
+  Medida                                   2.1.11
+  Médio                                    2.21.7
+  Melhoria da confiabilidade               2.20.5
+  Modelo de confiabilidade                 2.19.2
+  Modelo de mantenabilidade                2.19.13
+  Modelo de solicitações                   2.19.10
+  Modificação                              2.1.13
+  Modo de funcionamento                    2.1.6
+  Modo de pane                             2.5.23
+  Monitoração                              2.8.26
+  Nível de confiança                       2.1.14
+  Nível de intervenção                     2.8.5
+  Nível de manutenção                      2.8.6
+  Operação                                 2.1.12
+  Operacional                              2.21.6
+  Pane                                     2.5.1
+  Pane completa                            2.5.14
+  Pane crítica                             2.5.2
+  Pane de fabricação                       2.5.10
+  Pane de projeto                          2.5.9
+  Pane determinada                         2.5.19
+  Pane evidenciada por dados               2.5.13
+  Pane evidenciada por programa            2.5.12
+  Pane indeterminada                       2.5.20
+  Pane intermitente                        2.5.18
+  Pane latente                             2.5.21
+                                                            /continua
+      Cópia não autorizada
+36                                                                    NBR 5462/1994
+
+
+     /continuação
+     Pane maior                                             2.5.4
+     Pane menor                                             2.5.5
+     Pane não-crítica                                       2.5.3
+     Pane parcial                                           2.5.15
+     Pane permanente                                        2.5.16
+     Pane por deterioração                                  2.5.11
+     Pane por fragilidade                                   2.5.8
+     Pane por manuseio                                      2.5.7
+     Pane por uso incorreto                                 2.5.6
+     Pane sistemática                                       2.5.22
+     Pane temporária                                        2.5.17
+     Período de falhas por deterioração                     2.11.11
+     Período de falhas prematuras                           2.11.8
+     Período de intensidade de falha constante              2.11.9
+     Período de taxa de falha constante                     2.11.10
+     Plano da confiabilidade e mantenabilidade              2.20.11
+     Política de manutenção                                 2.8.3
+     Pré-envelhecimento                                     2.1.16
+     Previsão                                               2.19.1
+     Previsão da mantenabilidade                            2.19.14
+     Previsto                                               2.21.2
+     Processo de aprendizagem                               2.20.1
+     Programa de confiabilidade e mantenabilidade           2.20.9
+     Proteção contra falhas                                 2.18.4
+     Redundância                                            2.18.1
+     Redundância ativa                                      2.18.2
+     Redundância de prontidão                               2.18.3
+     Relações entre os conceitos de defeito, falha e pane   Anexo A
+     Reparo                                                 2.8.19
+     Restabelecimento funcional                             2.8.25
+     Revisão de projeto                                     2.20.13
+     Serviço                                                2.1.4
+     Solicitação reduzida                                   2.1.15
+     Supervisão                                             2.8.26
+     Supervisão da confiabilidade e mantenabilidade         2.20.12
+     Taxa de falha instantânea                              2.13.2
+     Taxa de falha média                                    2.13.3
+     Taxa de reparo instantânea                             2.14.2
+     Taxa de reparo média                                   2.14.3
+     Tempo acumulado                                        2.1.10
+     Tempo até a primeira falha                             2.11.1
+     Tempo até falha                                        2.11.2
+     Tempo de correção da pane                              2.9.11
+     Tempo de detecção da pane                              2.9.17
+     Tempo de diagnóstico da pane                           2.9.14
+     Tempo de disponibilidade                               2.10.12
+     Tempo de disponibilidade médio                         2.10.13
+     Tempo de incapacitação                                 2.10.7
+     Tempo de incapacidade por razões externas              2.10.11
+     Tempo de indisponibilidade                             2.10.8
+     Tempo de indisponibilidade acumulado                   2.10.9
+     Tempo de indisponibilidade acumulado médio             2.10.10
+     Tempo de indisponibilidade médio                       2.14.5
+     Tempo de localização da pane                           2.9.15
+     Tempo de manutenção                                    2.9.1
+     Tempo de manutenção corretiva                          2.9.5
+     Tempo de manutenção corretiva efetiva                  2.9.7
+     Tempo de manutenção corretiva efetiva médio            2.14.7
+                                                                             /continua
+                   Cópia não autorizada
+NBR 5462/1994                                          37
+
+
+  /continuação
+  Tempo de manutenção efetiva                2.9.3
+  Tempo de manutenção em homens-hora         2.9.2
+  Tempo de manutenção médio em homens-hora   2.14.4
+  Tempo de manutenção preventiva             2.9.4
+  Tempo de manutenção preventiva efetiva     2.9.6
+  Tempo de não-operação                      2.10.2
+  Tempo de operação                          2.10.1
+  Tempo de operação entre falhas             2.11.4
+  Tempo de pane não-detectada                2.9.8
+  Tempo de prontidão                         2.10.5
+  Tempo de reparo                            2.9.16
+  Tempo de reparo médio                      2.14.6
+  Tempo de restabelecimento                  2.11.5
+  Tempo de restabelecimento médio            2.14.8
+  Tempo de verificação                       2.9.13
+  Tempo entre falhas                         2.11.3
+  Tempo livre                                2.10.6
+  Tempo médio até a primeira falha           2.13.6
+  Tempo médio até falha                      2.13.7
+  Tempo médio de operação entre falhas       2.13.9
+  Tempo médio entre falhas                   2.13.8
+  Tempo não-requerido                        2.10.4
+  Tempo requerido                            2.10.3
+  Tolerância a panes                         2.18.5
+  Verdadeiro                                 2.21.1
+  Verificação da mantenabilidade             2.16.11
+  Verificação funcional                      2.8.24
+  Vida em armazenagem                        2.11.7
+  Vida média                                 2.11.12
+  Vida útil                                  2.11.6
+
