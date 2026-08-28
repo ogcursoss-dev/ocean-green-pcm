@@ -1,13 +1,14 @@
 // Ocean Green Treinamentos - Schema PCM
-// SQLite para desenvolvimento local, PostgreSQL para produção (Supabase)
+// Banco de dados: Supabase (PostgreSQL)
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // =================== USUÁRIOS ===================
