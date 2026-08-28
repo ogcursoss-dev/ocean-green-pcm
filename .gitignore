@@ -28,17 +28,12 @@ pnpm-debug.log*
 dev.log
 server.log
 question-gen.log
+prod.log
+qgen.log
 
-# database local (SQLite dev)
+# database local
 db/*.db
 db/*.db-journal
-
-# prisma
-/prisma/migrations/dev.db*
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
 
 # editor
 .vscode
@@ -50,7 +45,13 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 
-# agent context
-agent-ctx/
+# Arquivos pesados desnecessários
+skills/
+upload/
+download/
+tests/
+examples/
+mini-services/
+.zscripts/
 tool-results/
-prod.log
+agent-ctx/
