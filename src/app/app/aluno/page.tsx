@@ -133,12 +133,17 @@ export default function AlunoDashboard() {
               {exams.slice(0, 5).map((exam) => {
                 const sc = statusConfig[exam.status]
                 const Icon = sc.icon
+                const isRecovery = exam.isRecovery
+                const isReproved = exam.hasAttempt && exam.score != null && exam.score < 60
                 return (
-                  <div key={exam.id} className="flex items-center justify-between rounded-lg border p-3">
+                  <div key={exam.id} className={`flex items-center justify-between rounded-lg border p-3 ${isRecovery ? 'border-orange-300 bg-orange-50' : ''}`}>
                     <div className="flex items-center gap-3">
                       <Icon className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <p className="text-sm font-medium">{exam.title}</p>
+                        <p className="text-sm font-medium">
+                          {isRecovery && <span className="text-orange-600">🔄 </span>}
+                          {exam.title}
+                        </p>
                         <p className="text-xs text-muted-foreground">
                           {exam.className} · {new Date(exam.startDateTime).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
                         </p>
@@ -146,12 +151,16 @@ export default function AlunoDashboard() {
                     </div>
                     <div className="flex items-center gap-2">
                       {exam.hasAttempt && exam.score != null && (
-                        <Badge variant="outline">Nota: {exam.score.toFixed(1)}%</Badge>
+                        <Badge variant="outline" className={exam.score >= 60 ? 'text-green-600 border-green-300' : 'text-red-600 border-red-300'}>
+                          Nota: {exam.score.toFixed(1)}%
+                        </Badge>
                       )}
                       <Badge variant={sc.variant}>{sc.label}</Badge>
                       {exam.status === 'AVAILABLE' && !exam.hasAttempt && (
                         <Link href={`/app/prova/${exam.id}`}>
-                          <Button size="sm" className="bg-primary hover:bg-primary/90">Iniciar</Button>
+                          <Button size="sm" className={`hover:${isRecovery ? 'bg-orange-600' : 'bg-primary hover:bg-primary/90'} ${isRecovery ? 'bg-orange-500 hover:bg-orange-600' : 'bg-primary hover:bg-primary/90'}`}>
+                            {isRecovery ? 'Fazer Recuperação' : 'Iniciar'}
+                          </Button>
                         </Link>
                       )}
                     </div>

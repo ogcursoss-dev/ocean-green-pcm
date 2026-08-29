@@ -231,7 +231,7 @@ export default function ExamTakingPage() {
         }
       }
       setSubmitting(true);
-      const res = await apiFetch<{ score: number; correctCount: number; totalCount: number; passed: boolean }>(
+      const res = await apiFetch<{ score: number; correctCount: number; totalCount: number; passed: boolean; recoveryCreated?: boolean; recoveryExamId?: string }>(
         `/api/student/exams/${id}/submit`,
         { method: "POST" }
       );
@@ -240,21 +240,34 @@ export default function ExamTakingPage() {
         toast.error(res.error || "Erro ao enviar prova.");
         return;
       }
-      toast.success(
-        auto
-          ? "Prova finalizada automaticamente."
-          : `Prova enviada! Score: ${formatPct(res.data?.score)}`
-      );
-      // Recarrega
-      const fresh = await apiFetch<ExamData>(`/api/student/exams/${id}`);
-      if (fresh.ok && fresh.data) {
-        setData(fresh.data);
-        setAnswers(fresh.data.answers || {});
-        setShowResult(true);
-        setCurrentIdx(0);
+
+      const score = res.data?.score ?? 0;
+      const passed = res.data?.passed ?? false;
+      const recoveryCreated = res.data?.recoveryCreated ?? false;
+
+      // Mostra a nota imediatamente
+      if (passed) {
+        toast.success(`🎉 Parabéns! Você foi aprovado(a)! Nota: ${formatPct(score)}`, {
+          duration: 5000,
+        });
+      } else {
+        if (recoveryCreated) {
+          toast.error(`Nota: ${formatPct(score)}. Você foi reprovado(a), mas uma prova de recuperação foi liberada!`, {
+            duration: 6000,
+          });
+        } else {
+          toast.error(`Nota: ${formatPct(score)}. Você não atingiu a média.`, {
+            duration: 5000,
+          });
+        }
       }
+
+      // Redireciona para o dashboard do aluno após 3 segundos
+      setTimeout(() => {
+        router.replace("/app/aluno");
+      }, 3000);
     },
-    [data, submitting, answers, id]
+    [data, submitting, answers, id, router]
   );
 
   const selectAnswer = useCallback(
@@ -458,6 +471,7 @@ export default function ExamTakingPage() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Botão Finalizar — apenas na última questão */}
         <div className="flex items-center justify-between gap-3">
           <Button
             variant="outline"
@@ -488,41 +502,20 @@ export default function ExamTakingPage() {
           )}
         </div>
 
-        {/* Status de salvamento */}
-        <Card className="bg-muted/40 sticky bottom-3 z-20 shadow-md">
-          <CardContent className="p-3 flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-2 text-sm">
-              {savedAt ? (
-                <>
-                  <CheckCircle2 className="size-4 text-accent" />
-                  <span className="text-accent font-medium">Salvo</span>
-                  <span className="text-muted-foreground text-xs">
-                    {savedAt.toLocaleTimeString("pt-BR")}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <Loader2 className="size-4 text-muted-foreground animate-spin" />
-                  <span className="text-muted-foreground">Salvando...</span>
-                </>
-              )}
-              <span className="text-muted-foreground mx-1">•</span>
-              <span className="text-muted-foreground text-xs">
-                {answered} / {total} respondidas
-              </span>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => submit(false)}
-              disabled={submitting}
-              className="text-accent hover:text-accent"
-            >
-              <Send className="size-3 mr-1" />
-              Finalizar agora
-            </Button>
-          </CardContent>
-        </Card>
+        {/* Status de salvamento minimalista (inline, sem card) */}
+        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground py-1">
+          {savedAt ? (
+            <>
+              <CheckCircle2 className="size-3 text-accent" />
+              <span>Salvo {savedAt.toLocaleTimeString("pt-BR")} • {answered}/{total} respondidas</span>
+            </>
+          ) : (
+            <>
+              <Loader2 className="size-3 animate-spin" />
+              <span>Salvando... • {answered}/{total} respondidas</span>
+            </>
+          )}
+        </div>
       </main>
     </div>
   );
