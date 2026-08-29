@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { BookOpenText, ClipboardList, Clock, CheckCircle2, Lock, Loader2, Calendar, TrendingUp } from 'lucide-react'
+import { BookOpenText, ClipboardList, Clock, CheckCircle2, Lock, Loader2, Calendar, TrendingUp, Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
 
 interface ExamItem {
   id: string
@@ -41,6 +42,17 @@ export default function AlunoDashboard() {
       setSims(simsData.simulations || [])
     }).finally(() => setLoading(false))
   }, [])
+
+  async function deleteSim(simId: string) {
+    if (!confirm('Excluir este simulado? Esta ação não pode ser desfeita.')) return
+    const res = await fetch(`/api/student/simulations/${simId}`, { method: 'DELETE' })
+    if (res.ok) {
+      toast.success('Simulado excluído.')
+      setSims(sims.filter(s => s.id !== simId))
+    } else {
+      toast.error('Erro ao excluir simulado.')
+    }
+  }
 
   const statusConfig = {
     SCHEDULED: { label: 'Agendada', variant: 'secondary' as const, icon: Clock },
@@ -199,13 +211,24 @@ export default function AlunoDashboard() {
                       {new Date(sim.createdAt).toLocaleString('pt-BR')}
                     </p>
                   </div>
-                  {sim.score != null ? (
-                    <Badge variant={sim.score >= 70 ? 'default' : 'secondary'}>
-                      {sim.score.toFixed(1)}%
-                    </Badge>
-                  ) : (
-                    <Badge variant="outline">Em andamento</Badge>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {sim.score != null ? (
+                      <Badge variant={sim.score >= 70 ? 'default' : 'secondary'}>
+                        {sim.score.toFixed(1)}%
+                      </Badge>
+                    ) : (
+                      <Badge variant="outline">Em andamento</Badge>
+                    )}
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="size-7 text-muted-foreground hover:text-destructive"
+                      onClick={() => deleteSim(sim.id)}
+                      title="Excluir simulado"
+                    >
+                      <Trash2 className="size-3.5" />
+                    </Button>
+                  </div>
                 </div>
               ))}
             </div>

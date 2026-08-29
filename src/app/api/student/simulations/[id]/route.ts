@@ -104,3 +104,20 @@ export async function POST(
 
   return NextResponse.json({ score, correctCount: correct, totalCount: total, results })
 }
+
+export async function DELETE(
+  _req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const user = await getCurrentUser()
+  if (!user) return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
+
+  const { id } = await params
+  const simulation = await db.simulation.findUnique({ where: { id } })
+  if (!simulation || simulation.userId !== user.userId) {
+    return NextResponse.json({ error: 'Simulado não encontrado' }, { status: 404 })
+  }
+
+  await db.simulation.delete({ where: { id } })
+  return NextResponse.json({ ok: true })
+}

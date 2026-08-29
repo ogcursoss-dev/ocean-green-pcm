@@ -15,6 +15,7 @@ import {
   UserPlus,
   CalendarPlus,
   Search,
+  Trash2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -110,6 +111,17 @@ export default function AdminExamsPage() {
   }
   function openIndividual(e: ExamList) {
     setIndividualExam(e);
+  }
+
+  async function handleDelete(e: ExamList) {
+    if (!confirm(`Excluir a prova "${e.title}"? Esta ação não pode ser desfeita.`)) return;
+    const res = await apiFetch(`/api/admin/exams/${e.id}`, { method: "DELETE" });
+    if (res.ok) {
+      toast.success("Prova excluída com sucesso.");
+      refresh();
+    } else {
+      toast.error(res.error || "Erro ao excluir prova.");
+    }
   }
 
   return (
@@ -248,6 +260,15 @@ export default function AdminExamsPage() {
                             title="Editar"
                           >
                             <Pencil className="size-4" />
+                          </Button>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            className="size-8 text-destructive hover:text-destructive"
+                            onClick={() => handleDelete(e)}
+                            title="Excluir prova"
+                          >
+                            <Trash2 className="size-4" />
                           </Button>
                         </div>
                       </TableCell>
