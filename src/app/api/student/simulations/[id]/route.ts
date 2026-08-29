@@ -45,6 +45,8 @@ export async function GET(
       optionB: q.optionB,
       optionC: q.optionC,
       optionD: q.optionD,
+      correctAnswer: q.correctAnswer,
+      explanation: q.explanation,
       subjectName: q.subject.name,
     })),
     answers,

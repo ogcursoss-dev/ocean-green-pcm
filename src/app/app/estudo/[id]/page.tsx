@@ -75,8 +75,16 @@ export default function SimulationPage() {
         router.replace("/app/estudo");
         return;
       }
-      setData(res.data);
-      setAnswers(res.data.answers || {});
+      // Mapeia subjectName -> subject para compatibilidade
+      const data = {
+        ...res.data,
+        questions: (res.data.questions as any[]).map((q: any) => ({
+          ...q,
+          subject: q.subject || q.subjectName || "",
+        })),
+      };
+      setData(data);
+      setAnswers(data.answers || {});
       if (res.data.simulation.score !== null) {
         setShowResult(true);
       }
