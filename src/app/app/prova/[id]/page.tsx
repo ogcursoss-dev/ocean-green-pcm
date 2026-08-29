@@ -252,8 +252,8 @@ export default function ExamTakingPage() {
         });
       } else {
         if (recoveryCreated) {
-          toast.error(`Nota: ${formatPct(score)}. Você foi reprovado(a), mas uma prova de recuperação foi liberada!`, {
-            duration: 6000,
+          toast.error(`Nota: ${formatPct(score)}. Você foi reprovado(a), mas a RECUPERAÇÃO foi liberada AGORA! Você tem 120 minutos para fazê-la.`, {
+            duration: 8000,
           });
         } else {
           toast.error(`Nota: ${formatPct(score)}. Você não atingiu a média.`, {
@@ -262,7 +262,7 @@ export default function ExamTakingPage() {
         }
       }
 
-      // Redireciona para o dashboard do aluno após 3 segundos
+      // Redireciona para o dashboard do aluno após 4 segundos
       setTimeout(() => {
         router.replace("/app/aluno");
       }, 3000);
