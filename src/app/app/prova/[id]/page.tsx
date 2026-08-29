@@ -95,19 +95,94 @@ export default function ExamTakingPage() {
   // Carrega dados
   useEffect(() => {
     if (!id) return;
-    apiFetch<ExamData>(`/api/student/exams/${id}`).then((res) => {
+    let cancelled = false;
+
+    async function loadExam() {
+      // Primeira tentativa: carregar a prova
+      let res = await apiFetch<any>(`/api/student/exams/${id}`);
+
+      // Se a prova não tem questões configuradas (needStart), iniciar automaticamente
+      if (!res.ok && (res.data as any)?.needStart) {
+        // Chamar o endpoint /start para sortear as questões
+        const startRes = await apiFetch<{ ok: boolean; attemptId: string }>(
+          `/api/student/exams/${id}/start`,
+          { method: "POST" }
+        );
+
+        if (startRes.ok) {
+          // Após iniciar, recarregar a prova para pegar as questões
+          res = await apiFetch<any>(`/api/student/exams/${id}`);
+        } else {
+          if (!cancelled) {
+            toast.error(startRes.error || "Não foi possível iniciar a prova.");
+            router.replace("/app/provas");
+          }
+          return;
+        }
+      }
+
+      if (cancelled) return;
+
       if (!res.ok || !res.data) {
         toast.error(res.error || "Prova não encontrada.");
-        router.replace("/app/aluno");
+        router.replace("/app/provas");
         return;
       }
-      setData(res.data);
-      setAnswers(res.data.answers || {});
-      if (res.data.attempt && res.data.attempt.status !== "IN_PROGRESS") {
+
+      const examData = res.data as any;
+      // Normaliza os dados — a API pode retornar em formatos diferentes
+      const normalized: ExamData = {
+        exam: {
+          ...examData.exam,
+          type: examData.exam?.type || "OFFICIAL",
+          status: examData.exam?.status || "AVAILABLE",
+          hasIndividualAssignment: examData.exam?.hasIndividualAssignment || false,
+          window: examData.exam?.window || {
+            start: examData.exam?.startDateTime || new Date().toISOString(),
+            end: examData.exam?.endDateTime || new Date().toISOString(),
+            durationMinutes: examData.exam?.durationMinutes || 60,
+            isIndividual: false,
+          },
+          class: examData.exam?.class || { name: examData.exam?.className || "" },
+        },
+        attempt: examData.attempt || (examData.attemptId ? {
+          id: examData.attemptId,
+          status: "IN_PROGRESS",
+          startedAt: examData.startedAt || new Date().toISOString(),
+          submittedAt: null,
+          score: null,
+          correctCount: null,
+          totalCount: null,
+          timeSpentSeconds: null,
+        } : null),
+        questions: (examData.questions || []).map((q: any) => ({
+          id: q.id,
+          order: q.order || 0,
+          statement: q.statement,
+          optionA: q.optionA,
+          optionB: q.optionB,
+          optionC: q.optionC,
+          optionD: q.optionD,
+          subject: q.subjectName || q.subject,
+        })),
+        answers: examData.answers || (examData.existingAnswers ? Object.fromEntries(
+          examData.existingAnswers.map((a: any) => [a.questionId, a.selected])
+        ) : {}),
+      };
+
+      if (cancelled) return;
+      setData(normalized);
+      setAnswers(normalized.answers || {});
+      if (normalized.attempt && normalized.attempt.status !== "IN_PROGRESS") {
         setShowResult(true);
       }
       setLoading(false);
-    });
+    }
+
+    loadExam();
+    return () => {
+      cancelled = true;
+    };
   }, [id, router]);
 
   // Tick do relógio a cada segundo
